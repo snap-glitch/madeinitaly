@@ -514,7 +514,7 @@
 
 /* ---------- Barra di servizio: nera, sottile ---------- */
 .miit-utility { background: var(--navy); color: var(--on-navy); border: 0; font: 500 12px/18px var(--font-sans); }
-.miit-utility__in { min-height: 34px; }
+.miit-utility__in { min-height: 34px; justify-content: flex-end; }
 .miit-utility a { color: var(--on-navy-muted); }
 .miit-utility a:hover { color: var(--on-navy); }
 .miit-utility .miit-badge--demo { color: var(--on-navy-muted); border-color: var(--on-navy-muted); }
@@ -961,7 +961,7 @@ input[type="range"] { width: 100%; accent-color: var(--brand); }
 .explore__panel { display: grid; gap: var(--space-5); }
 .panel-sector { display: grid; gap: var(--space-3); padding-bottom: var(--space-5); border-bottom: 1px solid var(--rule); }
 .mapnote { display: flex; align-items: center; justify-content: space-between; gap: var(--space-3); flex-wrap: wrap; }
-.mapcredit { font: 400 12px/18px var(--font-sans); color: var(--ink-subtle); }
+.mapcredit { font: 400 10.5px/15px var(--font-sans); color: var(--ink-subtle); }
 .region__level { font: 500 13px/20px var(--font-mono); color: var(--ink); }
 .plist { display: grid; gap: 0; margin: 0; padding: 0; list-style: none; }
 .plist li { display: flex; align-items: center; justify-content: space-between; gap: var(--space-3); padding: 10px 0; border-top: 1px solid var(--rule); font: 500 15px/22px var(--font-sans); }
@@ -1224,6 +1224,152 @@ h1 em, h2 em { color: inherit; }
   .filters button { margin-right: var(--space-4); }
 }
 
+/* =====================================================================
+   v4 · Elenco imprese, fascia Hub AI/Academy, pagina Innovazione
+   ===================================================================== */
+.dirbar { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-4); align-items: end; }
+@media (min-width: 901px) { .dirbar { grid-template-columns: minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr); column-gap: var(--gutter); } }
+.dirfoot { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--space-4); }
+.dirfoot .body-sm { max-width: 62ch; margin: 0; }
+.tbl-wrap #dirTbl { min-width: 0; }
+#dirTbl tbody th { font: 600 15px/22px var(--font-sans); letter-spacing: 0; text-transform: none; color: var(--ink); }
+#dirTbl tbody th .miit-badge { display: inline-flex; margin-top: 6px; }
+#dirTbl td { color: var(--ink-muted); }
+#dirTbl .empty { padding: var(--space-5) 0; color: var(--ink-muted); }
+.wiz-hint { margin-top: var(--space-2); }
+
+.inn { display: grid; gap: var(--space-3); align-content: start; padding: 16px 0 8px; border-top: 2px solid var(--ink); }
+.inn__top { display: flex; align-items: center; justify-content: space-between; gap: var(--space-3); flex-wrap: wrap; }
+.inn__by { font: 500 12px/16px var(--font-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--ink-subtle); }
+.inn__t { font: 600 22px/28px var(--font-sans); letter-spacing: -.01em; margin: 0; }
+.inn__d { color: var(--ink-muted); margin: 0; max-width: 56ch; }
+.inn__list { list-style: none; margin: var(--space-2) 0 0; padding: 0; display: grid; }
+.inn__list li { display: flex; gap: var(--space-3); align-items: baseline; padding: 10px 0; border-top: 1px solid var(--rule); font: 500 15px/22px var(--font-sans); }
+.inn__list li:last-child { border-bottom: 1px solid var(--rule); }
+.inn__list svg { width: 16px; height: 16px; flex: none; stroke: var(--verified); fill: none; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; transform: translateY(2px); }
+.inn .link-arrow { margin-top: var(--space-2); }
+.inn-by { margin-top: var(--space-4); max-width: 70ch; }
+.miit-section--intro > .miit-container > .inn-by { margin-top: var(--space-4); }
+@media (min-width: 901px) { .miit-section--intro > .miit-container > .inn-by { grid-column: 4 / span 8; } }
+
+.hub-col { display: grid; gap: var(--space-3); align-content: start; padding: 16px 0 0; border-top: 2px solid var(--ink); }
+.hub-col__k { font: 500 12px/16px var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--brand); margin: 0; }
+.hub-col__t { font: 600 22px/28px var(--font-sans); letter-spacing: -.01em; margin: 0; }
+.hub-col__d { color: var(--ink-muted); margin: 0; }
+.hub-col .plist li { align-items: flex-start; flex-direction: column; gap: 6px; }
+.hub-col .plist li span.tt { font: 500 15px/22px var(--font-sans); }
+.hub-soon { margin-top: var(--space-6); }
+.hub-soon li { gap: var(--space-4); }
+.hub-soon .tt { font: 500 15px/22px var(--font-sans); }
+
+.acd { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-6); align-items: start; }
+@media (min-width: 961px) { .acd { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gutter); } .acd__form { grid-column: 1 / span 7; } .acd__out { grid-column: 9 / -1; position: sticky; top: 140px; } }
+.acd__form { display: grid; gap: var(--space-5); border-top: 2px solid var(--ink); padding-top: var(--space-4); }
+.acd__form fieldset { border: 0; padding: 0; margin: 0; display: grid; gap: var(--space-3); }
+.acd__form legend { font: 600 12px/16px var(--font-mono); letter-spacing: .08em; text-transform: uppercase; margin-bottom: var(--space-2); padding: 0; }
+.acd__out { border-top: 2px solid var(--brand); padding-top: var(--space-4); display: grid; gap: var(--space-3); align-content: start; }
+.acd__out h3 { font: 600 24px/30px var(--font-sans); letter-spacing: -.015em; margin: 0; }
+.acd__out p { margin: 0; color: var(--ink-muted); }
+.acd__out .row { display: flex; flex-wrap: wrap; gap: var(--space-3); align-items: center; }
+.acd__out dl { margin: 0; display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 0 var(--space-4); }
+.acd__out dt, .acd__out dd { margin: 0; padding: 8px 0; border-top: 1px solid var(--rule); font: 400 14px/20px var(--font-sans); }
+.acd__out dt { color: var(--ink-subtle); font: 500 12px/20px var(--font-mono); letter-spacing: .06em; text-transform: uppercase; }
+.acd__empty { border: 1px dashed var(--ink); padding: var(--space-4); color: var(--ink-muted); }
+/* lead dentro .head-row (home) e fasce nere */
+@media (min-width: 901px) { .miit-container > .head-row > .miit-sectionhead > .lead { grid-column: 4 / span 6; grid-row: 3; } }
+.miit-inverse .link-arrow { color: var(--brand-on-navy); }
+.miit-section.miit-inverse .miit-sectionhead > .eyebrow::before { color: var(--brand-on-navy); }
+
+
+/* =====================================================================
+   v5 · carosello settori, scene animate, integrazione
+   ===================================================================== */
+/* carosello settori (home) */
+.sec-car { --car-vis: 3; --car-gap: var(--space-5); display: grid; gap: var(--space-4); }
+@media (max-width: 900px) { .sec-car { --car-vis: 2; } }
+@media (max-width: 640px) { .sec-car { --car-vis: 1; } }
+.sec-car__vp { overflow: hidden; margin: -4px; padding: 4px; }
+.sec-car__track { display: flex; gap: var(--car-gap); transition: transform .6s cubic-bezier(.2, .7, .2, 1); will-change: transform; }
+.sec-car__track > .miit-sector { flex: 0 0 calc((100% - (var(--car-vis) - 1) * var(--car-gap)) / var(--car-vis)); min-width: 0; box-sizing: border-box; }
+.sec-car__ctl { display: flex; align-items: center; justify-content: space-between; gap: var(--space-3); border-top: 1px solid var(--rule); padding-top: var(--space-3); }
+.sec-car__count { font: 500 12px/16px var(--font-mono); letter-spacing: .08em; color: var(--ink-subtle); text-transform: uppercase; }
+.sec-car__btns { display: inline-flex; align-items: center; gap: var(--space-2); }
+.sec-car__btn { appearance: none; width: 44px; min-height: 36px; padding: 0; display: inline-flex; align-items: center; justify-content: center; border: 1px solid var(--border-control); border-radius: 0; background: transparent; color: var(--ink); cursor: pointer; }
+.sec-car__btn:hover { background: var(--surface-sunken); }
+.sec-car__btn--next { background: var(--ink); border-color: var(--ink); color: var(--on-navy); }
+.sec-car__btn--next:hover { background: #26262a; }
+.sec-car__btn .miit-icon { width: 18px; height: 18px; }
+/* settori: pagina dedicata, 5 schede affiancate */
+#sectorCards.miit-grid--5 { gap: var(--space-5); }
+@media (min-width: 901px) and (max-width: 1100px) { #sectorCards.miit-grid--5 { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+
+/* scene animate Verifica / Crea (stesso linguaggio dello spiegatore in home) */
+.hs-wrap { display: grid; gap: var(--space-2); justify-items: start; max-width: 560px; }
+.miit-section--intro > .miit-container > .hs-wrap { margin-top: var(--space-5) !important; }
+@media (min-width: 901px) { .miit-section--intro > .miit-container > .hs-wrap { grid-column: 4 / span 7; grid-row: 4; } }
+.hs { display: block; width: 100%; height: auto; overflow: visible; }
+.hs .sc-st .nm { font-size: 17px; }
+.hs .sc-st .sb { font-size: 13px; }
+.hs .sc-st.is-ok .c { fill: var(--verified-bg); stroke: var(--verified); }
+.hs .sc-st.is-ok .ic { stroke: var(--verified); }
+.hs-tok { transition: transform .9s cubic-bezier(.2, .7, .2, 1); transform: translateX(0); }
+.hs[data-step="1"] .hs-tok { transform: translateX(190px); }
+.hs[data-step="2"] .hs-tok { transform: translateX(380px); }
+.hs-tok .body { fill: var(--surface-raised); stroke: var(--ink); stroke-width: 1.5; }
+.hs-tok .hd { fill: var(--navy); }
+.hs-tok .ttl { font: 500 7px var(--font-mono); letter-spacing: .1em; fill: var(--on-navy); }
+.hs-tok .f { stroke: var(--rule); stroke-width: 4; stroke-linecap: round; fill: none; }
+.hs-tok .f.on { stroke: var(--border-control); }
+.hs-tok .path-link { stroke: var(--ink); stroke-width: 1.5; fill: none; }
+.hs-tok .qrg rect { fill: var(--ink); }
+.hs-tok .qrg, .hs-tok .sealg { opacity: 0; transition: opacity .5s, transform .5s; }
+.hs-tok .sealg { transform: scale(.6); transform-box: fill-box; transform-origin: center; }
+.hs-tok .seal { fill: var(--verified-bg); stroke: var(--verified); stroke-width: 1.5; }
+.hs-tok .sealc { fill: none; stroke: var(--verified); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.hs--ver .hs-tok .qrg { opacity: 1; }
+.hs--ver[data-step="2"] .hs-tok .sealg, .hs--cre[data-step="1"] .hs-tok .sealg, .hs--cre[data-step="2"] .hs-tok .sealg { opacity: 1; transform: scale(1); }
+.hs--cre[data-step="2"] .hs-tok .qrg { opacity: 1; }
+.hs--ver .scanl { fill: var(--brand); opacity: 0; }
+@keyframes hs-scan { 0% { transform: translateY(0); opacity: 0; } 15% { opacity: .9; } 85% { opacity: .9; } 100% { transform: translateY(20px); opacity: 0; } }
+@media (prefers-reduced-motion: no-preference) { .hs--ver[data-step="0"] .scanl { animation: hs-scan 1.5s ease-in-out infinite; } }
+@media (prefers-reduced-motion: reduce) { .hs-ctl { display: none; } }
+@media (max-width: 640px) { .hs .sc-st .sb { display: none; } .hs-wrap { max-width: none; } }
+
+/* integrazione nei processi aziendali */
+.int-flow { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin: 0; padding: 0; list-style: none; border-top: 2px solid var(--ink); }
+.int-flow__c { position: relative; display: grid; gap: 6px; align-content: start; padding: 16px 32px 20px 20px; border-right: 1px solid var(--rule); }
+.int-flow__c:first-child { padding-left: 0; }
+.int-flow__c:last-child { border-right: 0; }
+.int-flow__c b { font: 600 18px/24px var(--font-sans); color: var(--ink); }
+.int-flow__a { position: absolute; right: 8px; top: 14px; color: var(--brand); }
+.int-flow__a .miit-icon { width: 20px; height: 20px; }
+.int-body { display: grid; gap: var(--space-6); }
+@media (min-width: 901px) {
+  .int-body { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gutter); }
+  .int-list { grid-column: 1 / span 5; }
+  .int-steps { grid-column: 7 / -1; }
+}
+.int-list { display: grid; align-content: start; margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--rule); }
+.int-list li { display: flex; align-items: flex-start; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--rule); font: 500 16px/24px var(--font-sans); color: var(--ink); }
+.int-list .miit-icon { flex: none; margin-top: 3px; color: var(--verified); stroke-width: 2; }
+.int-steps { display: grid; gap: var(--space-5); margin: 0; padding: 0; list-style: none; align-content: start; }
+@media (min-width: 641px) { .int-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.int-step { display: grid; gap: 8px; align-content: start; justify-items: start; padding-top: 14px; border-top: 2px solid var(--ink); }
+.int-step__n { font: 500 12px/16px var(--font-mono); letter-spacing: .08em; color: var(--brand); }
+.int-step .miit-btn { margin-top: var(--space-2); }
+@media (max-width: 900px) {
+  .int-flow { grid-template-columns: minmax(0, 1fr); }
+  .int-flow__c, .int-flow__c:first-child { padding: 14px 0; border-right: 0; border-bottom: 1px solid var(--rule); }
+  .int-flow__a { right: 0; transform: rotate(90deg); }
+}
+
+/* marchio (TM) sui loghi */
+.tm { font-family: var(--font-sans); font-style: normal; font-weight: 500; letter-spacing: 0; line-height: 0; text-transform: none; }
+.miit-wordmark .tm { align-self: flex-start; margin-left: .16em; margin-top: -.02em; font-size: .6em; line-height: 1; color: inherit; }
+.miit-powered .tm { font-size: .72em; vertical-align: super; margin-left: 1px; font-weight: 500; }
+
+/* hero senza riga CTA: respiro tra lead e domanda all'assistente */
+.hero__lead { margin-bottom: var(--space-6); }
 </style>
 </head>
 <body class="miit-page">
@@ -1246,6 +1392,8 @@ h1 em, h2 em { color: inherit; }
     <symbol id="i-hanger" viewBox="0 0 40 40"><path d="M20 13a3.5 3.5 0 1 1 3.5 3.5c-2 0-3.5 1.3-3.5 3.2V22"/><path d="M20 22 5.5 32h29L20 22z"/></symbol>
     <symbol id="i-chip" viewBox="0 0 40 40"><rect x="11" y="11" width="18" height="18" rx="2"/><rect x="16" y="16" width="8" height="8"/><path d="M15 6v5M20 6v5M25 6v5M15 29v5M20 29v5M25 29v5M6 15h5M6 20h5M6 25h5M29 15h5M29 20h5M29 25h5"/></symbol>
     <symbol id="i-battery" viewBox="0 0 40 40"><rect x="5" y="12" width="26" height="16" rx="2"/><path d="M31 17h4v6h-4M10 17v6M15 17v6M20 17v6"/></symbol>
+    <symbol id="i-car" viewBox="0 0 40 40"><path d="M5 27v-6l4-9h22l4 9v6z"/><path d="M5 20h30M14 12l-2 8M26 12l2 8"/><circle cx="12" cy="28" r="3.2"/><circle cx="28" cy="28" r="3.2"/></symbol>
+    <symbol id="i-bottle" viewBox="0 0 40 40"><rect x="11" y="17" width="18" height="18" rx="2"/><path d="M16 17v-5h8v5M17 6h6v6h-6zM11 25h18"/></symbol>
     <symbol id="i-building" viewBox="0 0 40 40"><path d="M5 34V17l9 5v-5l9 5v-5l9 5V34z"/><path d="M5 34h30M12 34v-6h4v6M22 34v-6h4v6M29 18V8h4v14"/></symbol>
     <symbol id="i-seal" viewBox="0 0 40 40"><circle cx="20" cy="17" r="10"/><path d="m15.5 17 3.3 3.3 6-6.6"/><path d="M14 25.5 12 36l8-4 8 4-2-10.5"/></symbol>
     <symbol id="i-tag" viewBox="0 0 40 40"><path d="M7 8h15l12 12-14 14L7 22z"/><circle cx="13.5" cy="14.5" r="2"/><path d="M19 22l5 5M23 18l7 7"/></symbol>
@@ -1261,9 +1409,8 @@ h1 em, h2 em { color: inherit; }
 
 <div class="miit-utility">
   <div class="miit-container miit-utility__in">
-    <div class="miit-utility__group"><span class="miit-badge miit-badge--demo"><span class="demo-long" data-i18n="demoNote">Anteprima di design</span><span class="demo-short" data-i18n="demoShort">Anteprima</span></span></div>
     <div class="miit-utility__group">
-      <a href="#verifica" class="miit-utility__group--hide" data-i18n="uVerify">Verifica un passaporto</a>
+      <a href="#verifica" class="miit-utility__group--hide" data-i18n="uVerify">Verifica DPP</a>
       <a href="#prezzi" class="miit-utility__group--hide" data-i18n="forBusiness">Per le imprese</a>
       <a href="#" data-stub="1" class="miit-utility__group--hide" data-i18n="login">Accedi</a>
       <div class="miit-lang" role="group" aria-label="Lingua / Language">
@@ -1276,7 +1423,7 @@ h1 em, h2 em { color: inherit; }
 
 <header class="miit-header" id="top">
   <div class="miit-container miit-header__in">
-    <a class="miit-wordmark" href="#home" aria-label="MADEinITALY.it">MADE<i>in</i>ITALY</a>
+    <a class="miit-wordmark" href="#home" aria-label="MADEinITALY.it">MADE<i>in</i>ITALY<sup class="tm">™</sup></a>
     <button type="button" class="miit-menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="nav" data-i18n="menu">Menu</button>
     <nav aria-label="Principale" style="display:contents">
       <ul class="miit-nav" id="nav"></ul>
@@ -1303,11 +1450,6 @@ h1 em, h2 em { color: inherit; }
         <h1 id="h1home" class="display-xl" tabindex="-1" data-i18n-html="heroTitle">Il ponte tra <em>l'Italia</em> e il mondo.</h1>
         <span class="miit-rule2" aria-hidden="true"></span>
         <p class="body-lg hero__lead" style="margin-top:var(--space-5)" data-i18n="heroLead"></p>
-        <div class="hero__cta">
-          <a class="miit-btn miit-btn--primary" href="#verifica"><svg class="miit-icon miit-icon--sm" aria-hidden="true" style="stroke-width:2"><use href="#i-search"/></svg><span data-i18n="ctaVerify">Verifica un passaporto</span></a>
-          <a class="miit-btn miit-btn--secondary" href="#crea" data-i18n="ctaCreate">Crea il tuo passaporto</a>
-          <a class="link-arrow" href="#prezzi"><span data-i18n="ctaBiz">Per le imprese: piani e listino</span><svg class="miit-icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-        </div>
         <form class="miit-search hero__ask" id="askForm" role="search" autocomplete="off">
           <label class="miit-search__label label" for="q" data-i18n="searchLabel">Chiedi all'assistente</label>
           <div class="miit-search__box">
@@ -1381,7 +1523,7 @@ h1 em, h2 em { color: inherit; }
       </div>
       <div class="explain-foot miit-reveal" style="margin-top:var(--space-5)">
         <p class="body-sm miit-muted" id="exCap" role="status" aria-live="polite"></p>
-        <div class="row"><a class="miit-btn miit-btn--primary miit-btn--sm" href="#verifica" data-i18n="ctaVerify">Verifica un passaporto</a><a class="miit-btn miit-btn--secondary miit-btn--sm" href="#crea" data-i18n="ctaCreate">Crea il tuo passaporto</a></div>
+        <div class="row"><a class="miit-btn miit-btn--primary miit-btn--sm" href="#verifica" data-i18n="ctaVerify">Verifica DPP</a><a class="miit-btn miit-btn--secondary miit-btn--sm" href="#crea" data-i18n="ctaCreate">Crea il tuo DPP</a></div>
       </div>
     </div>
   </section>
@@ -1414,11 +1556,21 @@ h1 em, h2 em { color: inherit; }
       <div class="head-row miit-reveal">
         <div class="miit-sectionhead">
           <p class="eyebrow miit-caps miit-eyebrow" data-i18n="secEyebrow">Settori</p>
-          <h2 id="hSet" class="display-md" data-i18n-html="secTitleHome">Tre settori di lancio</h2>
+          <h2 id="hSet" class="display-md" data-i18n-html="secTitleHome">Cinque settori per <em>cominciare</em></h2>
         </div>
         <a class="link-arrow" href="#settori"><span data-i18n="secAll">Settori e mappa dei territori</span><svg class="miit-icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
       </div>
-      <div class="miit-grid miit-grid--3 miit-reveal" id="homeSectors"></div>
+      <div class="sec-car miit-reveal" id="secCar" role="region" aria-roledescription="carousel">
+        <div class="sec-car__vp"><div class="sec-car__track" id="homeSectors"></div></div>
+        <div class="sec-car__ctl">
+          <span class="sec-car__count" id="carCount" role="status"></span>
+          <span class="sec-car__btns">
+            <button type="button" class="sec-car__btn" id="carPrev"><svg class="miit-icon" aria-hidden="true" style="transform:scaleX(-1)"><use href="#i-arrow"/></svg></button>
+            <button type="button" class="explain-ctl" id="carPlay" aria-pressed="false"><svg class="miit-icon miit-icon--sm" aria-hidden="true" style="stroke-width:2"><use href="#i-pause"/></svg><span>Pausa</span></button>
+            <button type="button" class="sec-car__btn sec-car__btn--next" id="carNext"><svg class="miit-icon" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+          </span>
+        </div>
+      </div>
       <div class="miit-reveal" style="margin-top:var(--space-7)">
         <div class="head-row" style="margin-bottom:var(--space-4)">
           <p class="eyebrow miit-caps miit-eyebrow" data-i18n="normEyebrow">Riferimenti normativi europei</p>
@@ -1426,6 +1578,21 @@ h1 em, h2 em { color: inherit; }
         </div>
         <ul class="norm-strip" id="normStrip"></ul>
       </div>
+    </div>
+  </section>
+
+  <!-- OLTRE LA VERIFICA: HUB AI + ACADEMY (moduli erogati da MIAT) -->
+  <section class="miit-section" aria-labelledby="hInnH">
+    <div class="miit-container">
+      <div class="head-row miit-reveal">
+        <div class="miit-sectionhead">
+          <p class="eyebrow miit-caps miit-eyebrow" data-i18n="innEyebrow">Oltre la verifica</p>
+          <h2 id="hInnH" class="display-md" data-i18n-html="innTitle">Un motivo per tornare</h2>
+          <p class="lead" data-i18n="innLead"></p>
+        </div>
+        <a class="link-arrow" href="#innovazione"><span data-i18n="innAll">Hub AI e Academy</span><svg class="miit-icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      </div>
+      <div class="two miit-reveal" id="innCards"></div>
     </div>
   </section>
 
@@ -1446,8 +1613,29 @@ h1 em, h2 em { color: inherit; }
   <section class="miit-section miit-section--intro" aria-labelledby="h1ver">
     <div class="miit-container">
       <p class="eyebrow miit-caps miit-eyebrow" data-i18n="vEyebrow">Conformità · Verifica</p>
-      <h1 id="h1ver" class="display-lg" tabindex="-1" data-i18n-html="vTitle">Verifica un passaporto di prodotto</h1>
+      <h1 id="h1ver" class="display-lg" tabindex="-1" data-i18n-html="vTitle">Verifica il <em>DPP</em> di un prodotto</h1>
       <p class="body-lg lead" data-i18n="vLead"></p>
+      <div class="hs-wrap" data-hs="ver">
+        <svg class="hs hs--ver" viewBox="0 0 520 200" data-step="0" role="img" aria-labelledby="hsVT">
+          <title id="hsVT" data-i18n="hsVAria"></title>
+          <path class="sc-line" d="M70 104H450"/>
+          <path class="sc-prog" pathLength="1" d="M70 104H450"/>
+          <g class="sc-st" transform="translate(70 104)"><circle class="sc-ring" r="30"/><circle class="sc-ring r2" r="30"/><circle class="c" r="30"/><use class="ic" href="#i-scan" x="-16" y="-16" width="32" height="32"/><g class="ck" transform="translate(21 -21)"><circle r="8"/><path d="m-3.2 0 2.4 2.4 4-5"/></g><text class="nm" y="62" data-i18n="hsV0n"></text><text class="sb" y="80" data-i18n="hsV0d"></text></g>
+          <g class="sc-st" transform="translate(260 104)"><circle class="sc-ring" r="30"/><circle class="sc-ring r2" r="30"/><circle class="c" r="30"/><use class="ic" href="#i-doc" x="-16" y="-16" width="32" height="32"/><g class="ck" transform="translate(21 -21)"><circle r="8"/><path d="m-3.2 0 2.4 2.4 4-5"/></g><text class="nm" y="62" data-i18n="hsV1n"></text><text class="sb" y="80" data-i18n="hsV1d"></text></g>
+          <g class="sc-st" transform="translate(450 104)"><circle class="sc-ring" r="30"/><circle class="sc-ring r2" r="30"/><circle class="c" r="30"/><use class="ic" href="#i-seal" x="-16" y="-16" width="32" height="32"/><g class="ck" transform="translate(21 -21)"><circle r="8"/><path d="m-3.2 0 2.4 2.4 4-5"/></g><text class="nm" y="62" data-i18n="hsV2n"></text><text class="sb" y="80" data-i18n="hsV2d"></text></g>
+          <g class="hs-tok" aria-hidden="true">
+            <rect class="body" x="40" y="4" width="60" height="62" rx="3"/>
+            <rect class="hd" x="41" y="5" width="58" height="13"/>
+            <text class="ttl" x="47" y="14.5">DPP</text>
+            <path class="f on" d="M48 27H92"/><path class="f" d="M48 35H84"/>
+            <g class="qrg hs-qr" transform="translate(48 41)"></g>
+            <rect class="scanl" x="44" y="40" width="52" height="2"/>
+            <g transform="translate(88 53)"><g class="sealg"><circle class="seal" r="8"/><path class="sealc" d="m-3 0 2.6 2.6 4.4-5"/></g></g>
+            <path class="path-link" d="M70 66V74"/>
+          </g>
+        </svg>
+        <button type="button" class="explain-ctl hs-ctl" aria-pressed="false"><svg class="miit-icon miit-icon--sm" aria-hidden="true" style="stroke-width:2"><use href="#i-pause"/></svg><span data-i18n="exPause">Pausa</span></button>
+      </div>
       <div class="vgrid">
       <div>
         <div class="row" style="margin-top:var(--space-4)"><span class="miit-badge miit-badge--free" data-i18n="free">Gratuito</span><span class="mono-note" data-i18n="vFreeNote">La verifica non consuma crediti.</span></div>
@@ -1466,7 +1654,7 @@ h1 em, h2 em { color: inherit; }
       </div>
       <div>
         <div id="vOut" aria-live="polite"></div>
-        <div class="vcta" id="vCta" hidden><p data-i18n-html="vCtaText"></p><div class="row"><a class="miit-btn miit-btn--primary miit-btn--sm" href="#crea" data-i18n="ctaCreate">Crea il tuo passaporto</a><a class="link-arrow" href="#prezzi"><span data-i18n="seePrices">Vedi i prezzi</span><svg class="miit-icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></div></div>
+        <div class="vcta" id="vCta" hidden><p data-i18n-html="vCtaText"></p><div class="row"><a class="miit-btn miit-btn--primary miit-btn--sm" href="#crea" data-i18n="ctaCreate">Crea il tuo DPP</a><a class="link-arrow" href="#prezzi"><span data-i18n="seePrices">Vedi i prezzi</span><svg class="miit-icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></div></div>
       </div>
       </div>
     </div>
@@ -1501,7 +1689,7 @@ h1 em, h2 em { color: inherit; }
   <section class="miit-section" aria-label="CTA">
     <div class="miit-container">
       <div class="miit-sectionhead"><p class="eyebrow miit-caps miit-eyebrow" data-i18n="ctaEyebrow">Per i produttori</p><h2 class="display-md" data-i18n-html="ctaT">Il tuo prodotto <em>merita un passaporto</em></h2><p class="body-lg lead" data-i18n="ctaD"></p></div>
-      <div class="row cta-actions"><a class="miit-btn miit-btn--primary" href="#crea" data-i18n="ctaCreate">Crea il tuo passaporto</a><a class="miit-btn miit-btn--secondary" href="#prezzi" data-i18n="seePrices">Vedi i prezzi</a></div>
+      <div class="row cta-actions"><a class="miit-btn miit-btn--primary" href="#crea" data-i18n="ctaCreate">Crea il tuo DPP</a><a class="miit-btn miit-btn--secondary" href="#prezzi" data-i18n="seePrices">Vedi i prezzi</a></div>
     </div>
   </section>
 </div>
@@ -1511,8 +1699,29 @@ h1 em, h2 em { color: inherit; }
   <section class="miit-section miit-section--intro" aria-labelledby="h1cre">
     <div class="miit-container">
       <div class="intro-tag"><p class="eyebrow miit-caps miit-eyebrow" data-i18n="cEyebrow">Per le imprese</p><span class="miit-badge miit-badge--paid" data-i18n="paid">A pagamento</span></div>
-      <h1 id="h1cre" class="display-lg" tabindex="-1" data-i18n-html="cTitle">Crea il passaporto digitale del <em>tuo prodotto</em></h1>
+      <h1 id="h1cre" class="display-lg" tabindex="-1" data-i18n-html="cTitle">Crea il DPP, il passaporto digitale del <em>tuo prodotto</em></h1>
       <p class="body-lg lead" data-i18n="cLead"></p>
+      <div class="hs-wrap" data-hs="cre">
+        <svg class="hs hs--cre" viewBox="0 0 520 200" data-step="0" role="img" aria-labelledby="hsCT">
+          <title id="hsCT" data-i18n="hsCAria"></title>
+          <path class="sc-line" d="M70 104H450"/>
+          <path class="sc-prog" pathLength="1" d="M70 104H450"/>
+          <g class="sc-st" transform="translate(70 104)"><circle class="sc-ring" r="30"/><circle class="sc-ring r2" r="30"/><circle class="c" r="30"/><use class="ic" href="#i-doc" x="-16" y="-16" width="32" height="32"/><g class="ck" transform="translate(21 -21)"><circle r="8"/><path d="m-3.2 0 2.4 2.4 4-5"/></g><text class="nm" y="62" data-i18n="hsC0n"></text><text class="sb" y="80" data-i18n="hsC0d"></text></g>
+          <g class="sc-st" transform="translate(260 104)"><circle class="sc-ring" r="30"/><circle class="sc-ring r2" r="30"/><circle class="c" r="30"/><use class="ic" href="#i-seal" x="-16" y="-16" width="32" height="32"/><g class="ck" transform="translate(21 -21)"><circle r="8"/><path d="m-3.2 0 2.4 2.4 4-5"/></g><text class="nm" y="62" data-i18n="hsC1n"></text><text class="sb" y="80" data-i18n="hsC1d"></text></g>
+          <g class="sc-st" transform="translate(450 104)"><circle class="sc-ring" r="30"/><circle class="sc-ring r2" r="30"/><circle class="c" r="30"/><use class="ic" href="#i-tag" x="-16" y="-16" width="32" height="32"/><g class="ck" transform="translate(21 -21)"><circle r="8"/><path d="m-3.2 0 2.4 2.4 4-5"/></g><text class="nm" y="62" data-i18n="hsC2n"></text><text class="sb" y="80" data-i18n="hsC2d"></text></g>
+          <g class="hs-tok" aria-hidden="true">
+            <rect class="body" x="40" y="4" width="60" height="62" rx="3"/>
+            <rect class="hd" x="41" y="5" width="58" height="13"/>
+            <text class="ttl" x="47" y="14.5">DPP</text>
+            <path class="f on" d="M48 27H92"/><path class="f" d="M48 35H84"/>
+            <g class="qrg hs-qr" transform="translate(48 41)"></g>
+            
+            <g transform="translate(88 53)"><g class="sealg"><circle class="seal" r="8"/><path class="sealc" d="m-3 0 2.6 2.6 4.4-5"/></g></g>
+            <path class="path-link" d="M70 66V74"/>
+          </g>
+        </svg>
+        <button type="button" class="explain-ctl hs-ctl" aria-pressed="false"><svg class="miit-icon miit-icon--sm" aria-hidden="true" style="stroke-width:2"><use href="#i-pause"/></svg><span data-i18n="exPause">Pausa</span></button>
+      </div>
       <div class="steps-wrap"><ol class="miit-steps" id="steps"></ol></div>
       <div class="wiz">
         <form class="wiz__form" id="wizForm" autocomplete="off" novalidate>
@@ -1532,10 +1741,26 @@ h1 em, h2 em { color: inherit; }
             <h3 data-i18n="w3t">Certificazione e QR</h3>
             <fieldset style="border:0;padding:0;margin:0;display:grid;gap:var(--space-3)"><legend class="label" style="margin-bottom:var(--space-2)" data-i18n="fClass">Livello di passaporto</legend><div id="classOpts" class="stack" style="gap:var(--space-3)"></div></fieldset>
             <div class="miit-field"><label for="fBody" data-i18n="fBody">Ente certificatore</label><select class="miit-select" id="fBody" name="body"></select></div>
+            <p class="body-sm miit-muted wiz-hint"><span data-i18n="w3hint">Non sai quale livello scegliere?</span> <a class="miit-link" href="#innovazione" data-anchor="hAcd" data-i18n="w3hintLink">Prova l'assessment dell'Academy</a></p>
           </div>
           <div class="wiz__nav"><button class="miit-btn miit-btn--secondary" type="button" id="wBack" data-i18n="back">Indietro</button><button class="miit-btn miit-btn--primary" type="button" id="wNext" data-i18n="next">Avanti</button></div>
         </form>
         <aside class="wiz__prev" aria-label="Anteprima" id="wizPrev"></aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="miit-section miit-section--sunken" aria-labelledby="hInt">
+    <div class="miit-container">
+      <div class="miit-sectionhead miit-reveal">
+        <p class="eyebrow miit-caps miit-eyebrow" data-i18n="intEyebrow">Integrazione</p>
+        <h2 id="hInt" class="display-md" data-i18n-html="intTitle">Dal gestionale al DPP, <em>in automatico</em></h2>
+        <p class="lead" data-i18n="intLead"></p>
+      </div>
+      <ol class="int-flow miit-reveal" id="intFlow"></ol>
+      <div class="int-body miit-reveal">
+        <ul class="int-list" id="intList"></ul>
+        <ol class="int-steps" id="intSteps"></ol>
       </div>
     </div>
   </section>
@@ -1578,7 +1803,7 @@ h1 em, h2 em { color: inherit; }
   <section class="miit-section miit-section--sunken" aria-labelledby="hMods">
     <div class="miit-container">
       <div class="miit-sectionhead"><p class="eyebrow miit-caps miit-eyebrow" data-i18n="modsEyebrow">Estensioni</p><h2 id="hMods" class="display-md" data-i18n-html="modsTitle">Moduli <em>a pagamento</em></h2><p class="body-lg miit-muted" data-i18n="modsLead"></p></div>
-      <div class="miit-grid miit-grid--4" id="modsGrid"></div>
+      <div class="miit-grid miit-grid--3" id="modsGrid"></div>
     </div>
   </section>
 
@@ -1621,10 +1846,10 @@ h1 em, h2 em { color: inherit; }
 <div class="view" id="v-settori" data-view="settori" hidden>
   <section class="miit-section miit-section--intro" aria-labelledby="h1set">
     <div class="miit-container">
-      <p class="eyebrow miit-caps miit-eyebrow" data-i18n="secEyebrow">Settori</p>
+      <p class="eyebrow miit-caps miit-eyebrow" data-i18n="secEyebrowPg">Imprese e settori</p>
       <h1 id="h1set" class="display-lg" tabindex="-1" data-i18n-html="secTitle">Settori e <em>territori</em></h1>
       <p class="body-lg lead" data-i18n="secLead"></p>
-      <div class="miit-grid miit-grid--3" id="sectorCards" role="group"></div>
+      <div class="miit-grid miit-grid--5" id="sectorCards" role="group"></div>
       <div class="explore">
         <figure class="explore__map">
           <div class="mapnote"><span class="eyebrow miit-caps miit-eyebrow" data-i18n="mapEyebrow">Territori</span><span class="miit-badge miit-badge--demo" data-i18n="demoData">Dati dimostrativi</span></div>
@@ -1660,6 +1885,73 @@ h1 em, h2 em { color: inherit; }
       </div>
     </div>
   </section>
+
+  <section class="miit-section miit-section--sunken" aria-labelledby="hDir">
+    <div class="miit-container">
+      <div class="miit-sectionhead miit-reveal">
+        <p class="eyebrow miit-caps miit-eyebrow" data-i18n="dirEyebrow">Imprese operative</p>
+        <h2 id="hDir" class="display-md" data-i18n-html="dirTitle">Cerca tra le imprese</h2>
+        <p class="lead" data-i18n="dirLead"></p>
+      </div>
+      <div class="dirbar miit-reveal">
+        <div class="miit-field"><label for="dQ" data-i18n="dirSearch">Cerca per nome</label><input class="miit-input sans" id="dQ" type="search" autocomplete="off" maxlength="60" data-i18n-ph="dirSearchPh"></div>
+        <div class="miit-field"><label for="dSec" data-i18n="dirSector">Settore</label><select class="miit-select" id="dSec"></select></div>
+        <div class="miit-field"><label for="dReg" data-i18n="dirRegion">Regione</label><select class="miit-select" id="dReg"></select></div>
+      </div>
+      <p class="norm-count" id="dirCount" role="status" aria-live="polite"></p>
+      <div class="tbl-wrap miit-reveal"><table class="tbl" id="dirTbl"></table></div>
+      <div class="dirfoot miit-reveal"><p class="body-sm miit-muted" data-i18n="dirNote"></p><button type="button" class="miit-btn miit-btn--primary" id="dirCta" data-lead="" data-i18n="dirCta">Candida la tua impresa</button></div>
+    </div>
+  </section>
+</div>
+
+<!-- ====================== INNOVAZIONE: HUB AI + ACADEMY ====================== -->
+<div class="view" id="v-innovazione" data-view="innovazione" hidden>
+  <section class="miit-section miit-section--intro" aria-labelledby="h1inn">
+    <div class="miit-container">
+      <div class="intro-tag"><p class="eyebrow miit-caps miit-eyebrow" data-i18n="iEyebrow">Oltre la verifica</p><span class="miit-badge miit-badge--module" data-i18n="module">Modulo</span></div>
+      <h1 id="h1inn" class="display-lg" tabindex="-1" data-i18n-html="iTitle">Hub AI e Academy</h1>
+      <p class="body-lg lead" data-i18n="iLead"></p>
+      <p class="mono-note inn-by" id="iBy"></p>
+    </div>
+  </section>
+
+  <section class="miit-section" aria-labelledby="hHub">
+    <div class="miit-container">
+      <div class="miit-sectionhead miit-reveal">
+        <p class="eyebrow miit-caps miit-eyebrow" data-i18n="hubEyebrow">Hub AI per il manifatturiero</p>
+        <h2 id="hHub" class="display-md" data-i18n-html="hubTitle">Capire l'IA applicata alla manifattura</h2>
+        <p class="lead" data-i18n="hubLead"></p>
+      </div>
+      <div class="miit-grid miit-grid--3 miit-reveal" id="hubGrid"></div>
+      <ul class="plist hub-soon miit-reveal" id="hubSoon"></ul>
+    </div>
+  </section>
+
+  <section class="miit-section miit-section--sunken" aria-labelledby="hAcd">
+    <div class="miit-container">
+      <div class="miit-sectionhead miit-reveal">
+        <p class="eyebrow miit-caps miit-eyebrow" data-i18n="acdEyebrow">Academy</p>
+        <h2 id="hAcd" class="display-md" data-i18n-html="acdTitle">Il percorso giusto per te</h2>
+        <p class="lead" data-i18n="acdLead"></p>
+      </div>
+      <div class="acd miit-reveal">
+        <form class="acd__form" id="acdForm" autocomplete="off" novalidate></form>
+        <aside class="acd__out" id="acdOut" aria-live="polite"></aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="miit-section miit-inverse" aria-labelledby="hInnCta">
+    <div class="miit-container">
+      <div class="miit-sectionhead">
+        <p class="eyebrow miit-caps miit-eyebrow" data-i18n="innCtaEyebrow">Parla con noi</p>
+        <h2 id="hInnCta" class="display-md" data-i18n-html="innCtaTitle">Porta contenuti e formazione nel tuo percorso</h2>
+        <p class="body-lg lead" data-i18n="innCtaD"></p>
+      </div>
+      <div class="cta-actions row"><button type="button" class="miit-btn miit-btn--primary" id="innCtaBtn" data-lead="" data-i18n="innCtaBtn">Richiedi un contatto</button><a class="link-arrow" href="#prezzi"><span data-i18n="innCtaPrices">Moduli e listino</span><svg class="miit-icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></div>
+    </div>
+  </section>
 </div>
 
 <!-- ====================== STORIA ====================== -->
@@ -1681,7 +1973,7 @@ h1 em, h2 em { color: inherit; }
   <div class="miit-container">
     <div class="miit-footer__grid">
       <div class="miit-footer__col">
-        <a class="miit-wordmark" href="#home" aria-label="MADEinITALY.it">MADE<i>in</i>ITALY</a>
+        <a class="miit-wordmark" href="#home" aria-label="MADEinITALY.it">MADE<i>in</i>ITALY<sup class="tm">™</sup></a>
         <p class="miit-footer__about" data-i18n="fAbout"></p>
       </div>
       <div class="miit-footer__col"><h4 data-i18n="fAreas">Aree</h4><ul id="fAreas"></ul></div>
@@ -1690,7 +1982,7 @@ h1 em, h2 em { color: inherit; }
     </div>
     <div class="miit-footer__bar">
       <span id="fEditor"></span>
-      <span class="miit-powered"><span data-i18n="fPowered">Powered by</span> <svg viewBox="22.3 -4.3 214.9 215.3" aria-hidden="true"><use href="#sp-mark"/></svg> <b>Snaproof</b></span>
+      <span class="miit-powered"><span data-i18n="fPowered">Powered by</span> <svg viewBox="22.3 -4.3 214.9 215.3" aria-hidden="true"><use href="#sp-mark"/></svg> <b>Snaproof<sup class="tm">™</sup></b></span>
     </div>
   </div>
 </footer>
@@ -1736,27 +2028,50 @@ h1 em, h2 em { color: inherit; }
 
 <script>
 /* ====================== CONFIG: aggiungere una sezione = una riga ====================== */
-var SITE = { editor: null /* nome del soggetto editore: unico punto di configurazione */ };
+var SITE = { editor: null /* nome del soggetto editore: unico punto di configurazione */, miat: "MIAT" /* erogatore dei moduli Hub AI e Academy; null = nome neutro «partner» */ };
 
 /* tag: free | paid | module | soon. to: pagina. tab: scheda interna. */
 var AREAS = [
-  { id: "imprese", items: [{ id: "business", to: "prezzi", tag: "paid" }, { id: "vetrine", to: "prezzi", tag: "paid" }, { id: "shopping", soon: 1, tag: "soon" }, { id: "aste", soon: 1, tag: "soon" }] },
+  { id: "imprese", items: [{ id: "business", to: "prezzi", tag: "paid" }, { id: "vetrine", to: "prezzi", tag: "paid" }, { id: "shopping", soon: 1, tag: "soon" }] },
   { id: "storia", items: [{ id: "history", to: "storia", tab: "history", tag: "free" }, { id: "people", to: "storia", tab: "people", tag: "free" }, { id: "lifestyle", to: "storia", tab: "lifestyle", tag: "free" }, { id: "brandspace", to: "storia", tab: "brand", tag: "paid" }] },
-  { id: "informazione", items: [{ id: "news", tag: "free" }, { id: "review", tag: "free" }, { id: "economy", tag: "free" }, { id: "finance", tag: "free" }, { id: "ai", tag: "module" }] },
-  { id: "conformita", items: [{ id: "dpp", to: "conformita", tag: "free" }, { id: "verifica", to: "verifica", tag: "free" }, { id: "crea", to: "crea", tag: "paid" }, { id: "origine", to: "conformita", tag: "paid" }, { id: "m231", to: "conformita", tag: "paid" }, { id: "l206", to: "conformita", tag: "free" }] },
+  { id: "informazione", items: [{ id: "ai", to: "innovazione", anchor: "hHub", tag: "module" }, { id: "news", tag: "free" }, { id: "review", tag: "free" }, { id: "economy", tag: "free" }, { id: "finance", tag: "free" }] },
+  { id: "conformita", items: [{ id: "dpp", to: "conformita", tag: "free" }, { id: "verifica", to: "verifica", tag: "free" }, { id: "crea", to: "crea", tag: "paid" }, { id: "academy", to: "innovazione", anchor: "hAcd", tag: "module" }, { id: "origine", to: "conformita", tag: "paid" }, { id: "m231", to: "conformita", tag: "paid" }, { id: "l206", to: "conformita", tag: "free" }] },
   { id: "eventi", items: [{ id: "evgen", tag: "free" }, { id: "evbiz", tag: "free" }] }
 ];
 /* Navigazione: ogni pagina appartiene a un'area (voce attiva e briciole di pane). AREA_ROUTES = pagine sorelle mostrate nella barra di contesto. */
 var ROUTE_AREA = { verifica: "conformita", crea: "conformita", conformita: "conformita", prezzi: "imprese", storia: "storia", settori: "settori" };
 var AREA_ROUTES = { conformita: ["conformita", "verifica", "crea"], imprese: ["prezzi"], storia: ["storia"], settori: ["settori"] };
-var ROUTES = ["home", "verifica", "crea", "prezzi", "conformita", "settori", "storia"];
-var SECTORS = [{ id: "moda", icon: "i-hanger" }, { id: "elettronica", icon: "i-chip" }, { id: "batterie", icon: "i-battery" }];
+var ROUTES = ["home", "verifica", "crea", "prezzi", "conformita", "settori", "storia", "innovazione"];
+var SECTORS = [{ id: "moda", icon: "i-hanger" }, { id: "elettronica", icon: "i-chip" }, { id: "batterie", icon: "i-battery" }, { id: "automotive", icon: "i-car" }, { id: "cosmesi", icon: "i-bottle" }];
+
+/* Imprese operative: ELENCO DIMOSTRATIVO (nomi inventati, nessuna impresa reale). reg = chiave di REGIONS; sec = chiave di SECTORS. demo:1 = badge «Dimostrativa». */
+var COMPANIES = [
+  { name: "Tessitura Esempio S.r.l.", sec: "moda", reg: "tuscany", demo: 1 },
+  { name: "Maglificio Demo S.p.A.", sec: "moda", reg: "veneto", demo: 1 },
+  { name: "Atelier Prova S.r.l.", sec: "moda", reg: "lombardy", demo: 1 },
+  { name: "Componenti Esempio S.p.A.", sec: "elettronica", reg: "lombardy", demo: 1 },
+  { name: "Apparecchi Demo S.r.l.", sec: "elettronica", reg: "emilia-romagna", demo: 1 },
+  { name: "Quadri Prova S.r.l.", sec: "elettronica", reg: "piedmont", demo: 1 },
+  { name: "Accumulatori Demo S.r.l.", sec: "batterie", reg: "piedmont", demo: 1 },
+  { name: "Celle Esempio S.p.A.", sec: "batterie", reg: "lombardy", demo: 1 },
+  { name: "Moduli Prova S.r.l.", sec: "batterie", reg: "emilia-romagna", demo: 1 },
+  { name: "Componenti Auto Esempio S.p.A.", sec: "automotive", reg: "piedmont", demo: 1 },
+  { name: "Stampaggio Demo S.r.l.", sec: "automotive", reg: "emilia-romagna", demo: 1 },
+  { name: "Fanaleria Prova S.r.l.", sec: "automotive", reg: "lombardy", demo: 1 },
+  { name: "Laboratori Cosmetici Esempio S.r.l.", sec: "cosmesi", reg: "lombardy", demo: 1 },
+  { name: "Essenze Prova S.p.A.", sec: "cosmesi", reg: "tuscany", demo: 1 },
+  { name: "Creme Demo S.r.l.", sec: "cosmesi", reg: "veneto", demo: 1 }
+];
+/* Academy: percorsi consigliati (dimostrativi). lvl: a|b|c. who: me|team. */
+var ACD_LEVELS = ["a", "b", "c"];
 
 /* Livelli dimostrativi (0 nessuno, 1 bassa, 2 media, 3 alta). Non sono dati reali. */
 var DEMO_LEVELS = {
   moda: { lombardy: 3, veneto: 3, tuscany: 3, piedmont: 2, "emilia-romagna": 2, marche: 2, campania: 2, apulia: 1, lazio: 1, umbria: 1, "friuli-venezia-giulia": 1, liguria: 1, abruzzo: 1 },
   elettronica: { lombardy: 3, "emilia-romagna": 3, piedmont: 2, veneto: 2, lazio: 2, tuscany: 1, campania: 1, "friuli-venezia-giulia": 1, "trentino-south-tyrol": 1, liguria: 1, apulia: 1, sicily: 1 },
-  batterie: { lombardy: 2, piedmont: 2, "emilia-romagna": 2, veneto: 1, tuscany: 1, lazio: 1, campania: 1, abruzzo: 1, apulia: 1, molise: 1, sicily: 1, "friuli-venezia-giulia": 1 }
+  batterie: { lombardy: 2, piedmont: 2, "emilia-romagna": 2, veneto: 1, tuscany: 1, lazio: 1, campania: 1, abruzzo: 1, apulia: 1, molise: 1, sicily: 1, "friuli-venezia-giulia": 1 },
+  automotive: { piedmont: 3, "emilia-romagna": 3, lombardy: 3, veneto: 2, lazio: 2, campania: 2, abruzzo: 2, basilicata: 2, tuscany: 1, marche: 1, apulia: 1, "friuli-venezia-giulia": 1, sicily: 1, molise: 1 },
+  cosmesi: { lombardy: 3, "emilia-romagna": 2, veneto: 2, tuscany: 2, piedmont: 1, lazio: 1, campania: 1, marche: 1, apulia: 1, liguria: 1 }
 };
 var REGIONS = {
   abruzzo: ["Abruzzo", "Abruzzo"], "aosta-valley": ["Valle d'Aosta", "Aosta Valley"], apulia: ["Puglia", "Apulia"], basilicata: ["Basilicata", "Basilicata"],
@@ -1780,18 +2095,20 @@ var MOD_RANGE = [60, 180];
 var NORMS = [
   { id: "espr", topic: "passaporto", d: "2024-07-18", url: "https://eur-lex.europa.eu/eli/reg/2024/1781/oj", sec: ["moda", "elettronica", "batterie"], tag: "mixed" },
   { id: "registro", topic: "passaporto", d: "2026-07-20", url: "https://eur-lex.europa.eu/eli/reg_impl/2026/1778/oj", sec: ["moda", "elettronica", "batterie"], tag: "free" },
-  { id: "ai", topic: "ia", d: "2026-08-02", url: "https://eur-lex.europa.eu/eli/reg/2024/1689/oj", sec: ["moda", "elettronica", "batterie"], tag: "free" },
-  { id: "empco", topic: "consumatori", d: "2026-09-27", url: "https://eur-lex.europa.eu/eli/dir/2024/825/oj", sec: ["moda", "elettronica"], tag: "free" },
+  { id: "ai", topic: "ia", d: "2026-08-02", url: "https://eur-lex.europa.eu/eli/reg/2024/1689/oj", sec: ["moda", "elettronica", "batterie", "automotive", "cosmesi"], tag: "free" },
+  { id: "empco", topic: "consumatori", d: "2026-09-27", url: "https://eur-lex.europa.eu/eli/dir/2024/825/oj", sec: ["moda", "elettronica", "cosmesi"], tag: "free" },
   { id: "batterie", topic: "passaporto", d: "2027-02-18", url: "https://eur-lex.europa.eu/eli/reg/2023/1542/oj", sec: ["batterie"], tag: "mixed" },
   { id: "tessileDA", topic: "passaporto", d: "2027-10-01", exp: 1, sec: ["moda"], tag: "mixed" },
   { id: "tessileDPP", topic: "passaporto", d: "2029-01-01", exp: 1, sec: ["moda"], tag: "mixed", nocard: 1 },
-  { id: "l206", topic: "italia", d: "2024-01-11", url: "https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:legge:2023-12-27;206", sec: ["moda", "elettronica", "batterie"], tag: "free" },
-  { id: "m231", topic: "italia", d: "2001-07-04", url: "https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2001-06-08;231", sec: ["moda", "elettronica", "batterie"], tag: "paid" },
-  { id: "origine", topic: "origine", d: "2016-05-01", url: "https://eur-lex.europa.eu/eli/reg/2013/952/oj", sec: ["moda", "elettronica", "batterie"], tag: "paid" }
+  { id: "l206", topic: "italia", d: "2024-01-11", url: "https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:legge:2023-12-27;206", sec: ["moda", "elettronica", "batterie", "automotive", "cosmesi"], tag: "free" },
+  { id: "m231", topic: "italia", d: "2001-07-04", url: "https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2001-06-08;231", sec: ["moda", "elettronica", "batterie", "automotive", "cosmesi"], tag: "paid" },
+  { id: "origine", topic: "origine", d: "2016-05-01", url: "https://eur-lex.europa.eu/eli/reg/2013/952/oj", sec: ["moda", "elettronica", "batterie", "automotive", "cosmesi"], tag: "paid" },
+  { id: "elv", topic: "passaporto", d: "2026-08-13", url: "https://eur-lex.europa.eu/eli/reg/2026/1738/oj", sec: ["automotive"], tag: "mixed" },
+  { id: "cosm", topic: "consumatori", d: "2013-07-11", url: "https://eur-lex.europa.eu/eli/reg/2009/1223/oj", sec: ["cosmesi"], tag: "free" }
 ];
 /* punti della linea del tempo, in ordine cronologico */
 var TL = ["espr", "registro", "ai", "empco", "batterie", "tessileDA", "tessileDPP"];
-var SECTOR_NORMS = { moda: ["espr", "tessileDA", "empco"], elettronica: ["espr", "registro", "ai"], batterie: ["batterie", "registro", "espr"] };
+var SECTOR_NORMS = { moda: ["espr", "tessileDA", "empco"], elettronica: ["espr", "registro", "ai"], batterie: ["batterie", "registro", "espr"], automotive: ["elv", "batterie", "l206"], cosmesi: ["cosm", "empco", "l206"] };
 /* Temi del filtro norme: ogni norma ha UN solo tema (filtro esclusivo). */
 var TOPICS = ["passaporto", "ia", "consumatori", "origine", "italia"];
 var HIST_TABS = ["history", "people", "lifestyle", "brand"];
@@ -1800,18 +2117,28 @@ var CODES = { "MIT-DEMO-0001": "ok", "MIT-DEMO-0002": "pend" };
 /* ====================== TESTI ====================== */
 var T = {
 it: {
-  skip: "Vai al contenuto", demoNote: "Anteprima di design · contenuti dimostrativi", demoShort: "Anteprima · demo", uVerify: "Verifica un passaporto", forBusiness: "Per le imprese", login: "Accedi", menu: "Menu",
-  navSectors: "Settori", sectorsIntro: "Tre settori di lancio, altri si aggiungono nel tempo.", goArea: "Vai all'area",
+  hsVAria: "Animazione: scansione del QR, controllo e verifica del DPP", hsV0n: "Scansiona", hsV0d: "QR o codice", hsV1n: "Controlla", hsV1d: "Registro ed ente", hsV2n: "Verificato", hsV2d: "Chi lo garantisce",
+  hsCAria: "Animazione: dai dati al DPP con QR", hsC0n: "Inserisci", hsC0d: "Dati del prodotto", hsC1n: "Certifica", hsC1d: "Ente certificatore", hsC2n: "Pubblica", hsC2d: "QR sul prodotto",
+  carAria: "Settori", carPrev: "Settori precedenti", carNext: "Settori successivi", carCount: "{a}–{b} di {n}", carCount1: "{a} di {n}",
+  intEyebrow: "Integrazione", intTitle: "Dal gestionale al DPP, <em>in automatico</em>",
+  intLead: "Con API e SDK colleghi Snaproof ai sistemi che usi già: i DPP si generano dai dati dell'azienda, senza doppio inserimento. Integrazione veloce, semplice e altamente scalabile, dalla singola PMI alla filiera.",
+  intFlow: [["I tuoi sistemi", "ERP e gestionali", "Dati di prodotto e di processo"], ["Integrazione", "API e SDK", "Collegamento rapido, senza rifare i processi"], ["Snaproof", "Certifica e gestisce", "Processi e DPP in un unico posto"], ["Risultato", "DPP e QR", "Verificabili da chiunque, anche offline"]],
+  intList: ["API e SDK per integrare in modo veloce e semplice", "Si collega a ERP e gestionali già in uso", "Interoperabile con gli standard GS1", "SaaS, on-premises o white-label"],
+  intS1t: "Parla con un tecnico", intS1d: "Raccontaci il tuo processo: ti indichiamo il modo più semplice per collegarlo.", intS1b: "Parla con un tecnico", intCtx1: "Richiesta: parlare con un tecnico per integrare Snaproof nei processi aziendali.",
+  intS2t: "Richiedi accesso API e SDK", intS2d: "Entra nella lista di accesso: ti ricontattiamo con i passi per integrare in autonomia.", intS2b: "Richiedi accesso API", intCtx2: "Richiesta: accesso a API e SDK.",
+  pg_innovazione: "Hub AI e Academy", partnerGen: "un partner formativo", secEyebrowPg: "Imprese e settori", dirEyebrow: "Imprese operative", dirTitle: "Cerca tra le imprese <em>sulla piattaforma</em>", dirLead: "Cerca per nome e filtra per settore e regione. La mappa qui sopra filtra l'elenco allo stesso modo.", dirSearch: "Cerca per nome", dirSearchPh: "Nome dell'impresa", dirSector: "Settore", dirRegion: "Regione", dirAllSec: "Tutti i settori", dirAllReg: "Tutte le regioni", dirCount1: "1 impresa", dirCountN: "{n} imprese", dirColName: "Impresa", dirColSec: "Settore", dirColReg: "Regione", dirDemo: "Impresa dimostrativa", dirNone: "Nessuna impresa corrisponde alla ricerca. Prova a togliere un filtro.", dirNote: "Elenco dimostrativo: i nomi sono inventati e nessuna impresa reale è mostrata. Qui compariranno le imprese che attivano il loro profilo.", dirCta: "Candida la tua impresa", dirLeadCtx: "Richiesta: profilo impresa nell'elenco operativo.", innEyebrow: "Oltre la verifica", innTitle: "Verifichi una volta. <em>Torni per imparare.</em>", innLead: "La verifica dà credibilità; contenuti e formazione danno un motivo per tornare. Due moduli per capire cosa cambia per la tua impresa e da dove cominciare.", innAll: "Hub AI e Academy", innBy: "Erogato da {p}", innByNeutral: "Erogato da un partner", innHubT: "Hub AI per il manifatturiero", innHubD: "Insight, casi d'uso e iniziative sull'intelligenza artificiale applicata alla manifattura, scritti per PMI e brand italiani. Per chi non sa ancora di dover certificare.", innHubL: ["Insight e analisi per PMI e brand", "Casi d'uso concreti, settore per settore", "Iniziative e appuntamenti sull'IA"], innHubC: "Esplora l'Hub AI", innAcdT: "Academy: profilazione e percorsi formativi", innAcdD: "Un assessment guidato dall'IA capisce bisogni e livello tuo o della tua azienda e consiglia il percorso o il workshop più adatto. La formazione è parte del percorso di certificazione, non un servizio a parte.", innAcdL: ["Poche domande, nessuna registrazione", "Percorso o workshop consigliato", "Formazione dentro il percorso di certificazione"], innAcdC: "Fai l'assessment", iEyebrow: "Oltre la verifica", iTitle: "Hub AI e Academy: <em>capire, formarsi, certificare</em>", iLead: "MADEinITALY.it non è solo un registro che si consulta quando serve. Contenuti sull'IA e percorsi formativi portano le imprese sulla piattaforma e le accompagnano fino al passaporto digitale.", iBy: "Moduli erogati da {p} sull'infrastruttura Snaproof. Contenuti e percorsi mostrati sono dimostrativi.", hubEyebrow: "Hub AI per il manifatturiero", hubTitle: "Capire l'IA <em>applicata alla manifattura</em>", hubLead: "Scritto per PMI e brand italiani. Spiega cosa cambia, con esempi dal tuo settore, prima che la certificazione diventi un obbligo.", hub_insight: ["Insight", "Analisi e punti di vista", "Cosa cambia per le imprese, spiegato senza gergo.", ["Cosa cambia per una PMI con il passaporto digitale", "Tracciabilità e sostenibilità: da dove cominciare"]], hub_cases: ["Casi d'uso", "Esempi concreti per settore", "Come l'IA aiuta davvero a preparare e gestire i dati di prodotto.", ["L'IA per preparare i dati del passaporto tessile", "Tracciabilità lungo la filiera delle batterie"]], hub_events: ["Iniziative", "Workshop, webinar, appuntamenti", "Momenti di confronto per capire e per fare.", ["Workshop: il passaporto digitale per il tessile", "Webinar: IA e filiera elettronica"]], hubSoon: "In preparazione: dati dinamici, benchmark di tracciabilità e sostenibilità, community B2B.", acdEyebrow: "Academy", acdTitle: "Il percorso giusto <em>per te</em>", acdLead: "Tre domande per capire da dove partire. L'assessment consiglia un percorso o un workshop; la formazione è parte del percorso di certificazione.", acdQ1: "Il tuo settore", acdQ2: "A che punto sei con il passaporto digitale", acdQ3: "Per chi è la formazione", acdL_a: ["Parto da zero", "Non so ancora se e come mi riguarda."], acdL_b: ["Conosco le norme", "Devo organizzare dati e filiera."], acdL_c: ["Sono pronto a certificare", "Ho i dati, voglio passare alla pratica."], acdW_me: ["Per me", "Percorso individuale."], acdW_team: ["Per il mio team", "Workshop di gruppo."], acdOutEyebrow: "Percorso consigliato", acdEmpty: "Rispondi alle tre domande: qui vedrai il percorso o il workshop più adatto.", acdR_a: ["Fondamenti del passaporto digitale", "Cos'è, a chi serve e quali scadenze valgono per il tuo settore."], acdR_b: ["Preparare i dati del passaporto", "Quali dati raccogliere e come organizzare la filiera."], acdR_c: ["Dalla certificazione al QR", "Come portare il passaporto in produzione e farlo verificare."], acdF_me: ["Percorso individuale", "Da seguire con i tuoi tempi"], acdF_team: ["Workshop per il team", "Sessione di gruppo guidata"], acdFormat: "Formato", acdSim: "Simulazione: in questa anteprima il consiglio segue regole semplici. Nel servizio reale l'assessment è guidato dall'IA.", acdCta: "Richiedi questo percorso", acdLeadCtx: "Richiesta Academy: {n} · {f} · {s}.", acdDiscover: "Scopri il modulo", innCtaEyebrow: "Parla con noi", innCtaTitle: "Porta contenuti e formazione <em>nel tuo percorso</em>", innCtaD: "Dicci a che punto sei: ti ricontattiamo per costruire insieme contenuti e formazione sul tuo settore.", innCtaBtn: "Richiedi un contatto", innCtaPrices: "Moduli e listino", innLeadCtx: "Richiesta: Hub AI e Academy.", w3hint: "Non sai quale livello scegliere?", w3hintLink: "Prova l'assessment dell'Academy",
+  skip: "Vai al contenuto", uVerify: "Verifica DPP", forBusiness: "Per le imprese", login: "Accedi", menu: "Menu",
+  navSectors: "Settori", sectorsIntro: "I cinque settori da cui parte la piattaforma. Altri si aggiungeranno nel tempo.", goArea: "Vai all'area",
   free: "Gratuito", paid: "A pagamento", paidMod: "Modulo a pagamento", soon: "In preparazione", module: "Modulo", provisional: "Provvisorio", demoVal: "Valore dimostrativo",
   back: "Indietro", next: "Avanti", cancel: "Annulla", seePrices: "Vedi i prezzi", close: "Chiudi",
-  pg_home: "Il ponte tra l'Italia e il mondo", pg_verifica: "Verifica un passaporto", pg_crea: "Crea un passaporto", pg_prezzi: "Piani e listino", pg_conformita: "Norme e scadenze", pg_settori: "Settori e territori", pg_storia: "Storia e cultura",
+  pg_home: "Il ponte tra l'Italia e il mondo", pg_verifica: "Verifica DPP", pg_crea: "Crea un DPP", pg_prezzi: "Piani e listino", pg_conformita: "Norme e scadenze", pg_settori: "Imprese e settori", pg_storia: "Storia e cultura",
 
-  heroEyebrow: "Piattaforma del Made in Italy", heroTitle: "Il ponte tra <em>l'Italia</em> e il mondo.",
-  heroLead: "Imprese, storia e norme europee del Made in Italy in un unico luogo. Verifica un prodotto, crea il suo passaporto digitale.",
-  ctaVerify: "Verifica un passaporto", ctaCreate: "Crea il tuo passaporto", ctaBiz: "Per le imprese: piani e listino",
-  searchLabel: "Chiedi all'assistente", searchBtn: "Chiedi", hvStamp: "Verificato",
+  heroEyebrow: "Il portale del Made in Italy", heroTitle: "Il ponte tra <em>l'Italia</em> e il mondo.",
+  heroLead: "Verifica in pochi secondi chi ha certificato un prodotto italiano. Se produci, crea il DPP, il passaporto digitale dei tuoi prodotti, e portalo in tutto il mondo con un QR.",
+  ctaVerify: "Verifica DPP", ctaCreate: "Crea il tuo DPP", ctaBiz: "Scopri i piani per le imprese",
+  searchLabel: "Hai una domanda? Chiedila all'assistente IA", searchBtn: "Chiedi", hvStamp: "Verificato",
   ph: ["Cosa richiede il passaporto digitale per le batterie?", "Quanto costa creare un passaporto?", "Cosa è gratuito e cosa a pagamento?", "Cosa cambia per il tessile nel 2027?"],
-  chips: ["Cos'è il passaporto digitale?", "Quanto costa?", "Cosa è gratuito?", "Norme per le batterie"],
+  chips: ["Cos'è il passaporto digitale?", "Quanto costa?", "Cosa fa Snaproof?", "Norme per le batterie"],
 
   exEyebrow: "Come funziona", exTitle: "Dal prodotto al <em>mondo</em>, in quattro passaggi", exPause: "Pausa", exPlay: "Riproduci", exAria: "Animazione: dal passaporto di prodotto alla verifica nel mondo",
   exS0n: "Impresa", exS0d: "Inserisce i dati", exS1n: "Ente certificatore", exS1d: "Verifica e firma", exS2n: "Prodotto", exS2d: "Riceve il QR", exS3n: "Mondo", exS3d: "Verifica chiunque", exOk: "VERIFICATO",
@@ -1821,27 +2148,27 @@ it: {
   ex3t: "Verifica", ex3d: "Buyer, autorità e cittadini scansionano il QR e vedono l'esito, ovunque.",
   exStep: "Passaggio",
 
-  fnEyebrow: "Cosa puoi fare", fnTitle: "Quattro strumenti, <em>un solo luogo</em>",
-  fn_scopri_t: "Settori e territori", fn_scopri_d: "Esplora i settori di lancio e la mappa dove si concentrano le imprese.", fn_scopri_c: "Esplora",
-  fn_verifica_t: "Verifica", fn_verifica_d: "Inserisci un codice o scansiona il QR: vedi l'esito e chi lo ha verificato.", fn_verifica_c: "Verifica ora",
-  fn_crea_t: "Crea un passaporto", fn_crea_d: "Genera il passaporto digitale di un tuo prodotto e rendilo verificabile con un QR.", fn_crea_c: "Crea il passaporto", fn_crea_p: "Da 149 €/mese + crediti · indicativo",
+  fnEyebrow: "Cosa puoi fare", fnTitle: "Tutto quello che serve, <em>in un solo luogo</em>",
+  fn_scopri_t: "Cerca imprese e settori", fn_scopri_d: "Trova le imprese operative per settore e regione e scopri dove si concentra la produzione.", fn_scopri_c: "Cerca un'impresa",
+  fn_verifica_t: "Verifica un prodotto", fn_verifica_d: "Inserisci il codice o scansiona il QR: in pochi secondi vedi l'esito e chi lo ha verificato.", fn_verifica_c: "Verifica ora",
+  fn_crea_t: "Crea un DPP", fn_crea_d: "Genera il passaporto digitale del tuo prodotto e rendilo verificabile con un QR.", fn_crea_c: "Crea il passaporto", fn_crea_p: "Da 149 €/mese + crediti · indicativo",
   fn_norme_t: "Norme e scadenze", fn_norme_d: "Le regole europee e italiane che riguardano i tuoi prodotti, con date e fonti ufficiali.", fn_norme_c: "Consulta le norme",
 
-  freeEyebrow: "Accesso e tariffe", freeTitle: "Gratuito per chi consulta, <em>a pagamento</em> per chi opera",
-  freeL: "Per chi consulta", freeList: ["Ricerca, settori e mappa dei territori", "Verifica dei passaporti di prodotto", "Guide su norme europee e italiane", "Storia, notizie ed eventi in lettura", "Assistente IA per orientarsi"],
-  bizL: "Per chi opera", bizRows: [["Vetrina di settore", "da 49 €/mese*"], ["Passaporto di prodotto", "da 149 €/mese + crediti"], ["Moduli Origine e Modello 231", "60–180 €/mese ciascuno"], ["Spazio Storia del marchio", "da 79 €/mese*"]],
-  bizFoot: "* Valore dimostrativo: il prezzo non è ancora definito. Listino indicativo, IVA esclusa.", bizCta: "Vedi piani e listino", bizTalk: "Parla con noi",
+  freeEyebrow: "Gratis e a pagamento", freeTitle: "Verificare è <em>gratis</em>. Per produrre e vendere, scegli il tuo piano.",
+  freeL: "Se cerchi o verifichi", freeList: ["Cerca imprese per settore e regione", "Verifica un DPP con QR o codice", "Leggi le guide su norme europee e italiane", "Storia, notizie ed eventi in lettura", "Assistente IA per orientarti"],
+  bizL: "Se produci o vendi", bizRows: [["Vetrina di settore", "da 49 €/mese*"], ["Passaporto di prodotto", "da 149 €/mese + crediti"], ["Moduli Origine e Modello 231", "60–180 €/mese ciascuno"], ["Spazio Storia del marchio", "da 79 €/mese*"]],
+  bizFoot: "* Valore dimostrativo: il prezzo non è ancora definito. Listino indicativo, IVA esclusa.", bizCta: "Scegli il tuo piano", bizTalk: "Fatti ricontattare",
 
-  secEyebrow: "Settori", secTitleHome: "Tre settori di lancio", secAll: "Settori e mappa dei territori", secTitle: "Settori e <em>territori</em>",
-  secLead: "Scegli un settore: la mappa mostra dove si concentrano le imprese sulla piattaforma. Ogni settore riunisce vetrine, storia e norme.",
+  secEyebrow: "Da dove partiamo", secTitleHome: "Cinque settori per <em>cominciare</em>", secAll: "Cerca le imprese per settore e regione", secTitle: "Trova le imprese <em>per settore e regione</em>",
+  secLead: "Scegli un settore, poi una regione sulla mappa: vedi dove si concentrano le imprese. Più in basso cerchi per nome quelle operative. Ogni settore riunisce vetrine, storia e norme.",
   mapEyebrow: "Territori", demoData: "Dati dimostrativi", mapCredit: "Mappa: @svg-maps/italy, licenza CC BY 4.0.", mapLabel: "Mappa delle regioni italiane",
   legendTitle: "Presenza sulla piattaforma", lv0: "Nessuna", lv1: "Bassa", lv2: "Media", lv3: "Alta",
   sectorLabel: "Settore selezionato", inSector: "In questo settore", regionTitle: "Regione", regionNone: "Seleziona una regione sulla mappa per vedere la presenza del settore.",
-  regionRes: "Presenza dimostrativa", regionNote: "Nessuna impresa reale è mostrata in questa anteprima.", secNorms: "Norme del settore", secShowcase: "Vetrina del settore", secCheck: "Verifica un passaporto",
+  regionRes: "Presenza dimostrativa", regionNote: "Presenza e imprese mostrate sono dimostrative.", secNorms: "Norme del settore", secShowcase: "Vetrina del settore", secCheck: "Verifica DPP",
   normEyebrow: "Riferimenti normativi europei", normAll: "Tutte le norme e le scadenze",
-  areasEyebrow: "Le cinque aree", areasTitle: "Una struttura chiara, <em>pronta a crescere</em>",
+  areasEyebrow: "Le aree del portale", areasTitle: "Dove vuoi andare? <em>Cinque aree</em> da esplorare",
 
-  vEyebrow: "Conformità · Verifica", vTitle: "Verifica un passaporto di prodotto", vLead: "Inserisci il codice o scansiona il QR del prodotto. Vedi l'esito e, sempre, l'ente certificatore che lo ha verificato.",
+  vEyebrow: "Conformità · Verifica", vTitle: "Verifica il <em>DPP</em> di un prodotto", vLead: "DPP è il passaporto digitale di prodotto. Inserisci il codice o scansiona il QR: vedi l'esito e, sempre, l'ente certificatore che lo ha verificato.",
   vFreeNote: "Verificare è gratuito e non consuma crediti.", vLabel: "Codice del passaporto", vBtn: "Verifica", vScan: "Scansiona QR", vTry: "Esempi dimostrativi:", vNote: "MADEinITALY.it mostra l'esito. La verifica è dell'ente certificatore, non della piattaforma.",
   vEmptyT: "Nessuna verifica ancora", vEmptyD: "Inserisci un codice o prova un esempio: vedrai lo stato del passaporto e chi lo ha verificato.",
   vOkT: "Passaporto verificato", vOkS: "Esempio dimostrativo, non corrisponde a un prodotto reale.", vPendT: "Verifica in corso", vPendS: "L'ente certificatore sta ancora valutando questo passaporto.",
@@ -1860,7 +2187,7 @@ it: {
   ctaEyebrow: "Per i produttori", ctaT: "Il tuo prodotto <em>merita un passaporto</em>", ctaD: "Crea il passaporto digitale, fallo certificare e metti il QR sul prodotto. I tuoi clienti lo verificano in pochi secondi, ovunque nel mondo.",
   scanT: "Scansione QR", scanD: "Simulazione: in questa anteprima la fotocamera non viene usata. Leggiamo un codice dimostrativo.", scanDone: "Codice letto: MIT-DEMO-0001",
 
-  cEyebrow: "Per le imprese", cTitle: "Crea il passaporto digitale del <em>tuo prodotto</em>",
+  cEyebrow: "Per le imprese", cTitle: "Crea il DPP, il passaporto digitale del <em>tuo prodotto</em>",
   cLead: "Compila tre passaggi e guarda l'anteprima. L'emissione e la certificazione si attivano su Snaproof, l'infrastruttura che fa funzionare la piattaforma.",
   steps: ["Prodotto", "Dati e conformità", "Certificazione e QR"],
   w1t: "Il prodotto", fName: "Nome del prodotto", fNamePh: "es. Giacca in lana", fCompany: "Impresa", fCompanyPh: "es. Azienda Esempio S.r.l.", fSector: "Settore",
@@ -1868,18 +2195,20 @@ it: {
   sf_moda: [["Composizione delle fibre", "es. 80% lana, 20% poliestere"], ["Paese di confezione", "es. Italia"]],
   sf_elettronica: [["Categoria di prodotto", "es. Apparecchio domestico"], ["Paese di assemblaggio", "es. Italia"]],
   sf_batterie: [["Chimica", "es. Ioni di litio"], ["Capacità (kWh)", "es. 12"]],
+  sf_automotive: [["Categoria di componente", "es. Impianto frenante"], ["Paese di produzione", "es. Italia"]],
+  sf_cosmesi: [["Categoria di prodotto", "es. Crema viso"], ["Numero di lotto", "es. L-2026-014"]],
   fMods: "Moduli aggiuntivi", mOrigine: "Origine preferenziale", mOrigineD: "Dichiarazioni e prove per i dazi ridotti negli accordi commerciali.", m231: "Modello 231", m231D: "Documentazione per il modello organizzativo dell'ente.",
   w3t: "Certificazione e QR", fClass: "Livello di verifica", cr1: "credito", crN: "crediti", fBody: "Ente certificatore",
   cls_standard: ["Standard", "Verifica di base dei dati dichiarati."], cls_advanced: ["Advanced", "Verifica rafforzata con documenti allegati."], cls_premium: ["Premium", "Verifica completa con audit."],
   bodies: ["Ente dimostrativo A", "Ente dimostrativo B"],
   ppHd: "Passaporto di prodotto", ppDraft: "Bozza · non emesso", ppNoName: "[Nome del prodotto]", ppFoot: "Anteprima: nessun dato viene salvato.", ppQr: "Il QR si attiva con la certificazione.",
   estT: "Costo indicativo di un passaporto", estLine: "{c} · circa {p} € a consumo", estPlat: "Più il piano Passaporto da 149 €/mese (Starter, indicativo) e gli eventuali moduli.", finish: "Attiva su Snaproof", finishNote: "Prosegui con l'attivazione per emettere e certificare il passaporto.",
-  actT: "Attiva su Snaproof", actBtn: "Richiedi l'attivazione", lName: "Nome e cognome", lEmail: "Email di lavoro", wlNote: "Anteprima: nessun dato viene salvato.", wlDone: "Simulazione completata: nessun dato è stato salvato.",
+  actT: "Richiedi un contatto", actBtn: "Invia la richiesta", lName: "Nome e cognome", lEmail: "Email di lavoro", wlNote: "Anteprima: nessun dato viene salvato.", wlDone: "Simulazione completata: nessun dato è stato salvato.",
   ctxPass: "Passaporto: {n} · {s} · livello {c}.", ctxPlan: "Piano richiesto: {p}.",
 
   pEyebrow: "Per le imprese", pTitle: "Entra nella piattaforma: <em>piani e listino</em>",
   pLead: "Consultare è gratuito. Chi opera sulla piattaforma sceglie vetrina, passaporti e moduli. Qui trovi i prezzi di riferimento.",
-  pNotice: "<b>Listino indicativo di prototipo.</b> I prezzi del piano Passaporto, dei crediti e dei moduli derivano da un'ipotesi interna di Snaproof non ancora validata con i clienti. Vetrina e Spazio Storia non hanno ancora un prezzo: i valori mostrati sono dimostrativi.",
+  pNotice: "<b>Prezzi indicativi.</b> I prezzi del piano Passaporto, dei crediti e dei moduli sono di riferimento e possono cambiare prima del lancio. Vetrina e Spazio Storia non hanno ancora un prezzo: i valori mostrati sono dimostrativi.",
   pNoticeSrc: "IVA esclusa · valori soggetti a conferma", billing: "Fatturazione", monthly: "Mensile", annual: "Annuale", perMonth: "€/mese", billedAnnual: "fatturati annualmente (−15%)", billedMonthly: "fatturati mensilmente",
   pl_consulta: ["Consulta", "Per buyer, cittadini, istituzioni e imprese che vogliono orientarsi."], pl_vetrina: ["Vetrina", "Presenta la tua impresa nel suo settore."],
   pl_passaporto: ["Passaporto", "Crea, certifica e rendi verificabili i passaporti dei tuoi prodotti."], pl_storia: ["Spazio Storia", "Racconta l'evoluzione del tuo marchio nella sezione Storia."],
@@ -1887,8 +2216,8 @@ it: {
   plf_vetrina: ["Profilo dell'impresa, prodotti e contatti", "Visibilità nel settore e sulla mappa", "Tutto ciò che è incluso in Consulta"],
   plf_passaporto: ["Creazione di passaporti con QR", "Certificazione tramite ente", "Verifica pubblica gratuita per i tuoi clienti", "Moduli aggiungibili (60–180 €/mese)"],
   plf_storia: ["Pagina editoriale del marchio", "Archivi, collezioni e centri di ricerca", "Redazione concordata con il soggetto editore"],
-  plc_consulta: "Esplora la piattaforma", plc_vetrina: "Richiedi una vetrina", plc_passaporto: "Attiva su Snaproof", plc_storia: "Prenota uno spazio",
-  plNoteCredits: "+ crediti per ogni passaporto emesso", plNoteDemo: "Prezzo da definire", plNoteSeat: "Postazione extra 25 €/mese. Differenze tra i piani (volumi, team) da definire.", tier: "Dimensione", tiers: { starter: "Starter", growth: "Growth", scale: "Scale", enterprise: "Enterprise" },
+  plc_consulta: "Inizia gratis", plc_vetrina: "Richiedi una vetrina", plc_passaporto: "Attiva su Snaproof", plc_storia: "Prenota uno spazio",
+  plNoteCredits: "+ crediti per ogni passaporto emesso", plNoteDemo: "Prezzo da definire", plNoteSeat: "Postazione extra 25 €/mese. Cosa include ogni dimensione sarà confermato al lancio.", tier: "Dimensione", tiers: { starter: "Starter", growth: "Growth", scale: "Scale", enterprise: "Enterprise" },
   cmpEyebrow: "Cosa è incluso", cmpTitle: "Gratuito e a pagamento, <em>voce per voce</em>", cmpFeat: "Funzione", cmpAddable: "Aggiungibile",
   cmpRows: ["Ricerca, settori e mappa", "Guide su norme e scadenze", "Verifica dei passaporti", "Assistente IA", "Profilo impresa in vetrina", "Creazione e certificazione di passaporti", "Moduli Origine e Modello 231", "Spazio nella sezione Storia"],
   crEyebrow: "Passaporti a crediti", crTitle: "Paghi <em>quanto emetti</em>", crLead: "Ogni passaporto emesso consuma crediti in base al livello di verifica. Verificare un passaporto non consuma crediti.",
@@ -1896,7 +2225,7 @@ it: {
   cCredits: "Crediti al mese", cPayg: "A consumo", cBundle: "Con bundle da 10.000 crediti", cBundleLow: "Il bundle parte da 10.000 crediti al mese.", cPlatform: "Più il piano Passaporto.",
   modsEyebrow: "Estensioni", modsTitle: "Moduli <em>a pagamento</em>", modsLead: "Estensioni che si aggiungono al piano Passaporto. Fascia di riferimento: 60–180 €/mese per modulo.", modsRange: "60–180 €/mese", modsTbd: "Prezzo da definire", notifyMe: "Avvisami", modBy: "Fornito da",
   mod_origine: ["Origine preferenziale", "Dichiarazioni e prove per i dazi ridotti negli accordi commerciali.", "Snaproof"], mod_m231: ["Modello 231", "Documentazione per il modello organizzativo della responsabilità degli enti.", "Snaproof"],
-  mod_academy: ["Academy", "Assessment guidato dall'AI che raccomanda il percorso formativo più adatto.", "MIAT"], mod_immersive: ["Esperienze immersive", "Chi scansiona il QR entra nella storia del prodotto.", "MIAT"],
+  mod_academy: ["Academy", "Assessment guidato dall'IA che profila bisogni e livello e consiglia il percorso o il workshop più adatto. La formazione fa parte del percorso di certificazione.", "MIAT"],
   leadEyebrow: "Parla con noi", leadTitle: "Costruiamo il piano <em>sul tuo catalogo</em>", leadD: "Lasciaci un contatto: ti ricontatta il team Snaproof per dimensionare passaporti, moduli e vetrina.", leadBtn: "Richiedi un contatto", fCompany2: "Impresa",
 
   kEyebrow: "Area Conformità", kTitle: "Norme europee e italiane, <em>spiegate per chi produce</em>",
@@ -1912,6 +2241,8 @@ it: {
   n_batterie: ["Passaporto della batteria", "Reg. (UE) 2023/1542", "Impone un passaporto digitale con QR alle batterie dei veicoli elettrici, dei mezzi di trasporto leggeri e industriali oltre 2 kWh.", "Dal 18 febbraio 2027. Dovuta diligenza dal 18 agosto 2027 (Reg. (UE) 2025/1561).", "Guida di settore (gratuita). Creazione del passaporto (a pagamento)."],
   n_tessileDA: ["Atto delegato per il tessile", "ESPR · COM(2025) 187", "La Commissione prevede di fissare con atto delegato i requisiti di ecodesign dei prodotti tessili.", "Previsto nel terzo-quarto trimestre 2027. Data non ancora fissata.", "Guida di settore (gratuita) e preparazione dei dati del passaporto."],
   n_tessileDPP: ["Passaporto per il tessile", "ESPR · atto delegato in preparazione", "L'obbligo di passaporto per i prodotti tessili seguirà l'atto delegato.", "Previsto intorno al 2029: stima della Commissione, non vincolante.", "Preparazione dei dati del passaporto (a pagamento)."],
+  n_elv: ["Veicoli: circolarità e fine vita", "Reg. (UE) 2026/1738", "Sostituisce la direttiva sui veicoli fuori uso e introduce requisiti di circolarità nella progettazione dei veicoli, quote minime di riciclato e un passaporto digitale di circolarità del veicolo.", "In vigore dal 13 agosto 2026. Il passaporto digitale di circolarità si applica dal 2032.", "Guida di settore (gratuita) e preparazione dei dati di componenti e batterie."],
+  n_cosm: ["Prodotti cosmetici", "Reg. (CE) 1223/2009", "Disciplina sicurezza, etichettatura e informazioni sui prodotti cosmetici immessi sul mercato UE. Non prevede un passaporto digitale.", "In applicazione dall'11 luglio 2013. Oggi nessun obbligo UE di passaporto digitale è fissato per i cosmetici.", "Il passaporto digitale è volontario: autenticità e tracciabilità dei lotti (a pagamento)."],
   n_l206: ["Legge sul Made in Italy", "Legge 27 dicembre 2023, n. 206", "Disposizioni organiche per la valorizzazione, la promozione e la tutela del Made in Italy.", "In vigore dall'11 gennaio 2024.", "Guida per le imprese (gratuita). La piattaforma non assegna marchi né certifica l'origine italiana."],
   n_m231: ["Responsabilità amministrativa degli enti", "D.Lgs. 8 giugno 2001, n. 231", "Disciplina la responsabilità degli enti per i reati commessi nel loro interesse e i modelli organizzativi che la prevengono.", "In vigore dal 4 luglio 2001.", "Guida (gratuita). Modulo Modello 231 (a pagamento, in preparazione)."],
   n_origine: ["Origine delle merci", "Reg. (UE) n. 952/2013", "Codice doganale dell'Unione: fissa le regole di origine delle merci. L'origine preferenziale dà diritto a dazi ridotti secondo i singoli accordi commerciali.", "Applicabile dal 1° maggio 2016.", "Guida (gratuita). Modulo Origine preferenziale (a pagamento, in preparazione)."],
@@ -1925,7 +2256,7 @@ it: {
 
   fAbout: "Il portale dedicato al Made in Italy: imprese, storia, informazione e conformità.", fAreas: "Aree", fTools: "Strumenti", fPlatform: "Piattaforma",
   fAboutUs: "Chi siamo", fContacts: "Contatti", fPrivacy: "Privacy", fTerms: "Termini d'uso", fCookies: "Cookie", fPowered: "Powered by",
-  fEditor: "© 2026 MADEinITALY.it · Editore: ", fEditorTbd: "[soggetto editore da definire]", stubToast: "Anteprima: questa pagina non fa parte di questo giro di design.", wlSoon: "Ti avviseremo quando sarà disponibile (simulazione).",
+  fEditor: "© 2026 MADEinITALY.it · Editore: ", fEditorTbd: "[soggetto editore da definire]", stubToast: "Questa sezione è in preparazione.", wlSoon: "Ti avviseremo quando sarà disponibile (simulazione).",
 
   chatOpen: "Assistente", chatTitle: "Assistente", chatSub: "Sistema di intelligenza artificiale", chatPh: "Scrivi una domanda…", chatSend: "Invia",
   chatFoot: "Stai parlando con un sistema di IA (Reg. UE 2024/1689, art. 50). Le risposte possono contenere errori e non sono consulenza legale.",
@@ -1934,21 +2265,31 @@ it: {
   chatLive: "IA · Claude", chatSim: "Risposta simulata", chatYou: "Tu", chatBot: "Assistente", chatErr: "L'assistente non è disponibile in questo momento. Riprova tra poco.", chatGo: "Vai a", chatAriaClose: "Chiudi l'assistente",
   tp_passaporto: "Passaporto di prodotto", tp_ia: "Trasparenza e IA", tp_consumatori: "Consumatori e claim", tp_origine: "Origine e dogane", tp_italia: "Italia: marchio e responsabilità",
   kCount1: "1 scheda", kCountN: "{n} schede", kAppliesTo: "Si applica a", kAllSectors: "Tutti i settori", crumbHome: "Home", crumbAria: "Percorso", subAria: "In questa area",
-  routeName: { home: "Home", verifica: "Verifica un passaporto", crea: "Crea un passaporto", prezzi: "Piani e listino", conformita: "Norme e scadenze", settori: "Settori e territori", storia: "Storia e cultura" }
+  routeName: { home: "Home", verifica: "Verifica DPP", crea: "Crea un DPP", prezzi: "Piani e listino", conformita: "Norme e scadenze", settori: "Imprese e settori", storia: "Storia e cultura", innovazione: "Hub AI e Academy" }
 },
 en: {
-  skip: "Skip to content", demoNote: "Design preview · demo content", demoShort: "Preview · demo", uVerify: "Verify a passport", forBusiness: "For businesses", login: "Sign in", menu: "Menu",
-  navSectors: "Sectors", sectorsIntro: "Three launch sectors, more to follow.", goArea: "Go to area",
+  hsVAria: "Animation: QR scan, check and DPP verification", hsV0n: "Scan", hsV0d: "QR or code", hsV1n: "Check", hsV1d: "Registry and body", hsV2n: "Verified", hsV2d: "Who vouches for it",
+  hsCAria: "Animation: from data to the DPP with QR", hsC0n: "Enter", hsC0d: "Product data", hsC1n: "Certify", hsC1d: "Certification body", hsC2n: "Publish", hsC2d: "QR on the product",
+  carAria: "Sectors", carPrev: "Previous sectors", carNext: "Next sectors", carCount: "{a}–{b} of {n}", carCount1: "{a} of {n}",
+  intEyebrow: "Integration", intTitle: "From your ERP to the DPP, <em>automatically</em>",
+  intLead: "With APIs and SDKs you connect Snaproof to the systems you already use: DPPs are generated from company data, with no double entry. Fast, simple and highly scalable integration, from a single SME to the whole supply chain.",
+  intFlow: [["Your systems", "ERP and business software", "Product and process data"], ["Integration", "APIs and SDKs", "Quick connection, no process rebuild"], ["Snaproof", "Certifies and manages", "Processes and DPPs in one place"], ["Result", "DPP and QR", "Verifiable by anyone, even offline"]],
+  intList: ["APIs and SDKs for fast, simple integration", "Connects to the ERP and business software you already use", "Interoperable with GS1 standards", "SaaS, on-premises or white-label"],
+  intS1t: "Talk to an engineer", intS1d: "Tell us about your process: we show you the simplest way to connect it.", intS1b: "Talk to an engineer", intCtx1: "Request: talk to an engineer about integrating Snaproof into company processes.",
+  intS2t: "Request API and SDK access", intS2d: "Join the access list: we get back to you with the steps to integrate on your own.", intS2b: "Request API access", intCtx2: "Request: access to APIs and SDKs.",
+  pg_innovazione: "AI Hub and Academy", partnerGen: "a training partner", secEyebrowPg: "Companies and sectors", dirEyebrow: "Operating companies", dirTitle: "Search the companies <em>on the platform</em>", dirLead: "Search by name and filter by sector and region. The map above filters the list in the same way.", dirSearch: "Search by name", dirSearchPh: "Company name", dirSector: "Sector", dirRegion: "Region", dirAllSec: "All sectors", dirAllReg: "All regions", dirCount1: "1 company", dirCountN: "{n} companies", dirColName: "Company", dirColSec: "Sector", dirColReg: "Region", dirDemo: "Demo company", dirNone: "No company matches your search. Try removing a filter.", dirNote: "Demo list: the names are invented and no real company is shown. Companies that activate their profile will appear here.", dirCta: "Apply with your company", dirLeadCtx: "Request: company profile in the operating list.", innEyebrow: "Beyond verification", innTitle: "Verify once. <em>Come back to learn.</em>", innLead: "Verification builds credibility; content and training give a reason to return. Two modules to understand what changes for your company and where to start.", innAll: "AI Hub and Academy", innBy: "Delivered by {p}", innByNeutral: "Delivered by a partner", innHubT: "AI Hub for manufacturing", innHubD: "Insights, use cases and initiatives on artificial intelligence applied to manufacturing, written for Italian SMEs and brands. For those who do not yet know they will need to certify.", innHubL: ["Insights and analysis for SMEs and brands", "Concrete use cases, sector by sector", "AI initiatives and events"], innHubC: "Explore the AI Hub", innAcdT: "Academy: profiling and training paths", innAcdD: "An AI-guided assessment understands your needs and level, or your company's, and recommends the most suitable path or workshop. Training is part of the certification journey, not a separate service.", innAcdL: ["A few questions, no sign-up", "Recommended path or workshop", "Training inside the certification journey"], innAcdC: "Take the assessment", iEyebrow: "Beyond verification", iTitle: "AI Hub and Academy: <em>understand, train, certify</em>", iLead: "MADEinITALY.it is not just a register you consult when needed. AI content and training paths bring companies to the platform and guide them all the way to the digital passport.", iBy: "Modules delivered by {p} on the Snaproof infrastructure. The content and paths shown are demo content.", hubEyebrow: "AI Hub for manufacturing", hubTitle: "Understand AI <em>applied to manufacturing</em>", hubLead: "Written for Italian SMEs and brands. It explains what changes, with examples from your sector, before certification becomes an obligation.", hub_insight: ["Insights", "Analysis and viewpoints", "What changes for companies, explained without jargon.", ["What the digital passport changes for an SME", "Traceability and sustainability: where to start"]], hub_cases: ["Use cases", "Concrete examples by sector", "How AI really helps prepare and manage product data.", ["AI to prepare textile passport data", "Traceability along the battery supply chain"]], hub_events: ["Initiatives", "Workshops, webinars, events", "Moments to compare notes, understand and act.", ["Workshop: the digital passport for textiles", "Webinar: AI and the electronics supply chain"]], hubSoon: "In preparation: dynamic data, traceability and sustainability benchmarks, B2B community.", acdEyebrow: "Academy", acdTitle: "The right path <em>for you</em>", acdLead: "Three questions to find where to start. The assessment recommends a path or a workshop; training is part of the certification journey.", acdQ1: "Your sector", acdQ2: "Where you stand with the digital passport", acdQ3: "Who the training is for", acdL_a: ["Starting from scratch", "I do not yet know if or how it concerns me."], acdL_b: ["I know the rules", "I need to organise data and supply chain."], acdL_c: ["Ready to certify", "I have the data, I want to move to practice."], acdW_me: ["For me", "Individual path."], acdW_team: ["For my team", "Group workshop."], acdOutEyebrow: "Recommended path", acdEmpty: "Answer the three questions: you will see the most suitable path or workshop here.", acdR_a: ["Digital passport fundamentals", "What it is, who needs it and which deadlines apply to your sector."], acdR_b: ["Preparing the passport data", "Which data to collect and how to organise the supply chain."], acdR_c: ["From certification to QR", "How to bring the passport into production and have it verified."], acdF_me: ["Individual path", "Follow at your own pace"], acdF_team: ["Team workshop", "Guided group session"], acdFormat: "Format", acdSim: "Simulation: in this preview the recommendation follows simple rules. In the real service the assessment is AI-guided.", acdCta: "Request this path", acdLeadCtx: "Academy request: {n} · {f} · {s}.", acdDiscover: "Discover the module", innCtaEyebrow: "Talk to us", innCtaTitle: "Bring content and training <em>into your journey</em>", innCtaD: "Tell us where you are: we will get back to you to build content and training around your sector.", innCtaBtn: "Request a contact", innCtaPrices: "Modules and pricing", innLeadCtx: "Request: AI Hub and Academy.", w3hint: "Not sure which level to pick?", w3hintLink: "Try the Academy assessment",
+  skip: "Skip to content", uVerify: "Verify DPP", forBusiness: "For businesses", login: "Sign in", menu: "Menu",
+  navSectors: "Sectors", sectorsIntro: "The five sectors the platform starts with. More will follow.", goArea: "Go to area",
   free: "Free", paid: "Paid", paidMod: "Paid module", soon: "In preparation", module: "Module", provisional: "Provisional", demoVal: "Demo value",
   back: "Back", next: "Next", cancel: "Cancel", seePrices: "See prices", close: "Close",
-  pg_home: "The bridge between Italy and the world", pg_verifica: "Verify a passport", pg_crea: "Create a passport", pg_prezzi: "Plans and pricing", pg_conformita: "Regulations and deadlines", pg_settori: "Sectors and territories", pg_storia: "History and culture",
+  pg_home: "The bridge between Italy and the world", pg_verifica: "Verify DPP", pg_crea: "Create a DPP", pg_prezzi: "Plans and pricing", pg_conformita: "Regulations and deadlines", pg_settori: "Companies and sectors", pg_storia: "History and culture",
 
-  heroEyebrow: "Made in Italy platform", heroTitle: "The bridge between <em>Italy</em> and the world.",
-  heroLead: "Companies, history and European rules for Made in Italy in one place. Verify a product, create its digital passport.",
-  ctaVerify: "Verify a passport", ctaCreate: "Create your passport", ctaBiz: "For businesses: plans and pricing",
-  searchLabel: "Ask the assistant", searchBtn: "Ask", hvStamp: "Verified",
+  heroEyebrow: "The Made in Italy portal", heroTitle: "The bridge between <em>Italy</em> and the world.",
+  heroLead: "Verify in seconds who certified an Italian product. If you produce, create the DPP, your products' digital passport, and take it around the world with a QR.",
+  ctaVerify: "Verify DPP", ctaCreate: "Create your DPP", ctaBiz: "Discover plans for businesses",
+  searchLabel: "Got a question? Ask the AI assistant", searchBtn: "Ask", hvStamp: "Verified",
   ph: ["What does the digital passport require for batteries?", "How much does it cost to create a passport?", "What is free and what is paid?", "What changes for textiles in 2027?"],
-  chips: ["What is the digital passport?", "How much does it cost?", "What is free?", "Battery rules"],
+  chips: ["What is the digital passport?", "How much does it cost?", "What does Snaproof do?", "Battery rules"],
 
   exEyebrow: "How it works", exTitle: "From product to <em>world</em>, in four steps", exPause: "Pause", exPlay: "Play", exAria: "Animation: from the product passport to verification worldwide",
   exS0n: "Company", exS0d: "Enters the data", exS1n: "Certification body", exS1d: "Verifies and signs", exS2n: "Product", exS2d: "Gets the QR", exS3n: "World", exS3d: "Anyone verifies", exOk: "VERIFIED",
@@ -1958,27 +2299,27 @@ en: {
   ex3t: "Verify", ex3d: "Buyers, authorities and citizens scan the QR and see the outcome, anywhere.",
   exStep: "Step",
 
-  fnEyebrow: "What you can do", fnTitle: "Four tools, <em>one place</em>",
-  fn_scopri_t: "Sectors and territories", fn_scopri_d: "Explore the launch sectors and the map of where companies are concentrated.", fn_scopri_c: "Explore",
-  fn_verifica_t: "Verify", fn_verifica_d: "Enter a code or scan the QR: see the outcome and who verified it.", fn_verifica_c: "Verify now",
-  fn_crea_t: "Create a passport", fn_crea_d: "Generate the digital passport of one of your products and make it verifiable with a QR.", fn_crea_c: "Create the passport", fn_crea_p: "From €149/month + credits · indicative",
+  fnEyebrow: "What you can do", fnTitle: "Everything you need, <em>in one place</em>",
+  fn_scopri_t: "Find companies and sectors", fn_scopri_d: "Find operating companies by sector and region and see where production is concentrated.", fn_scopri_c: "Find a company",
+  fn_verifica_t: "Verify a product", fn_verifica_d: "Enter the code or scan the QR: in seconds you see the outcome and who verified it.", fn_verifica_c: "Verify now",
+  fn_crea_t: "Create a DPP", fn_crea_d: "Generate your product's digital passport and make it verifiable with a QR.", fn_crea_c: "Create the passport", fn_crea_p: "From €149/month + credits · indicative",
   fn_norme_t: "Rules and deadlines", fn_norme_d: "The European and Italian rules that affect your products, with dates and official sources.", fn_norme_c: "Read the rules",
 
-  freeEyebrow: "Access and fees", freeTitle: "Free for those who consult, <em>paid</em> for those who operate",
-  freeL: "For those who consult", freeList: ["Search, sectors and the territory map", "Verification of product passports", "Guides to European and Italian rules", "History, news and events to read", "AI assistant to find your way"],
-  bizL: "For those who operate", bizRows: [["Sector showcase", "from €49/month*"], ["Product passport", "from €149/month + credits"], ["Origin and Model 231 modules", "€60–180/month each"], ["Brand History space", "from €79/month*"]],
-  bizFoot: "* Demo value: the price is not yet defined. Indicative price list, VAT excluded.", bizCta: "See plans and pricing", bizTalk: "Talk to us",
+  freeEyebrow: "Free and paid", freeTitle: "Verifying is <em>free</em>. To produce and sell, choose your plan.",
+  freeL: "If you search or verify", freeList: ["Find companies by sector and region", "Verify a DPP by QR or code", "Read guides to European and Italian rules", "History, news and events to read", "AI assistant to find your way"],
+  bizL: "If you produce or sell", bizRows: [["Sector showcase", "from €49/month*"], ["Product passport", "from €149/month + credits"], ["Origin and Model 231 modules", "€60–180/month each"], ["Brand History space", "from €79/month*"]],
+  bizFoot: "* Demo value: the price is not yet defined. Indicative price list, VAT excluded.", bizCta: "Choose your plan", bizTalk: "Get a call back",
 
-  secEyebrow: "Sectors", secTitleHome: "Three launch sectors", secAll: "Sectors and territory map", secTitle: "Sectors and <em>territories</em>",
-  secLead: "Pick a sector: the map shows where companies are concentrated on the platform. Each sector brings together showcases, history and rules.",
+  secEyebrow: "Where we start", secTitleHome: "Five sectors to <em>start with</em>", secAll: "Find companies by sector and region", secTitle: "Find companies <em>by sector and region</em>",
+  secLead: "Pick a sector, then a region on the map: see where companies are concentrated. Further down, search the operating ones by name. Each sector brings together showcases, history and rules.",
   mapEyebrow: "Territories", demoData: "Demo data", mapCredit: "Map: @svg-maps/italy, CC BY 4.0 licence.", mapLabel: "Map of Italian regions",
   legendTitle: "Presence on the platform", lv0: "None", lv1: "Low", lv2: "Medium", lv3: "High",
   sectorLabel: "Selected sector", inSector: "In this sector", regionTitle: "Region", regionNone: "Select a region on the map to see the sector's presence.",
-  regionRes: "Demo presence", regionNote: "No real company is shown in this preview.", secNorms: "Sector rules", secShowcase: "Sector showcase", secCheck: "Verify a passport",
+  regionRes: "Demo presence", regionNote: "The presence and companies shown are demo content.", secNorms: "Sector rules", secShowcase: "Sector showcase", secCheck: "Verify DPP",
   normEyebrow: "European regulatory references", normAll: "All rules and deadlines",
-  areasEyebrow: "The five areas", areasTitle: "A clear structure, <em>ready to grow</em>",
+  areasEyebrow: "The portal's areas", areasTitle: "Where do you want to go? <em>Five areas</em> to explore",
 
-  vEyebrow: "Compliance · Verification", vTitle: "Verify a product passport", vLead: "Enter the code or scan the product's QR. You see the outcome and, always, the certification body that verified it.",
+  vEyebrow: "Compliance · Verification", vTitle: "Verify a product's <em>DPP</em>", vLead: "DPP is the digital product passport. Enter the code or scan the QR: you see the outcome and, always, the certification body that verified it.",
   vFreeNote: "Verifying is free and uses no credits.", vLabel: "Passport code", vBtn: "Verify", vScan: "Scan QR", vTry: "Demo examples:", vNote: "MADEinITALY.it displays the outcome. The verification belongs to the certification body, not to the platform.",
   vEmptyT: "No verification yet", vEmptyD: "Enter a code or try an example: you will see the passport's status and who verified it.",
   vOkT: "Passport verified", vOkS: "Demo example, it does not match a real product.", vPendT: "Verification in progress", vPendS: "The certification body is still assessing this passport.",
@@ -1997,7 +2338,7 @@ en: {
   ctaEyebrow: "For manufacturers", ctaT: "Your product <em>deserves a passport</em>", ctaD: "Create the digital passport, have it certified and put the QR on the product. Your customers verify it in seconds, anywhere in the world.",
   scanT: "QR scan", scanD: "Simulation: this preview does not use the camera. We read a demo code.", scanDone: "Code read: MIT-DEMO-0001",
 
-  cEyebrow: "For businesses", cTitle: "Create your product's <em>digital passport</em>",
+  cEyebrow: "For businesses", cTitle: "Create the DPP, your product's <em>digital passport</em>",
   cLead: "Fill in three steps and watch the preview. Issuing and certification are activated on Snaproof, the infrastructure that powers the platform.",
   steps: ["Product", "Data and compliance", "Certification and QR"],
   w1t: "The product", fName: "Product name", fNamePh: "e.g. Wool jacket", fCompany: "Company", fCompanyPh: "e.g. Example Company S.r.l.", fSector: "Sector",
@@ -2005,18 +2346,20 @@ en: {
   sf_moda: [["Fibre composition", "e.g. 80% wool, 20% polyester"], ["Country of manufacture", "e.g. Italy"]],
   sf_elettronica: [["Product category", "e.g. Household appliance"], ["Country of assembly", "e.g. Italy"]],
   sf_batterie: [["Chemistry", "e.g. Lithium-ion"], ["Capacity (kWh)", "e.g. 12"]],
+  sf_automotive: [["Component category", "e.g. Braking system"], ["Country of manufacture", "e.g. Italy"]],
+  sf_cosmesi: [["Product category", "e.g. Face cream"], ["Batch number", "e.g. L-2026-014"]],
   fMods: "Additional modules", mOrigine: "Preferential origin", mOrigineD: "Declarations and proofs for reduced duties under trade agreements.", m231: "Model 231", m231D: "Documentation for the entity's organisational model.",
   w3t: "Certification and QR", fClass: "Verification level", cr1: "credit", crN: "credits", fBody: "Certification body",
   cls_standard: ["Standard", "Basic check of the declared data."], cls_advanced: ["Advanced", "Enhanced check with attached documents."], cls_premium: ["Premium", "Full check with audit."],
   bodies: ["Demo body A", "Demo body B"],
   ppHd: "Product passport", ppDraft: "Draft · not issued", ppNoName: "[Product name]", ppFoot: "Preview: no data is saved.", ppQr: "The QR is activated by certification.",
   estT: "Indicative cost of one passport", estLine: "{c} · about €{p} pay-as-you-go", estPlat: "Plus the Passport plan from €149/month (Starter, indicative) and any modules.", finish: "Activate on Snaproof", finishNote: "Continue with activation to issue and certify the passport.",
-  actT: "Activate on Snaproof", actBtn: "Request activation", lName: "Full name", lEmail: "Work email", wlNote: "Preview: no data is saved.", wlDone: "Simulation complete: no data was saved.",
+  actT: "Request a contact", actBtn: "Send request", lName: "Full name", lEmail: "Work email", wlNote: "Preview: no data is saved.", wlDone: "Simulation complete: no data was saved.",
   ctxPass: "Passport: {n} · {s} · {c} level.", ctxPlan: "Requested plan: {p}.",
 
   pEyebrow: "For businesses", pTitle: "Join the platform: <em>plans and pricing</em>",
   pLead: "Consulting is free. Those who operate on the platform choose a showcase, passports and modules. Here are the reference prices.",
-  pNotice: "<b>Indicative prototype price list.</b> Prices for the Passport plan, credits and modules come from an internal Snaproof hypothesis not yet validated with customers. Showcase and History space have no price yet: the values shown are demo values.",
+  pNotice: "<b>Indicative prices.</b> Prices for the Passport plan, credits and modules are for reference and may change before launch. Showcase and History space have no price yet: the values shown are demo values.",
   pNoticeSrc: "VAT excluded · values subject to confirmation", billing: "Billing", monthly: "Monthly", annual: "Annual", perMonth: "€/month", billedAnnual: "billed annually (−15%)", billedMonthly: "billed monthly",
   pl_consulta: ["Consult", "For buyers, citizens, institutions and companies who want to find their way."], pl_vetrina: ["Showcase", "Present your company in its sector."],
   pl_passaporto: ["Passport", "Create, certify and make your products' passports verifiable."], pl_storia: ["History space", "Tell your brand's evolution in the History section."],
@@ -2024,8 +2367,8 @@ en: {
   plf_vetrina: ["Company profile, products and contacts", "Visibility in the sector and on the map", "Everything included in Consult"],
   plf_passaporto: ["Passport creation with QR", "Certification through a body", "Free public verification for your customers", "Add-on modules (€60–180/month)"],
   plf_storia: ["Editorial brand page", "Archives, collections and research centres", "Editing agreed with the publishing entity"],
-  plc_consulta: "Explore the platform", plc_vetrina: "Request a showcase", plc_passaporto: "Activate on Snaproof", plc_storia: "Book a space",
-  plNoteCredits: "+ credits for each passport issued", plNoteDemo: "Price to be defined", plNoteSeat: "Extra seat €25/month. Differences between plans (volumes, team) to be defined.", tier: "Size", tiers: { starter: "Starter", growth: "Growth", scale: "Scale", enterprise: "Enterprise" },
+  plc_consulta: "Start for free", plc_vetrina: "Request a showcase", plc_passaporto: "Activate on Snaproof", plc_storia: "Book a space",
+  plNoteCredits: "+ credits for each passport issued", plNoteDemo: "Price to be defined", plNoteSeat: "Extra seat €25/month. What each tier includes will be confirmed at launch.", tier: "Size", tiers: { starter: "Starter", growth: "Growth", scale: "Scale", enterprise: "Enterprise" },
   cmpEyebrow: "What is included", cmpTitle: "Free and paid, <em>item by item</em>", cmpFeat: "Feature", cmpAddable: "Add-on",
   cmpRows: ["Search, sectors and map", "Guides to rules and deadlines", "Passport verification", "AI assistant", "Company profile in a showcase", "Passport creation and certification", "Origin and Model 231 modules", "Space in the History section"],
   crEyebrow: "Credit-based passports", crTitle: "You pay <em>for what you issue</em>", crLead: "Each issued passport uses credits depending on its verification level. Verifying a passport uses no credits.",
@@ -2033,7 +2376,7 @@ en: {
   cCredits: "Credits per month", cPayg: "Pay-as-you-go", cBundle: "With a 10,000-credit bundle", cBundleLow: "Bundles start at 10,000 credits per month.", cPlatform: "Plus the Passport plan.",
   modsEyebrow: "Extensions", modsTitle: "<em>Paid</em> modules", modsLead: "Extensions that add to the Passport plan. Reference range: €60–180/month per module.", modsRange: "€60–180/month", modsTbd: "Price to be defined", notifyMe: "Notify me", modBy: "Supplied by",
   mod_origine: ["Preferential origin", "Declarations and proofs for reduced duties under trade agreements.", "Snaproof"], mod_m231: ["Model 231", "Documentation for the liability-prevention organisational model.", "Snaproof"],
-  mod_academy: ["Academy", "AI-guided assessment recommending the most suitable training path.", "MIAT"], mod_immersive: ["Immersive experiences", "Whoever scans the QR enters the product's story.", "MIAT"],
+  mod_academy: ["Academy", "AI-guided assessment that profiles needs and level and recommends the most suitable path or workshop. Training is part of the certification journey.", "MIAT"],
   leadEyebrow: "Talk to us", leadTitle: "Let's build the plan <em>on your catalogue</em>", leadD: "Leave a contact: the Snaproof team will get back to you to size passports, modules and showcase.", leadBtn: "Request a contact", fCompany2: "Company",
 
   kEyebrow: "Compliance area", kTitle: "European and Italian rules, <em>explained for manufacturers</em>",
@@ -2049,6 +2392,8 @@ en: {
   n_batterie: ["Battery passport", "Reg. (EU) 2023/1542", "Requires a digital passport with QR for electric-vehicle batteries, light means of transport batteries and industrial batteries above 2 kWh.", "From 18 February 2027. Due diligence from 18 August 2027 (Reg. (EU) 2025/1561).", "Sector guide (free). Passport creation (paid)."],
   n_tessileDA: ["Delegated act for textiles", "ESPR · COM(2025) 187", "The Commission plans to set ecodesign requirements for textile products through a delegated act.", "Expected in Q3–Q4 2027. Date not yet fixed.", "Sector guide (free) and passport data preparation."],
   n_tessileDPP: ["Passport for textiles", "ESPR · delegated act in preparation", "The passport obligation for textile products will follow the delegated act.", "Expected around 2029: Commission estimate, not binding.", "Passport data preparation (paid)."],
+  n_elv: ["Vehicles: circularity and end of life", "Reg. (EU) 2026/1738", "Replaces the End-of-Life Vehicles Directive and introduces circularity requirements in vehicle design, minimum recycled content and a digital vehicle circularity passport.", "In force since 13 August 2026. The digital circularity passport applies from 2032.", "Sector guide (free) and preparation of component and battery data."],
+  n_cosm: ["Cosmetic products", "Reg. (EC) 1223/2009", "Governs safety, labelling and information for cosmetic products placed on the EU market. It does not provide for a digital passport.", "Applicable since 11 July 2013. No EU digital passport obligation is currently set for cosmetics.", "The digital passport is voluntary: authenticity and batch traceability (paid)."],
   n_l206: ["Made in Italy law", "Law of 27 December 2023, no. 206", "Comprehensive provisions for the enhancement, promotion and protection of Made in Italy.", "In force since 11 January 2024.", "Guide for companies (free). The platform does not grant marks or certify Italian origin."],
   n_m231: ["Administrative liability of entities", "Legislative Decree 231 of 8 June 2001", "Governs entities' liability for offences committed in their interest and the organisational models that prevent it.", "In force since 4 July 2001.", "Guide (free). Model 231 module (paid, in preparation)."],
   n_origine: ["Origin of goods", "Reg. (EU) No 952/2013", "Union Customs Code: sets the rules of origin of goods. Preferential origin gives access to reduced duties under individual trade agreements.", "Applicable since 1 May 2016.", "Guide (free). Preferential origin module (paid, in preparation)."],
@@ -2062,7 +2407,7 @@ en: {
 
   fAbout: "The portal dedicated to Made in Italy: companies, history, insight and compliance.", fAreas: "Areas", fTools: "Tools", fPlatform: "Platform",
   fAboutUs: "About us", fContacts: "Contacts", fPrivacy: "Privacy", fTerms: "Terms of use", fCookies: "Cookies", fPowered: "Powered by",
-  fEditor: "© 2026 MADEinITALY.it · Publisher: ", fEditorTbd: "[publishing entity to be defined]", stubToast: "Preview: this page is not part of this design round.", wlSoon: "We will let you know when it is available (simulation).",
+  fEditor: "© 2026 MADEinITALY.it · Publisher: ", fEditorTbd: "[publishing entity to be defined]", stubToast: "This section is in preparation.", wlSoon: "We will let you know when it is available (simulation).",
 
   chatOpen: "Assistant", chatTitle: "Assistant", chatSub: "Artificial intelligence system", chatPh: "Type a question…", chatSend: "Send",
   chatFoot: "You are talking to an AI system (Reg. EU 2024/1689, art. 50). Answers may contain errors and are not legal advice.",
@@ -2071,7 +2416,7 @@ en: {
   chatLive: "AI · Claude", chatSim: "Simulated answer", chatYou: "You", chatBot: "Assistant", chatErr: "The assistant is not available right now. Please try again shortly.", chatGo: "Go to", chatAriaClose: "Close the assistant",
   tp_passaporto: "Product passport", tp_ia: "Transparency and AI", tp_consumatori: "Consumers and claims", tp_origine: "Origin and customs", tp_italia: "Italy: mark and liability",
   kCount1: "1 fact sheet", kCountN: "{n} fact sheets", kAppliesTo: "Applies to", kAllSectors: "All sectors", crumbHome: "Home", crumbAria: "Breadcrumb", subAria: "In this area",
-  routeName: { home: "Home", verifica: "Verify a passport", crea: "Create a passport", prezzi: "Plans and pricing", conformita: "Regulations and deadlines", settori: "Sectors and territories", storia: "History and culture" }
+  routeName: { home: "Home", verifica: "Verify DPP", crea: "Create a DPP", prezzi: "Plans and pricing", conformita: "Regulations and deadlines", settori: "Companies and sectors", storia: "History and culture", innovazione: "AI Hub and Academy" }
 }
 };
 
@@ -2089,7 +2434,6 @@ var C = {
       business: ["Servizi alle imprese", "Annunci, ricerca di controparti e servizi per fare affari in Italia."],
       vetrine: ["Vetrine", "Spazi di presentazione per aziende e brand, per settore."],
       shopping: ["Shopping", "Acquisto online di prodotti italiani."],
-      aste: ["Aste", "Aste tra privati di memorabilia italiana."],
       history: ["Storia dei settori", "Distretti, filiere e mestieri nella loro evoluzione."],
       people: ["Persone", "Imprenditori, designer e artigiani."],
       lifestyle: ["Lifestyle", "Ristoranti, hotel, acquisti e appuntamenti consigliati."],
@@ -2098,10 +2442,11 @@ var C = {
       review: ["Review", "Rassegne periodiche per capire cosa è cambiato."],
       economy: ["Economia", "Analisi sull'economia dei settori."],
       finance: ["Finanza", "Finanziamenti, bandi e strumenti per le imprese."],
-      ai: ["Hub AI per il manifatturiero", "Insight e casi d'uso sull'intelligenza artificiale per PMI e brand."],
+      ai: ["Hub AI per il manifatturiero", "Insight, casi d'uso e iniziative sull'intelligenza artificiale per PMI e brand."],
+      academy: ["Academy", "Assessment guidato dall'IA e percorsi formativi dentro il percorso di certificazione."],
       dpp: ["Passaporto digitale di prodotto", "Cos'è, a chi serve e come prepararsi al DPP europeo."],
-      verifica: ["Verifica un passaporto", "Controlla un codice o un QR e vedi chi lo ha verificato."],
-      crea: ["Crea un passaporto", "Genera, certifica e rendi verificabile il passaporto di un prodotto."],
+      verifica: ["Verifica DPP", "Controlla un codice o un QR e vedi chi lo ha verificato."],
+      crea: ["Crea un DPP", "Genera, certifica e rendi verificabile il passaporto di un prodotto."],
       origine: ["Origine preferenziale", "Regole di origine e dazi ridotti negli accordi commerciali."],
       m231: ["Modello 231", "Il modello organizzativo per la responsabilità degli enti."],
       l206: ["Legge 206/2023", "Valorizzazione, promozione e tutela del Made in Italy."],
@@ -2111,7 +2456,9 @@ var C = {
     sectors: {
       moda: ["Tessile e Moda", "Filiera tessile e abbigliamento: vetrine di brand, storia della moda italiana, norme sul passaporto digitale.", ["Vetrine", "Storia", "DPP"]],
       elettronica: ["Elettronica e apparecchiature elettriche", "Produttori, componenti e apparecchiature: requisiti di prodotto, conformità e verifica.", ["Vetrine", "Conformità", "Eventi"]],
-      batterie: ["Batterie", "Batterie e accumulatori: passaporto digitale, tracciabilità e riferimenti normativi.", ["Vetrine", "DPP", "Notizie"]]
+      batterie: ["Batterie", "Batterie e accumulatori: passaporto digitale, tracciabilità e riferimenti normativi.", ["Vetrine", "DPP", "Notizie"]],
+      automotive: ["Automotive", "Componenti e veicoli: batterie dei veicoli elettrici, circolarità e fine vita, passaporto digitale del veicolo (obbligo dal 2032).", ["Vetrine", "DPP", "Notizie"]],
+      cosmesi: ["Cosmesi", "Prodotti cosmetici: autenticità, tracciabilità dei lotti e informazioni al consumatore. Il passaporto digitale è volontario.", ["Vetrine", "Autenticità", "Eventi"]]
     }
   },
   en: {
@@ -2126,7 +2473,6 @@ var C = {
       business: ["Business services", "Postings, counterpart search and services to do business in Italy."],
       vetrine: ["Showcases", "Presentation spaces for companies and brands, by sector."],
       shopping: ["Shopping", "Online purchase of Italian products."],
-      aste: ["Auctions", "Peer-to-peer auctions of Italian memorabilia."],
       history: ["Sector history", "Districts, supply chains and crafts through their evolution."],
       people: ["People", "Entrepreneurs, designers and artisans."],
       lifestyle: ["Lifestyle", "Recommended restaurants, hotels, shopping and events."],
@@ -2135,10 +2481,11 @@ var C = {
       review: ["Review", "Periodic round-ups to understand what has changed."],
       economy: ["Economy", "Analysis of sector economics."],
       finance: ["Finance", "Funding, calls and instruments for companies."],
-      ai: ["AI hub for manufacturing", "Insights and use cases on artificial intelligence for SMEs and brands."],
+      ai: ["AI hub for manufacturing", "Insights, use cases and initiatives on artificial intelligence for SMEs and brands."],
+      academy: ["Academy", "AI-guided assessment and training paths within the certification journey."],
       dpp: ["Digital product passport", "What it is, who needs it and how to prepare for the EU DPP."],
-      verifica: ["Verify a passport", "Check a code or a QR and see who verified it."],
-      crea: ["Create a passport", "Generate, certify and make a product's passport verifiable."],
+      verifica: ["Verify DPP", "Check a code or a QR and see who verified it."],
+      crea: ["Create a DPP", "Generate, certify and make a product's passport verifiable."],
       origine: ["Preferential origin", "Rules of origin and reduced duties under trade agreements."],
       m231: ["Model 231", "The organisational model for entities' liability."],
       l206: ["Law 206/2023", "Enhancement, promotion and protection of Made in Italy."],
@@ -2148,7 +2495,9 @@ var C = {
     sectors: {
       moda: ["Textiles & Fashion", "Textile and apparel supply chain: brand showcases, the history of Italian fashion, digital passport rules.", ["Showcases", "History", "DPP"]],
       elettronica: ["Electronics & electrical equipment", "Manufacturers, components and equipment: product requirements, compliance and verification.", ["Showcases", "Compliance", "Events"]],
-      batterie: ["Batteries", "Batteries and accumulators: digital passport, traceability and regulatory references.", ["Showcases", "DPP", "News"]]
+      batterie: ["Batteries", "Batteries and accumulators: digital passport, traceability and regulatory references.", ["Showcases", "DPP", "News"]],
+      automotive: ["Automotive", "Components and vehicles: electric-vehicle batteries, circularity and end of life, the vehicle digital passport (mandatory from 2032).", ["Showcases", "DPP", "News"]],
+      cosmesi: ["Cosmetics", "Cosmetic products: authenticity, batch traceability and consumer information. The digital passport is voluntary.", ["Showcases", "Authenticity", "Events"]]
     }
   }
 };
@@ -2158,6 +2507,8 @@ var C = {
 const root = document.documentElement;
 root.classList.add("miit-js");
 const RM = !!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+var CAR = { i: 0, vis: 3, timer: null, hover: false, focus: false, user: false, inView: true, ready: false };
+var HS = { ready: false, ws: [] };
 const $ = (s, r) => (r || document).querySelector(s);
 const $$ = (s, r) => Array.prototype.slice.call((r || document).querySelectorAll(s));
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
@@ -2173,7 +2524,7 @@ const fill = (s, o) => s.replace(/\{(\w+)\}/g, (m, k) => (o[k] != null ? o[k] : 
 /* ====================== STATO ====================== */
 let LANG = ((navigator.language || "it").toLowerCase().indexOf("it") === 0) ? "it" : "en";
 let route = "home", sector = "moda", region = null, vState = null, openKey = null, histTab = "history", tier = "starter", bill = "m", normTopic = "all", normFocus = null, tlSel = null;
-let lastFocus = null;
+let lastFocus = null, anchorGo = null;
 const t = k => T[LANG][k];
 const CL = () => C[LANG];
 const TAGS = { free: ["miit-badge--free", "free"], paid: ["miit-badge--paid", "paid"], module: ["miit-badge--module", "module"], soon: ["miit-badge--soon", "soon"] };
@@ -2229,6 +2580,7 @@ function showRoute(r, focus) {
   window.scrollTo(0, 0);
   observe();
   if (focus !== false) { const h = $("#v-" + r + " h1"); if (h) h.focus({ preventScroll: true }); }
+  if (anchorGo) { const an = $("#" + anchorGo); anchorGo = null; if (an) setTimeout(() => an.scrollIntoView({ block: "start", behavior: RM ? "auto" : "smooth" }), 80); }
   if (r === "conformita" && normFocus) {
     const el = $("#norm-" + normFocus); normFocus = null;
     if (el) { el.classList.add("is-focus"); setTimeout(() => el.scrollIntoView({ block: "center", behavior: RM ? "auto" : "smooth" }), 80); }
@@ -2237,7 +2589,8 @@ function showRoute(r, focus) {
 function nav(r, o) {
   o = o || {};
   if (o.tab) histTab = o.tab;
-  if (o.sector) sector = o.sector;
+  if (o.sector) { sector = o.sector; dall = false; region = null; }
+  if (o.anchor) anchorGo = o.anchor;
   if (o.normGo) { const nn = NORM(o.normGo); if (nn) { normTopic = nn.topic; normFocus = o.normGo; } }
   if (ROUTES.indexOf(r) < 0) return;
   if (parseHash() === r) { showRoute(r); } else { location.hash = r; }
@@ -2254,6 +2607,7 @@ function renderView(r) {
   else if (r === "conformita") { renderTimeline(); renderNorms(); }
   else if (r === "settori") { renderSectors(); renderPanel(); }
   else if (r === "storia") { renderHist(); }
+  else if (r === "innovazione") { renderInn(); }
 }
 
 /* ====================== NAV + MEGA ====================== */
@@ -2282,7 +2636,7 @@ function renderCtx() {
 }
 function itemLink(it) {
   const c = CL().items[it.id];
-  const attr = it.soon ? 'data-soon="' + it.id + '"' : it.to ? 'data-nav="' + it.to + '"' + (it.tab ? ' data-tab="' + it.tab + '"' : "") : 'data-stub="1"';
+  const attr = it.soon ? 'data-soon="' + it.id + '"' : it.to ? 'data-nav="' + it.to + '"' + (it.tab ? ' data-tab="' + it.tab + '"' : "") + (it.anchor ? ' data-anchor="' + it.anchor + '"' : "") : 'data-stub="1"';
   return '<li class="miit-mega__item"><a class="miit-mega__link" href="#' + (it.to || "") + '" ' + attr + '><span class="miit-mega__name">' + esc(c[0]) + " " + badge(it.tag) + '</span><span class="miit-mega__desc">' + esc(c[1]) + "</span></a></li>";
 }
 function megaHTML(key) {
@@ -2331,13 +2685,17 @@ function renderHome() {
   $("#fns").innerHTML = fns.map(f => '<a class="fn" href="#' + f.to + '" data-nav="' + f.to + '"><div class="fn__top"><svg class="fn__ic" viewBox="0 0 40 40" aria-hidden="true"><use href="#' + f.ic + '"/></svg><span>' + badge(f.tag) + '</span></div><h3 class="fn__t">' + esc(t("fn_" + f.id + "_t")) + '</h3><p class="fn__d">' + esc(t("fn_" + f.id + "_d")) + "</p>" + (f.id === "crea" ? '<p class="fn__price">' + esc(t("fn_crea_p")) + "</p>" : "") + '<span class="fn__go">' + esc(t("fn_" + f.id + "_c")) + icon("i-arrow") + "</span></a>").join("");
   const li = x => '<li>' + icon("i-check") + "<span>" + esc(x) + "</span></li>";
   $("#freeSplit").innerHTML =
-    '<article class="miit-price"><div class="miit-price__head"><h3 class="miit-price__name">' + esc(t("freeL")) + "</h3>" + badge("free") + '</div><ul class="miit-price__list" style="border-top:0;padding-top:0">' + t("freeList").map(li).join("") + '</ul><div class="miit-price__cta"><a class="miit-btn miit-btn--secondary" href="#settori" data-nav="settori">' + esc(t("fn_scopri_c")) + "</a></div></article>" +
+    '<article class="miit-price"><div class="miit-price__head"><h3 class="miit-price__name">' + esc(t("freeL")) + "</h3>" + badge("free") + '</div><ul class="miit-price__list" style="border-top:0;padding-top:0">' + t("freeList").map(li).join("") + '</ul><div class="miit-price__cta"><a class="miit-btn miit-btn--secondary" href="#verifica" data-nav="verifica">' + esc(t("fn_verifica_c")) + "</a></div></article>" +
     '<article class="miit-price miit-price--featured"><div class="miit-price__head"><h3 class="miit-price__name">' + esc(t("bizL")) + "</h3>" + badge("paid") + '</div><ul class="plist">' + t("bizRows").map(r => "<li><span>" + esc(r[0]) + '</span><span class="mono" style="font-family:var(--font-mono);font-size:13px;white-space:nowrap">' + esc(r[1]) + "</span></li>").join("") + '</ul><p class="miit-price__note">' + esc(t("bizFoot")) + '</p><div class="miit-price__cta"><div class="row"><a class="miit-btn miit-btn--primary" href="#prezzi" data-nav="prezzi">' + esc(t("bizCta")) + '</a><button type="button" class="miit-btn miit-btn--text" data-lead="' + esc(fill(t("ctxPlan"), { p: t("bizTalk") })) + '">' + esc(t("bizTalk")) + "</button></div></div></article>";
   $("#homeSectors").innerHTML = SECTORS.map(s => { const c = CL().sectors[s.id]; return '<a class="miit-sector" href="#settori" data-nav="settori" data-sector="' + s.id + '" style="text-decoration:none"><svg class="miit-icon miit-sector__icon" aria-hidden="true"><use href="#' + s.icon + '"/></svg><span class="miit-sector__title">' + esc(c[0]) + '</span><span class="miit-sector__desc">' + esc(c[1]) + '</span><ul class="miit-sector__tags">' + c[2].map(x => "<li>" + esc(x) + "</li>").join("") + "</ul></a>"; }).join("");
   $("#normStrip").innerHTML = ["espr", "registro", "batterie", "ai", "empco", "l206", "m231"].map(id => { const n = NORM(id); return '<li><a href="#conformita" data-nav="conformita" data-norm-go="' + id + '">' + esc(t("n_" + id)[1]) + "<small>" + esc(statusLabel(n)) + "</small></a></li>"; }).join("");
   const ai = [["imprese", "prezzi", "paid"], ["storia", "storia", "free"], ["informazione", null, "free"], ["conformita", "conformita", "mixed"], ["eventi", null, "free"]];
   $("#areasIndex").innerHTML = ai.map((a, i) => '<a href="#' + (a[1] || "") + '" ' + (a[1] ? 'data-nav="' + a[1] + '"' : 'data-stub="1"') + (a[0] === "storia" ? " data-quiet" : "") + '><span class="ai-n">0' + (i + 1) + '</span><span class="ai-t">' + esc(CL().areas[a[0]][0]) + '</span><span class="ai-d">' + esc(CL().areas[a[0]][1]) + '</span><span class="ai-b">' + badge(a[2]) + "</span></a>").join("");
+  renderInnCards();
   renderExplain();
+  renderInt();
+  initHs();
+  carRefresh();
 }
 
 /* ---- spiegazione animata ---- */
@@ -2379,7 +2737,7 @@ function renderVerifyStatic() {
   $("#flow").innerHTML = t("flow").map((f, i) => '<div class="flow__item miit-reveal">' + fl[i] + '<h3 class="flow__t">' + esc(f[0]) + '</h3><p class="flow__d">' + esc(f[1]) + "</p></div>").join("");
   $("#chkList").innerHTML = t("chk").map(x => "<li>" + icon("i-check") + "<span>" + esc(x) + "</span></li>").join("");
 }
-function sealSvg() { return '<span class="miit-powered"><span>' + esc(t("fPowered")) + '</span> <svg viewBox="22.3 -4.3 214.9 215.3" aria-hidden="true"><use href="#sp-mark"/></svg> <b>Snaproof</b></span>'; }
+function sealSvg() { return '<span class="miit-powered"><span>' + esc(t("fPowered")) + '</span> <svg viewBox="22.3 -4.3 214.9 215.3" aria-hidden="true"><use href="#sp-mark"/></svg> <b>Snaproof<sup class="tm">™</sup></b></span>'; }
 function renderVerify() {
   const out = $("#vOut");
   $("#vCta").hidden = !vState;
@@ -2503,7 +2861,7 @@ function calcOut() {
   $("#cOut").innerHTML = '<span class="eyebrow miit-caps miit-eyebrow">' + esc(t("cCredits")) + '</span><div class="calc__big">' + num(cr) + '</div><div class="calc__bar" aria-hidden="true"><i style="width:' + Math.min(100, cr / 100) + '%"></i></div><dl class="miit-norm__when" style="border-top:1px solid var(--rule)"><dt>' + esc(t("cPayg")) + "</dt><dd><b>" + esc(eur(Math.round(cr * CREDIT.payg))) + "</b> / " + esc(LANG === "it" ? "mese" : "month") + "</dd><dt>" + esc(t("cBundle")) + "</dt><dd>" + (hasB ? "<b>" + esc(LANG === "it" ? "da " : "from ") + esc(eur(Math.round(cr * CREDIT.bundleFrom))) + "</b> / " + esc(LANG === "it" ? "mese" : "month") : esc(t("cBundleLow"))) + '</dd></dl><p class="mono-note">' + esc(t("cPlatform")) + "</p>";
 }
 function renderMods() {
-  $("#modsGrid").innerHTML = ["origine", "m231", "academy", "immersive"].map(id => { const m = t("mod_" + id), snap = m[2] === "Snaproof"; return '<article class="miit-module"><div class="miit-module__head">' + badge("paid") + badge("soon") + '</div><h3 class="miit-module__title">' + esc(m[0]) + '</h3><p class="miit-module__text">' + esc(m[1]) + '</p><p class="mono-note">' + esc(snap ? t("modsRange") : t("modsTbd")) + '</p><p class="miit-module__by"><span>' + esc(t("modBy")) + " <b>" + esc(m[2]) + '</b></span><button type="button" class="miit-btn miit-btn--text" style="font-size:14px" data-soon="' + id + '">' + esc(t("notifyMe")) + "</button></p></article>"; }).join("");
+  $("#modsGrid").innerHTML = ["origine", "m231", "academy"].map(id => { const m = t("mod_" + id), snap = m[2] === "Snaproof", prov = m[2] === "MIAT" ? (SITE.miat || t("partnerGen")) : m[2]; return '<article class="miit-module"><div class="miit-module__head">' + badge("paid") + badge("soon") + '</div><h3 class="miit-module__title">' + esc(m[0]) + '</h3><p class="miit-module__text">' + esc(m[1]) + '</p><p class="mono-note">' + esc(snap ? t("modsRange") : t("modsTbd")) + '</p><p class="miit-module__by"><span>' + esc(t("modBy")) + " <b>" + esc(prov) + "</b></span>" + (id === "academy" ? '<a class="miit-btn miit-btn--text" style="font-size:14px" href="#innovazione" data-nav="innovazione" data-anchor="hAcd">' + esc(t("acdDiscover")) + "</a>" : '<button type="button" class="miit-btn miit-btn--text" style="font-size:14px" data-soon="' + id + '">' + esc(t("notifyMe")) + "</button>") + "</p></article>"; }).join("");
 }
 
 /* ====================== CONFORMITÀ ====================== */
@@ -2548,7 +2906,116 @@ function showTlDetail() {
 }
 
 /* ====================== SETTORI + MAPPA ====================== */
+/* ====================== ELENCO IMPRESE (Settori) ====================== */
+let dq = "", dall = false;
+const nrm = x => String(x).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+const regName = id => REGIONS[id][LANG === "it" ? 0 : 1];
+function dirList() { const q = nrm(dq.trim()); return COMPANIES.filter(c => (dall || c.sec === sector) && (!region || c.reg === region) && (!q || nrm(c.name).indexOf(q) > -1)); }
+function renderDirControls() {
+  $("#dSec").innerHTML = '<option value="all">' + esc(t("dirAllSec")) + "</option>" + SECTORS.map(x => '<option value="' + x.id + '">' + esc(CL().sectors[x.id][0]) + "</option>").join("");
+  const rs = Object.keys(REGIONS).sort((a, b) => regName(a).localeCompare(regName(b), LANG));
+  $("#dReg").innerHTML = '<option value="all">' + esc(t("dirAllReg")) + "</option>" + rs.map(r => '<option value="' + r + '">' + esc(regName(r)) + "</option>").join("");
+  $("#dirCta").setAttribute("data-lead", t("dirLeadCtx"));
+}
+function renderDir() {
+  const sel = $("#dSec"); if (!sel) return;
+  sel.value = dall ? "all" : sector; $("#dReg").value = region || "all";
+  if ($("#dQ").value !== dq) $("#dQ").value = dq;
+  const L = dirList();
+  $("#dirCount").textContent = L.length === 1 ? t("dirCount1") : fill(t("dirCountN"), { n: L.length });
+  const head = "<thead><tr><th scope=\"col\">" + esc(t("dirColName")) + '</th><th scope="col">' + esc(t("dirColSec")) + '</th><th scope="col">' + esc(t("dirColReg")) + "</th></tr></thead>";
+  const body = L.length ? L.map(c => '<tr><th scope="row">' + esc(c.name) + (c.demo ? '<br><span class="miit-badge miit-badge--demo">' + esc(t("dirDemo")) + "</span>" : "") + "</th><td>" + esc(CL().sectors[c.sec][0]) + "</td><td>" + esc(regName(c.reg)) + "</td></tr>").join("") : '<tr><td colspan="3" class="empty">' + esc(t("dirNone")) + "</td></tr>";
+  $("#dirTbl").innerHTML = head + "<tbody>" + body + "</tbody>";
+}
+/* ====================== CAROSELLO SETTORI (home) ====================== */
+function carMetrics() {
+  const box = $("#secCar"); if (!box) return;
+  const v = parseInt(getComputedStyle(box).getPropertyValue("--car-vis"), 10);
+  CAR.vis = v > 0 ? v : 3;
+}
+function carMax() { return Math.max(0, SECTORS.length - CAR.vis); }
+function carGo(i, user) {
+  const tr = $("#homeSectors"); if (!tr || !tr.children.length) return;
+  carMetrics(); const max = carMax();
+  CAR.i = i > max ? 0 : i < 0 ? max : i;
+  const gap = parseFloat(getComputedStyle(tr).columnGap) || 0, step = tr.children[0].getBoundingClientRect().width + gap;
+  tr.style.transform = "translateX(" + (-CAR.i * step) + "px)";
+  $$(".miit-sector", tr).forEach((a, k) => { const on = k >= CAR.i && k < CAR.i + CAR.vis; a.tabIndex = on ? 0 : -1; a.setAttribute("aria-hidden", on ? "false" : "true"); });
+  const a = CAR.i + 1, b = Math.min(CAR.i + CAR.vis, SECTORS.length);
+  $("#carCount").textContent = fill(t(a === b ? "carCount1" : "carCount"), { a: a, b: b, n: SECTORS.length });
+  if (user) carSync();
+}
+function carSync() {
+  const run = !RM && !CAR.hover && !CAR.focus && !CAR.user && CAR.inView && !document.hidden;
+  if (run && !CAR.timer) CAR.timer = setInterval(() => carGo(CAR.i + 1, false), 4500);
+  if (!run && CAR.timer) { clearInterval(CAR.timer); CAR.timer = null; }
+}
+function carRefresh() {
+  const box = $("#secCar"); if (!box) return;
+  box.setAttribute("aria-label", t("carAria"));
+  $("#carPrev").setAttribute("aria-label", t("carPrev")); $("#carNext").setAttribute("aria-label", t("carNext"));
+  const b = $("#carPlay"); b.hidden = RM; b.setAttribute("aria-pressed", CAR.user ? "true" : "false");
+  $("span", b).textContent = CAR.user ? t("exPlay") : t("exPause"); $("use", b).setAttribute("href", CAR.user ? "#i-play" : "#i-pause");
+  if (!CAR.ready) {
+    CAR.ready = true;
+    $("#carNext").addEventListener("click", () => carGo(CAR.i + 1, true));
+    $("#carPrev").addEventListener("click", () => carGo(CAR.i - 1, true));
+    b.addEventListener("click", () => { CAR.user = !CAR.user; carRefresh(); carSync(); });
+    box.addEventListener("mouseenter", () => { CAR.hover = true; carSync(); });
+    box.addEventListener("mouseleave", () => { CAR.hover = false; carSync(); });
+    box.addEventListener("focusin", e => { CAR.focus = !!(e.target.matches && e.target.matches(":focus-visible")); carSync(); });
+    box.addEventListener("focusout", () => { CAR.focus = false; carSync(); });
+    document.addEventListener("visibilitychange", carSync);
+    window.addEventListener("resize", () => carGo(Math.min(CAR.i, carMax()), false));
+    if ("IntersectionObserver" in window) new IntersectionObserver(es => { CAR.inView = es[0].isIntersecting; carSync(); }).observe(box);
+  }
+  carGo(Math.min(CAR.i, carMax()), false); carSync();
+}
+
+/* ====================== SCENE ANIMATE (Verifica, Crea) ====================== */
+function hsSet(st, i) {
+  st.i = i; const svg = $(".hs", st.w); svg.setAttribute("data-step", i);
+  $(".sc-prog", svg).style.strokeDashoffset = String(1 - i / 2);
+  $$(".sc-st", svg).forEach((g, j) => { g.classList.toggle("is-done", j < i || (j === 2 && i === 2)); g.classList.toggle("is-now", j === i && i < 2); g.classList.toggle("is-ok", j === 2 && i === 2); });
+}
+function hsRun(st) {
+  const run = !RM && !st.user && st.inView && !document.hidden;
+  if (!run) { if (st.timer) { clearTimeout(st.timer); st.timer = null; } return; }
+  if (st.timer) return;
+  const tick = () => { hsSet(st, (st.i + 1) % 3); st.timer = setTimeout(tick, st.i === 2 ? 3200 : 1800); };
+  st.timer = setTimeout(tick, st.i === 2 ? 3200 : 1800);
+}
+function hsSyncCtl(w) {
+  const st = HS.ws.filter(s => s.w === w)[0], b = $(".hs-ctl", w); if (!st || !b) return;
+  b.hidden = RM; b.setAttribute("aria-pressed", st.user ? "true" : "false");
+  const sp = $("span", b); sp.setAttribute("data-i18n", st.user ? "exPlay" : "exPause"); sp.textContent = st.user ? t("exPlay") : t("exPause");
+  $("use", b).setAttribute("href", st.user ? "#i-play" : "#i-pause");
+}
+function initHs() {
+  $$("[data-hs]").forEach(w => { const q = $(".hs-qr", w); if (q && !q.firstChild) q.innerHTML = qrRects("hs-" + w.getAttribute("data-hs"), 7, 2.7); });
+  if (HS.ready) { $$("[data-hs]").forEach(hsSyncCtl); return; }
+  HS.ready = true;
+  $$("[data-hs]").forEach(w => {
+    const st = { w: w, i: 0, timer: null, user: false, inView: !("IntersectionObserver" in window) };
+    HS.ws.push(st); hsSet(st, RM ? 2 : 0);
+    $(".hs-ctl", w).addEventListener("click", () => { st.user = !st.user; hsSyncCtl(w); hsRun(st); });
+    if ("IntersectionObserver" in window) new IntersectionObserver(es => { st.inView = es[0].isIntersecting; hsRun(st); }).observe(w);
+    else hsRun(st);
+  });
+  document.addEventListener("visibilitychange", () => HS.ws.forEach(hsRun));
+  $$("[data-hs]").forEach(hsSyncCtl);
+}
+
+/* ====================== INTEGRAZIONE (pagina Crea) ====================== */
+function renderInt() {
+  if (!$("#intFlow")) return;
+  $("#intFlow").innerHTML = t("intFlow").map((c, i) => '<li class="int-flow__c"><span class="eyebrow miit-caps miit-eyebrow">' + esc(c[0]) + "</span><b>" + esc(c[1]) + '</b><span class="body-sm miit-muted">' + esc(c[2]) + "</span>" + (i < 3 ? '<span class="int-flow__a" aria-hidden="true">' + icon("i-arrow") + "</span>" : "") + "</li>").join("");
+  $("#intList").innerHTML = t("intList").map(x => "<li>" + icon("i-check") + "<span>" + esc(x) + "</span></li>").join("");
+  $("#intSteps").innerHTML = [1, 2].map(n => '<li class="int-step"><span class="int-step__n">0' + n + '</span><h3 class="h3">' + esc(t("intS" + n + "t")) + '</h3><p class="body-sm miit-muted">' + esc(t("intS" + n + "d")) + '</p><button type="button" class="miit-btn ' + (n === 1 ? "miit-btn--primary" : "miit-btn--secondary") + '" data-lead="' + esc(t("intCtx" + n)) + '">' + esc(t("intS" + n + "b")) + "</button></li>").join("");
+}
+
 function renderSectors() {
+  renderDirControls();
   $("#sectorCards").innerHTML = SECTORS.map(s => { const c = CL().sectors[s.id]; return '<button type="button" class="miit-sector" data-sector="' + s.id + '" aria-pressed="' + (s.id === sector) + '"><svg class="miit-icon miit-sector__icon" aria-hidden="true"><use href="#' + s.icon + '"/></svg><span class="miit-sector__title">' + esc(c[0]) + '</span><span class="miit-sector__desc">' + esc(c[1]) + '</span><ul class="miit-sector__tags">' + c[2].map(x => "<li>" + esc(x) + "</li>").join("") + "</ul></button>"; }).join("");
 }
 function renderPanel() {
@@ -2558,7 +3025,7 @@ function renderPanel() {
   const lv = DEMO_LEVELS[sector];
   $$(".miit-map__r").forEach(p => p.setAttribute("data-level", lv[p.getAttribute("data-id")] || 0));
   $("#legend").innerHTML = '<li class="miit-legend__title">' + esc(t("legendTitle")) + "</li>" + [0, 1, 2, 3].map(n => '<li><span class="miit-legend__sw" data-level="' + n + '"></span>' + esc(t("lv" + n)) + "</li>").join("");
-  labelRegions(); renderRegion();
+  labelRegions(); renderRegion(); renderDir();
 }
 function renderRegion() {
   const el = $("#panelRegion");
@@ -2567,7 +3034,7 @@ function renderRegion() {
   el.innerHTML = '<div class="mapnote"><p class="eyebrow miit-caps miit-eyebrow">' + esc(t("regionTitle")) + '</p><span class="miit-badge miit-badge--demo">' + esc(t("demoData")) + '</span></div><h3 class="h3">' + esc(REGIONS[region][LANG === "it" ? 0 : 1]) + '</h3><p class="region__level">' + esc(t("regionRes")) + ": " + esc(t("lv" + lvl)) + '</p><p class="body-sm miit-muted">' + esc(t("regionNote")) + "</p>";
 }
 function setSector(id) {
-  sector = id; region = null;
+  sector = id; region = null; dall = false;
   $$(".miit-sector[data-sector]").forEach(b => b.setAttribute("aria-pressed", b.getAttribute("data-sector") === id ? "true" : "false"));
   $$(".miit-map__r").forEach(p => p.setAttribute("aria-pressed", "false"));
   renderPanel();
@@ -2576,7 +3043,7 @@ function setRegion(id) {
   region = id; $$(".miit-map__r").forEach(p => p.setAttribute("aria-pressed", p.getAttribute("data-id") === id ? "true" : "false"));
   const sel = $('.miit-map__r[data-id="' + id + '"]');
   if (sel && sel.parentNode.lastElementChild !== sel) { const had = document.activeElement === sel; sel.parentNode.appendChild(sel); if (had) sel.focus({ preventScroll: true }); }
-  renderRegion();
+  renderRegion(); renderDir();
 }
 function initMap() {
   $$(".miit-map__r").forEach(p => {
@@ -2599,11 +3066,44 @@ function renderHist() {
   pane.innerHTML = '<p class="body-lg lead" style="margin-bottom:var(--space-5)">' + esc(h[0]) + '</p><div class="miit-grid miit-grid--3">' + h[1].map(c => '<article class="hist-card"><div class="hist-ph">' + esc(t("phDemo")) + '</div><div class="hist-ornament"></div><h3>' + esc(c[0]) + '</h3><p class="body-sm miit-muted">' + esc(c[1]) + "</p></article>").join("") + '</div><p style="margin-top:var(--space-6)"><a class="link-arrow" href="#storia" data-nav="storia" data-tab="brand">' + esc(t("htab").brand) + icon("i-arrow") + "</a></p>";
 }
 
+
+/* ====================== HUB AI + ACADEMY (moduli erogati da MIAT) ====================== */
+const providerShort = () => SITE.miat ? fill(t("innBy"), { p: SITE.miat }) : t("innByNeutral");
+const providerFull = () => fill(t("iBy"), { p: SITE.miat ? SITE.miat + " (Multiverse Institute for Arts and Technology)" : t("partnerGen") });
+function renderInnCards() {
+  const li = x => "<li>" + icon("i-check") + "<span>" + esc(x) + "</span></li>";
+  const card = (k, anchor) => '<article class="inn"><div class="inn__top">' + badge("module") + '<span class="inn__by">' + esc(providerShort()) + '</span></div><h3 class="inn__t">' + esc(t(k + "T")) + '</h3><p class="inn__d">' + esc(t(k + "D")) + '</p><ul class="inn__list">' + t(k + "L").map(li).join("") + '</ul><a class="link-arrow" href="#innovazione" data-nav="innovazione" data-anchor="' + anchor + '"><span>' + esc(t(k + "C")) + "</span>" + icon("i-arrow") + "</a></article>";
+  $("#innCards").innerHTML = card("innHub", "hHub") + card("innAcd", "hAcd");
+}
+const AC = { sec: null, lvl: null, who: null };
+function renderInn() {
+  $("#iBy").textContent = providerFull();
+  $("#hubGrid").innerHTML = ["insight", "cases", "events"].map(k => {
+    const c = t("hub_" + k);
+    return '<article class="hub-col"><p class="hub-col__k">' + esc(c[0]) + '</p><h3 class="hub-col__t">' + esc(c[1]) + '</h3><p class="hub-col__d body-sm">' + esc(c[2]) + '</p><ul class="plist">' + c[3].map(x => '<li><span class="tt">' + esc(x) + '</span><span class="miit-badge miit-badge--demo">' + esc(t("phDemo")) + "</span></li>").join("") + "</ul></article>";
+  }).join("");
+  $("#hubSoon").innerHTML = '<li><span class="tt">' + esc(t("hubSoon")) + "</span>" + badge("soon") + "</li>";
+  const q = (id, label, opts) => '<fieldset><legend>' + esc(label) + '</legend>' + opts.map(o => '<label class="opt"><input type="radio" name="ac_' + id + '" value="' + o[0] + '"' + (AC[id] === o[0] ? " checked" : "") + '><span><b>' + esc(o[1]) + "</b>" + (o[2] ? "<span>" + esc(o[2]) + "</span>" : "") + "</span></label>").join("") + "</fieldset>";
+  $("#acdForm").innerHTML =
+    q("sec", t("acdQ1"), SECTORS.map(x => [x.id, CL().sectors[x.id][0]])) +
+    q("lvl", t("acdQ2"), ACD_LEVELS.map(l => [l, t("acdL_" + l)[0], t("acdL_" + l)[1]])) +
+    q("who", t("acdQ3"), [["me", t("acdW_me")[0], t("acdW_me")[1]], ["team", t("acdW_team")[0], t("acdW_team")[1]]]);
+  $("#innCtaBtn").setAttribute("data-lead", t("innLeadCtx")); $("#acdOut").setAttribute("aria-label", t("acdOutEyebrow"));
+  renderAcdOut();
+}
+function renderAcdOut() {
+  const el = $("#acdOut"); if (!el) return;
+  const done = AC.sec && AC.lvl && AC.who;
+  if (!done) { el.innerHTML = '<p class="eyebrow miit-caps miit-eyebrow">' + esc(t("acdOutEyebrow")) + '</p><div class="acd__empty">' + esc(t("acdEmpty")) + "</div>"; return; }
+  const lv = t("acdR_" + AC.lvl), fmt = t("acdF_" + AC.who), secN = CL().sectors[AC.sec][0];
+  el.innerHTML = '<p class="eyebrow miit-caps miit-eyebrow">' + esc(t("acdOutEyebrow")) + '</p><h3 id="acdOutT">' + esc(lv[0]) + '</h3><div><span class="miit-badge miit-badge--module">' + esc(fmt[0]) + '</span> <span class="miit-badge miit-badge--demo">' + esc(t("phDemo")) + "</span></div><p>" + esc(lv[1]) + "</p><dl><dt>" + esc(t("dSector")) + "</dt><dd>" + esc(secN) + "</dd><dt>" + esc(t("acdFormat")) + "</dt><dd>" + esc(fmt[1]) + '</dd></dl><p class="mono-note">' + esc(t("acdSim")) + '</p><div class="row"><button type="button" class="miit-btn miit-btn--primary" data-lead="' + esc(fill(t("acdLeadCtx"), { n: lv[0], f: fmt[0], s: secN })) + '">' + esc(t("acdCta")) + '</button><a class="link-arrow" href="#crea" data-nav="crea"><span>' + esc(t("ctaCreate")) + "</span>" + icon("i-arrow") + "</a></div>";
+}
+
 /* ====================== FOOTER ====================== */
 function renderFooter() {
   const rt = { imprese: "prezzi", storia: "storia", conformita: "conformita" };
   $("#fAreas").innerHTML = AREAS.map(a => '<li><a href="#' + (rt[a.id] || "") + '" ' + (rt[a.id] ? 'data-nav="' + rt[a.id] + '"' : 'data-stub="1"') + ">" + esc(CL().areas[a.id][0]) + "</a></li>").join("");
-  $("#fTools").innerHTML = [["verifica", "uVerify"], ["crea", "ctaCreate"], ["prezzi", "pg_prezzi"], ["conformita", "pg_conformita"], ["settori", "pg_settori"]].map(x => '<li><a href="#' + x[0] + '" data-nav="' + x[0] + '">' + esc(t(x[1])) + "</a></li>").join("");
+  $("#fTools").innerHTML = [["verifica", "uVerify"], ["crea", "ctaCreate"], ["prezzi", "pg_prezzi"], ["conformita", "pg_conformita"], ["settori", "pg_settori"], ["innovazione", "pg_innovazione"]].map(x => '<li><a href="#' + x[0] + '" data-nav="' + x[0] + '">' + esc(t(x[1])) + "</a></li>").join("");
   $("#fPlatform").innerHTML = ["fAboutUs", "fContacts", "fPrivacy", "fTerms", "fCookies"].map(k => '<li><a href="#" data-stub="1">' + esc(t(k)) + "</a></li>").join("");
   $("#fEditor").innerHTML = esc(t("fEditor")) + (SITE.editor ? esc(SITE.editor) : '<span style="color:var(--on-navy)">' + esc(t("fEditorTbd")) + "</span>");
 }
@@ -2616,6 +3116,8 @@ function toast(msg) { const el = $("#toast"); el.textContent = msg; el.classList
 let chatOpen = false, chatHist = [], chatBusy = false, chatAbort = null, sampleFn;
 const SIM = {
   it: {
+    snaproof: "Snaproof è la piattaforma di certificazione digitale su cui gira questo portale. Aiuta le imprese a creare, gestire e verificare processi e passaporti digitali di prodotto (DPP): genera il DPP e il QR, certifica le fasi di produzione con un sigillo digitale registrato in modo non modificabile, tiene i dati in un unico posto e permette a chiunque di verificare con una scansione, anche offline. Si integra con i sistemi aziendali tramite API e SDK.",
+    integr: "Snaproof offre API e SDK per collegare ERP, gestionali e sistemi di produzione: i DPP si generano dai dati che hai già. È disponibile come SaaS, on-premises o white-label ed è interoperabile con gli standard GS1. Dalla pagina Crea puoi parlare con un tecnico o richiedere l'accesso alle API.",
     dpp: "Il passaporto digitale di prodotto (DPP) è un record digitale che raccoglie i dati di un prodotto lungo la filiera ed è consultabile con un QR. Il quadro europeo è il regolamento ESPR (UE) 2024/1781; i requisiti arrivano categoria per categoria. Nella sezione Norme trovi date e testi ufficiali.",
     price: "Il listino è indicativo. Consultare e verificare è gratuito. Il piano Passaporto parte da 149 €/mese (Starter) più crediti: 1 credito per un passaporto Standard, 3 Advanced, 8 Premium, a 0,60 € a consumo (da 0,45 a 0,10 € con i bundle). Vetrina e Spazio Storia non hanno ancora un prezzo definito.",
     free: "Sono gratuiti: ricerca, settori e mappa, verifica dei passaporti, guide su norme e scadenze, lettura di Storia e notizie, assistente IA. Sono a pagamento: vetrina, creazione e certificazione dei passaporti, moduli (Origine, Modello 231) e Spazio Storia.",
@@ -2625,9 +3127,12 @@ const SIM = {
     verify: "Per verificare un passaporto inserisci il codice o scansiona il QR: vedi l'esito e l'ente certificatore. La verifica è gratuita.",
     create: "Per creare un passaporto compili tre passaggi (prodotto, dati e conformità, certificazione e QR) e vedi l'anteprima. L'emissione si attiva su Snaproof, con piano e crediti.",
     n231: "Il Modello 231 riguarda la responsabilità amministrativa degli enti (D.Lgs. 231/2001). Nella sezione Norme trovi la guida gratuita; il modulo dedicato è a pagamento e in preparazione.",
+    academy: "L'Hub AI raccoglie insight, casi d'uso e iniziative sull'IA nel manifatturiero per PMI e brand. L'Academy usa un assessment guidato dall'IA per capire bisogni e livello e consigliare il percorso o il workshop più adatto: la formazione fa parte del percorso di certificazione. Sono moduli erogati da MIAT; i contenuti mostrati sono dimostrativi.",
     none: "In questa anteprima non ho una risposta precisa. Prova con prezzi, norme per settore, verifica o creazione di un passaporto."
   },
   en: {
+    snaproof: "Snaproof is the digital certification platform that powers this portal. It helps companies create, manage and verify processes and digital product passports (DPP): it generates the DPP and QR, certifies production steps with a digital seal recorded in a tamper-proof way, keeps data in one place and lets anyone verify with a scan, even offline. It integrates with company systems through APIs and SDKs.",
+    integr: "Snaproof offers APIs and SDKs to connect ERP, business software and production systems: DPPs are generated from the data you already have. It is available as SaaS, on-premises or white-label and is interoperable with GS1 standards. From the Create page you can talk to an engineer or request API access.",
     dpp: "The digital product passport (DPP) is a digital record of a product's data along its supply chain, reachable through a QR. The European framework is the ESPR, Regulation (EU) 2024/1781; requirements arrive category by category. The Rules section has dates and official texts.",
     price: "The price list is indicative. Consulting and verifying are free. The Passport plan starts at €149/month (Starter) plus credits: 1 credit for a Standard passport, 3 Advanced, 8 Premium, at €0.60 pay-as-you-go (€0.45 down to €0.10 with bundles). Showcase and History space have no defined price yet.",
     free: "Free: search, sectors and map, passport verification, guides to rules and deadlines, reading History and news, the AI assistant. Paid: showcase, passport creation and certification, modules (Origin, Model 231) and History space.",
@@ -2637,13 +3142,17 @@ const SIM = {
     verify: "To verify a passport, enter the code or scan the QR: you see the outcome and the certification body. Verification is free.",
     create: "To create a passport you fill in three steps (product, data and compliance, certification and QR) and see the preview. Issuing is activated on Snaproof, with a plan and credits.",
     n231: "Model 231 concerns the administrative liability of entities (Legislative Decree 231/2001). The Rules section has the free guide; the dedicated module is paid and in preparation.",
+    academy: "The AI Hub gathers insights, use cases and initiatives on AI in manufacturing for SMEs and brands. The Academy uses an AI-guided assessment to understand needs and level and recommend the most suitable path or workshop: training is part of the certification journey. These are modules delivered by MIAT; the content shown is demo content.",
     none: "In this preview I don't have a precise answer. Try prices, rules by sector, verification or creating a passport."
   }
 };
 function simIntent(q) {
   const s = q.toLowerCase(), h = a => a.some(w => s.indexOf(w) > -1);
+  if (h(["snaproof", "chi siete", "chi sei", "who are you", "your company"])) return { k: "snaproof", r: ["crea", "prezzi"] };
   if (h(["prezz", "cost", "price", "listino", "pricing", "quanto", "how much", "credit"])) return { k: "price", r: ["prezzi", "crea"] };
   if (h(["gratuit", "free", "pagamento", "paid", "pay"])) return { k: "free", r: ["prezzi"] };
+  if (h(["integraz", "integrat", "integration", "gestionale", "gestionali"]) || /\b(api|sdk|erp)\b/.test(s)) return { k: "integr", r: ["crea"] };
+  if (h(["academy", "formaz", "workshop", "training", "upskill", "hub", "assessment"])) return { k: "academy", r: ["innovazione", "crea"] };
   if (h(["batter"])) return { k: "battery", r: ["conformita", "settori"] };
   if (h(["tessil", "moda", "textile", "fashion"])) return { k: "textile", r: ["conformita", "settori"] };
   if (h(["intelligenza", " ia ", "ai act", "artificial", "1689"]) || /\bai\b/.test(s)) return { k: "ai", r: ["conformita"] };
@@ -2655,7 +3164,10 @@ function simIntent(q) {
 }
 function facts() {
   return [
-    "SITO: MADEinITALY.it è il portale istituzionale del Made in Italy (powered by Snaproof). Pagine: home, verifica (verifica passaporti), crea (crea passaporto), prezzi (piani e listino), conformita (norme e scadenze), settori (3 settori di lancio: Tessile e Moda, Elettronica e apparecchiature elettriche, Batterie; mappa dei territori con dati dimostrativi), storia (storia e cultura, secondaria).",
+    "SITO: MADEinITALY.it è il portale istituzionale del Made in Italy (powered by Snaproof). Pagine: home, verifica (Verifica DPP), crea (Crea il tuo DPP, con sezione sull'integrazione via API e SDK), prezzi (piani e listino), conformita (norme e scadenze), settori (imprese e settori: Tessile e Moda, Elettronica e apparecchiature elettriche, Batterie, Automotive, Cosmesi; mappa dei territori ed elenco ricercabile di imprese, entrambi dimostrativi), storia (storia e cultura, secondaria), innovazione (Hub AI e Academy).",
+    "INNOVAZIONE: Hub AI per il manifatturiero = insight, casi d'uso e iniziative sull'intelligenza artificiale applicata alla manifattura, scritti per PMI e brand italiani; Academy = assessment guidato dall'IA che profila bisogni e livello dell'utente o dell'azienda e consiglia il percorso o il workshop più adatto; la formazione fa parte del percorso di certificazione. Moduli erogati da MIAT (Multiverse Institute for Arts and Technology) sull'infrastruttura Snaproof. Contenuti e percorsi mostrati sono dimostrativi; i prezzi non sono definiti.",
+    "SETTORI: Automotive: Reg. (UE) 2026/1738 (veicoli: circolarità e fine vita), in vigore dal 13/8/2026, con passaporto digitale di circolarità del veicolo dal 2032; le batterie dei veicoli elettrici seguono il Reg. (UE) 2023/1542. Cosmesi: Reg. (CE) 1223/2009 (sicurezza, etichettatura, informazioni); oggi nessun obbligo UE di passaporto digitale è fissato per i cosmetici, quindi il passaporto è volontario (autenticità, tracciabilità dei lotti).",
+    "SNAPROOF: è la piattaforma di certificazione digitale su cui gira questo portale (infrastruttura, non editore). Aiuta le imprese a creare, gestire e verificare processi e passaporti digitali di prodotto (DPP). CREARE: genera il DPP e il codice QR, anche per lotti o singoli articoli; certifica le fasi di produzione con un sigillo digitale registrato in modo non modificabile (Sigillo di Garanzia); coinvolge i fornitori della filiera, anche dove non c'è rete. GESTIRE: tiene dati di prodotto e di processo in un unico posto; le modifiche sono nuove registrazioni e lo storico resta consultabile; si integra nei sistemi aziendali con API e SDK (ERP e gestionali) e con gli standard GS1; disponibile come SaaS, on-premises o white-label. VERIFICARE: chiunque scansiona il QR e vede chi ha certificato il prodotto, anche offline; l'autenticità resta verificabile nel mercato dell'usato e nella rivendita. INTEGRAZIONE: nella pagina Crea si può parlare con un tecnico o richiedere l'accesso a API e SDK (richieste in lista di accesso, nessuna sandbox garantita). Su dettagli tecnici interni, brevetti, confronti con altre tecnologie e numeri di prestazioni non hai dati: dillo e rimanda al contatto con il team.",
     "GRATUITO: ricerca, settori e mappa, verifica dei passaporti (non consuma crediti), guide su norme e scadenze, lettura di Storia/notizie/eventi, assistente IA.",
     "A PAGAMENTO: vetrina di settore, creazione e certificazione dei passaporti, moduli (Origine preferenziale, Modello 231: in preparazione), Spazio Storia del marchio.",
     "PREZZI (indicativi di prototipo, IVA esclusa, non validati): piano Passaporto Starter 149 €/mese, Growth 690, Scale 2.400, Enterprise 6.500; fatturazione annuale −15%; postazione extra 25 €/mese; moduli 60–180 €/mese ciascuno; crediti: un passaporto consuma 1 credito (Standard), 3 (Advanced) o 8 (Premium); 0,60 € a credito a consumo, da 0,45 a 0,10 € con bundle da 10.000 crediti. Vetrina e Spazio Storia: prezzo NON definito (valori dimostrativi 49 e 79 €/mese). Le differenze tra i piani non sono definite.",
@@ -2663,7 +3175,7 @@ function facts() {
     "LIMITI: la piattaforma mostra l'esito delle verifiche, che sono degli enti certificatori; non assegna marchi né certifica l'origine italiana; i contenuti di Storia sono dimostrativi."
   ].join("\n");
 }
-const SYS = () => "Sei l'assistente di MADEinITALY.it. Sei un sistema di intelligenza artificiale: dillo se te lo chiedono.\nRegole: rispondi nella lingua dell'utente; massimo 90 parole; tono sobrio e istituzionale, senza esclamazioni né emoji; usa SOLO i fatti qui sotto; se un dato manca scrivi che non lo hai e non inventare; non dare consulenza legale e rimanda al testo ufficiale; non promettere condizioni commerciali (i prezzi sono indicativi e non validati).\nSe utile, chiudi con fino a 2 rimandi nel formato [[vai:ROUTE]] con ROUTE tra: home, verifica, crea, prezzi, conformita, settori, storia. Niente testo dopo i rimandi.\n\nFATTI:\n" + facts();
+const SYS = () => "Sei l'assistente di MADEinITALY.it. Sei un sistema di intelligenza artificiale: dillo se te lo chiedono.\nRegole: rispondi nella lingua dell'utente; massimo 90 parole; tono sobrio e istituzionale, senza esclamazioni né emoji; usa SOLO i fatti qui sotto; se un dato manca scrivi che non lo hai e non inventare; non dare consulenza legale e rimanda al testo ufficiale; non promettere condizioni commerciali (i prezzi sono indicativi e non validati).\nSe utile, chiudi con fino a 2 rimandi nel formato [[vai:ROUTE]] con ROUTE tra: home, verifica, crea, prezzi, conformita, settori, storia, innovazione. Niente testo dopo i rimandi.\n\nFATTI:\n" + facts();
 function addMsg(role, text, src) {
   const log = $("#chatLog"), d = document.createElement("div"), user = role === "user";
   d.className = "miit-msg miit-msg--" + (user ? "user" : "bot");
@@ -2756,7 +3268,7 @@ document.addEventListener("click", e => {
     const r = href.replace(/^#/, "");
     if (ROUTES.indexOf(r) > -1) {
       e.preventDefault();
-      const o = {}; if (a.hasAttribute("data-tab")) o.tab = a.getAttribute("data-tab"); if (a.hasAttribute("data-sector")) o.sector = a.getAttribute("data-sector"); if (a.hasAttribute("data-norm-go")) o.normGo = a.getAttribute("data-norm-go");
+      const o = {}; if (a.hasAttribute("data-anchor")) o.anchor = a.getAttribute("data-anchor"); if (a.hasAttribute("data-tab")) o.tab = a.getAttribute("data-tab"); if (a.hasAttribute("data-sector")) o.sector = a.getAttribute("data-sector"); if (a.hasAttribute("data-norm-go")) o.normGo = a.getAttribute("data-norm-go");
       nav(r, o); return;
     }
   }
@@ -2775,12 +3287,16 @@ document.addEventListener("keydown", e => {
 document.addEventListener("input", e => {
   const el = e.target;
   if (el.id === "cN") { calcOut(); return; }
+  if (el.id === "dQ") { dq = el.value; renderDir(); return; }
   if (el.id === "fName") { W.name = el.value; renderPreview(); } else if (el.id === "fCompany") { W.company = el.value; renderPreview(); }
   else if (el.hasAttribute && el.hasAttribute("data-sf")) { W.f[+el.getAttribute("data-sf")] = el.value; renderPreview(); }
 });
 document.addEventListener("change", e => {
   const el = e.target;
   if (el.id === "cClass") { calcOut(); return; }
+  if (el.id === "dSec") { if (el.value === "all") { dall = true; renderDir(); } else { setSector(el.value); } return; }
+  if (el.id === "dReg") { if (el.value === "all") { region = null; $$(".miit-map__r").forEach(p => p.setAttribute("aria-pressed", "false")); renderRegion(); renderDir(); } else { setRegion(el.value); } return; }
+  if (el.name && el.name.indexOf("ac_") === 0) { AC[el.name.slice(3)] = el.value; renderAcdOut(); return; }
   if (el.id === "fSector") { W.sector = el.value; W.f = ["", ""]; renderWizard(); }
   else if (el.name === "mod") { W.mods[el.value] = el.checked; renderPreview(); }
   else if (el.name === "cls") { W.cls = el.value; renderPreview(); }
