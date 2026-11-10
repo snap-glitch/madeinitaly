@@ -1370,6 +1370,67 @@ h1 em, h2 em { color: inherit; }
 
 /* hero senza riga CTA: respiro tra lead e domanda all'assistente */
 .hero__lead { margin-bottom: var(--space-6); }
+
+/* =====================================================================
+   v6 — home a capitoli: una sezione per schermata (solo desktop).
+   Il layout vale da 961px di larghezza e 560px di altezza; sotto, scorrimento nativo.
+   ===================================================================== */
+html.fp-on { scroll-behavior: auto; }
+.fp-dots, .fp-cue { display: none; }
+
+@media (min-width: 961px) and (min-height: 560px) {
+  #v-home { --ch: calc(100vh - var(--hdr, 65px)); }
+  #v-home > section { min-height: var(--ch); display: flex; flex-direction: column; justify-content: center; padding-block: var(--space-7); }
+  #v-home > section > .miit-container { padding-bottom: 0; }
+  #v-home > .hero { position: relative; min-height: calc(100vh - var(--hdr, 65px) - var(--util, 34px)); padding-block: var(--space-6) 0; }
+  #v-home > section:last-child { min-height: calc(var(--ch) - var(--ft-h, 389px)); }
+
+  /* più aria tra titolo e contenuto */
+  #v-home .miit-sectionhead, #v-home .head-row { margin-bottom: var(--space-7); }
+  #v-home .head-row .miit-sectionhead { margin-bottom: 0; }
+
+  /* la scena animata si adatta all'altezza dello schermo */
+  #v-home .miit-explain__svg { max-height: max(220px, calc(100vh - 575px)); }
+
+  /* pallini */
+  .fp-dots { position: fixed; right: 6px; top: 50%; transform: translateY(-50%); z-index: 35; display: flex; flex-direction: column; gap: 2px; }
+  .fp-dots[hidden] { display: none; }
+  .fp-dot { position: relative; appearance: none; width: 14px; height: 22px; padding: 0; border: 0; background: none; cursor: pointer; }
+  .fp-dot::before { content: ""; position: absolute; left: 50%; top: 50%; width: 8px; height: 8px; margin: -4px 0 0 -4px; background: var(--surface); border: 1.5px solid var(--ink); transition: transform .2s ease, background-color .2s ease; }
+  .fp-dot[aria-current="true"]::before { background: var(--ink); border-color: var(--surface); transform: scale(1.5); outline: 1px solid var(--ink); }
+  .fp-dot:hover::before { background: var(--brand); border-color: var(--brand); }
+  .fp-dot:focus-visible { outline: 2px solid var(--brand); outline-offset: 0; }
+  .fp-dot::after { content: attr(data-tip); position: absolute; right: 22px; top: 50%; transform: translateY(-50%); white-space: nowrap; background: var(--ink); color: var(--surface); font: 600 12px/16px var(--font-sans); padding: 4px 8px; opacity: 0; pointer-events: none; transition: opacity .15s ease; }
+  .fp-dot:hover::after, .fp-dot:focus-visible::after { opacity: 1; }
+
+  /* norme: capitolo a sé, caratteri più grandi */
+  #v-home .norm-strip li a { padding: 22px 0 24px; gap: 6px; font: 600 18px/24px var(--font-sans); }
+  #v-home .norm-strip li small { font-size: 12px; line-height: 16px; }
+
+  /* assistente: a riposo solo «AI», si apre al passaggio del mouse o con la tastiera (non copre i contenuti) */
+  html.fp-on .miit-chat-launch .lbl, html.fp-on .miit-chat-launch svg { position: absolute; width: 1px; height: 1px; margin: 0; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; opacity: 0; }
+  html.fp-on .miit-chat-launch:hover .lbl, html.fp-on .miit-chat-launch:focus-visible .lbl { position: static; width: auto; height: auto; clip: auto; opacity: 1; overflow: visible; padding: 0 14px 0 16px; }
+  html.fp-on .miit-chat-launch:hover svg, html.fp-on .miit-chat-launch:focus-visible svg { position: static; width: 18px; height: 18px; margin-right: 16px; clip: auto; opacity: 1; overflow: visible; }
+
+  /* la rotella sulla chat non deve far scorrere la pagina sotto */
+  .miit-chat, .miit-chat * { overscroll-behavior: contain; }
+
+  /* freccia Scorri */
+  html.fp-on .fp-cue { display: inline-flex; flex-direction: column; align-items: center; gap: 6px; position: absolute; left: 50%; bottom: 18px; transform: translateX(-50%); appearance: none; border: 0; background: none; color: var(--ink-muted); font: 600 12px/16px var(--font-sans); letter-spacing: .08em; text-transform: uppercase; cursor: pointer; padding: 6px 10px; }
+  .fp-cue:hover { color: var(--ink); }
+  .fp-cue:focus-visible { outline: 2px solid var(--brand); outline-offset: 2px; }
+  .fp-cue .miit-icon { transform: rotate(90deg); width: 18px; height: 18px; }
+  @keyframes fp-bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(5px); } }
+  .fp-cue .miit-icon { animation: fp-bob 1.8s ease-in-out infinite; }
+}
+@media (min-width: 961px) and (min-height: 560px) and (max-height: 820px) {
+  #v-home .miit-sectionhead, #v-home .head-row { margin-bottom: var(--space-6); }
+  #v-home > section { padding-block: var(--space-6); }
+  #v-home .display-md { font-size: 32px; line-height: 36px; }
+  #v-home .miit-explain__svg { max-height: max(220px, calc(100vh - 520px)); }
+  #v-home .display-xl { font-size: 72px; line-height: 70px; }
+}
+@media (prefers-reduced-motion: reduce) { .fp-cue .miit-icon { animation: none; } }
 </style>
 </head>
 <body class="miit-page">
@@ -1484,6 +1545,7 @@ h1 em, h2 em { color: inherit; }
         </g>
       </svg>
     </div>
+    <button type="button" class="fp-cue" id="fpCue"><span data-i18n="fpNext">Scorri</span><svg class="miit-icon" aria-hidden="true"><use href="#i-arrow"/></svg></button>
   </section>
 
   <!-- COSA PERMETTE DI FARE -->
@@ -1571,18 +1633,25 @@ h1 em, h2 em { color: inherit; }
           </span>
         </div>
       </div>
-      <div class="miit-reveal" style="margin-top:var(--space-7)">
-        <div class="head-row" style="margin-bottom:var(--space-4)">
+    </div>
+  </section>
+
+  <!-- NORME EUROPEE -->
+  <section class="miit-section" aria-labelledby="hNorm">
+    <div class="miit-container">
+      <div class="head-row miit-reveal">
+        <div class="miit-sectionhead">
           <p class="eyebrow miit-caps miit-eyebrow" data-i18n="normEyebrow">Riferimenti normativi europei</p>
-          <a class="link-arrow" href="#conformita"><span data-i18n="normAll">Tutte le norme e le scadenze</span><svg class="miit-icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          <h2 id="hNorm" class="display-md" data-i18n-html="normTitleHome">Le norme da conoscere, <em>in un colpo d'occhio</em></h2>
         </div>
-        <ul class="norm-strip" id="normStrip"></ul>
+        <a class="link-arrow" href="#conformita"><span data-i18n="normAll">Tutte le norme e le scadenze</span><svg class="miit-icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
       </div>
+      <ul class="norm-strip miit-reveal" id="normStrip"></ul>
     </div>
   </section>
 
   <!-- OLTRE LA VERIFICA: HUB AI + ACADEMY (moduli erogati da MIAT) -->
-  <section class="miit-section" aria-labelledby="hInnH">
+  <section class="miit-section miit-section--sunken" aria-labelledby="hInnH">
     <div class="miit-container">
       <div class="head-row miit-reveal">
         <div class="miit-sectionhead">
@@ -1988,6 +2057,7 @@ h1 em, h2 em { color: inherit; }
 </footer>
 
 <!-- ====================== ASSISTENTE ====================== -->
+<nav class="fp-dots" id="fpDots" aria-label="Capitoli" hidden></nav>
 <button type="button" class="miit-chat-launch" id="chatLaunch" aria-haspopup="dialog" aria-controls="chat"><span class="miit-chat-launch__ai" aria-hidden="true">AI</span><span class="lbl" data-i18n="chatOpen">Assistente</span><svg aria-hidden="true" viewBox="0 0 24 24"><use href="#i-arrow"/></svg></button>
 <aside class="miit-chat" id="chat" role="dialog" aria-modal="false" aria-labelledby="chatT" hidden>
   <header class="miit-chat__head">
@@ -2166,6 +2236,7 @@ it: {
   sectorLabel: "Settore selezionato", inSector: "In questo settore", regionTitle: "Regione", regionNone: "Seleziona una regione sulla mappa per vedere la presenza del settore.",
   regionRes: "Presenza dimostrativa", regionNote: "Presenza e imprese mostrate sono dimostrative.", secNorms: "Norme del settore", secShowcase: "Vetrina del settore", secCheck: "Verifica DPP",
   normEyebrow: "Riferimenti normativi europei", normAll: "Tutte le norme e le scadenze",
+  normTitleHome: "Le norme da conoscere, <em>in un colpo d'occhio</em>", fpNext: "Scorri", fpNav: "Capitoli della pagina",
   areasEyebrow: "Le aree del portale", areasTitle: "Dove vuoi andare? <em>Cinque aree</em> da esplorare",
 
   vEyebrow: "Conformità · Verifica", vTitle: "Verifica il <em>DPP</em> di un prodotto", vLead: "DPP è il passaporto digitale di prodotto. Inserisci il codice o scansiona il QR: vedi l'esito e, sempre, l'ente certificatore che lo ha verificato.",
@@ -2317,6 +2388,7 @@ en: {
   sectorLabel: "Selected sector", inSector: "In this sector", regionTitle: "Region", regionNone: "Select a region on the map to see the sector's presence.",
   regionRes: "Demo presence", regionNote: "The presence and companies shown are demo content.", secNorms: "Sector rules", secShowcase: "Sector showcase", secCheck: "Verify DPP",
   normEyebrow: "European regulatory references", normAll: "All rules and deadlines",
+  normTitleHome: "The rules to know, <em>at a glance</em>", fpNext: "Scroll", fpNav: "Page chapters",
   areasEyebrow: "The portal's areas", areasTitle: "Where do you want to go? <em>Five areas</em> to explore",
 
   vEyebrow: "Compliance · Verification", vTitle: "Verify a product's <em>DPP</em>", vLead: "DPP is the digital product passport. Enter the code or scan the QR: you see the outcome and, always, the certification body that verified it.",
@@ -2577,6 +2649,7 @@ function showRoute(r, focus) {
   closeMega(false); closeMobile();
   renderNav(); renderCtx();
   renderView(r);
+  fpRoute();
   window.scrollTo(0, 0);
   observe();
   if (focus !== false) { const h = $("#v-" + r + " h1"); if (h) h.focus({ preventScroll: true }); }
@@ -2696,6 +2769,7 @@ function renderHome() {
   renderInt();
   initHs();
   carRefresh();
+  fpRefresh();
 }
 
 /* ---- spiegazione animata ---- */
@@ -3316,6 +3390,136 @@ $("#explain").addEventListener("mouseenter", () => { if (!exPaused) $("#explain"
 $("#explain").addEventListener("mouseleave", () => { if (!exPaused) $("#explain").classList.remove("is-paused"); });
 $("#explain").addEventListener("focusin", () => { if (!exPaused) $("#explain").classList.add("is-paused"); });
 $("#explain").addEventListener("focusout", () => { if (!exPaused) $("#explain").classList.remove("is-paused"); });
+
+
+/* ====================== HOME: SCROLL A CAPITOLI ====================== */
+const FP = { on: false, busy: false, raf: 0, tick: 0, lastWheel: 0, prevAbs: 0, lastEnd: 0, mq: window.matchMedia("(min-width: 961px) and (min-height: 560px)") };
+const fpEase = x => x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
+const fpChapters = () => $$("#v-home > section");
+const fpAbsY = el => el.getBoundingClientRect().top + window.scrollY;
+const fpHdr = () => { const e = $(".miit-header"); return e ? e.getBoundingClientRect().height : 65; };
+const fpDocH = () => document.documentElement.scrollHeight;
+const fpMax = () => Math.max(0, fpDocH() - window.innerHeight);
+function fpTargets() {
+  const hd = fpHdr(), mx = fpMax();
+  const tg = fpChapters().map((el, i) => i === 0 ? 0 : Math.min(mx, Math.max(0, Math.round(fpAbsY(el) - hd))));
+  if (tg.length && tg[tg.length - 1] < mx - 24) tg.push(mx);   /* ultimo capitolo + footer più alti dello schermo: ultima sosta in fondo */
+  return tg;
+}
+function fpCur(tg, y) { let k = 0; for (let i = 0; i < tg.length; i++) if (tg[i] <= y + 40) k = i; return k; }
+function fpMeasure() {
+  const r = document.documentElement.style, u = $(".miit-utility"), f = $(".miit-footer");
+  r.setProperty("--hdr", Math.round(fpHdr()) + "px");
+  if (u) r.setProperty("--util", Math.round(u.getBoundingClientRect().height) + "px");
+  if (f) r.setProperty("--ft-h", Math.round(f.getBoundingClientRect().height) + "px");
+}
+function fpTween(to, dur) {
+  const from = window.scrollY, d = to - from;
+  if (Math.abs(d) < 2) return;
+  cancelAnimationFrame(FP.raf); FP.busy = true;
+  const t0 = performance.now();
+  const step = now => {
+    const p = Math.min(1, (now - t0) / dur);
+    window.scrollTo(0, from + d * fpEase(p));
+    if (p < 1) FP.raf = requestAnimationFrame(step);
+    else { FP.busy = false; FP.lastEnd = performance.now(); fpSync(); }
+  };
+  FP.raf = requestAnimationFrame(step);
+}
+function fpGo(dir) {
+  const tg = fpTargets(), ch = fpChapters(), n = ch.length, y = window.scrollY, vh = window.innerHeight, hd = fpHdr();
+  const i = fpCur(tg, y), step = (vh - hd) * .85;
+  const cb = k => fpAbsY(ch[k]) + ch[k].offsetHeight - (parseFloat(getComputedStyle(ch[k]).paddingBottom) || 0);   /* fondo del contenuto, senza il padding */
+  const bottom = (i >= n - 1 && !(i === n - 1 && tg.length > n)) ? fpDocH() : cb(i);
+  let to, dur = 850;
+  if (dir > 0) {
+    if (bottom - (y + vh) > 8) { to = Math.min(y + step, bottom - vh); dur = 620; }   /* capitolo più alto dello schermo: scorre dentro */
+    else if (i < tg.length - 1) to = tg[i + 1];
+    else return;
+  } else {
+    if (y - tg[i] > 24) { to = Math.max(y - step, tg[i]); dur = 620; }
+    else if (i > 0) to = Math.max(tg[i - 1], cb(Math.min(i - 1, n - 1)) - vh);
+    else return;
+  }
+  fpTween(to, dur);
+}
+function fpOverlay() { return !!(openKey || $(".scrim:not([hidden])")); }
+function fpBlocked(t) {
+  if (fpOverlay()) return true;
+  if (!t || !t.closest) return false;
+  if (t.closest("#chat")) return true;
+  for (let e = t; e && e !== document.body && e !== document.documentElement; e = e.parentElement) {
+    const o = getComputedStyle(e).overflowY;
+    if ((o === "auto" || o === "scroll") && e.scrollHeight > e.clientHeight + 2) return true;
+  }
+  return false;
+}
+function fpWheel(e) {
+  if (!FP.on || e.ctrlKey || e.defaultPrevented) return;
+  if (Math.abs(e.deltaX) > Math.abs(e.deltaY) || fpBlocked(e.target)) return;
+  e.preventDefault();
+  const dy = e.deltaY, ab = Math.abs(dy);
+  if (ab < 6) return;
+  const now = performance.now(), gap = now - FP.lastWheel, prev = FP.prevAbs;
+  FP.lastWheel = now; FP.prevAbs = ab;
+  if (FP.busy || now - FP.lastEnd < 150) return;
+  if (gap < 90 && ab <= prev * 1.5 && now - FP.lastEnd < 400) return;   /* coda d'inerzia del trackpad */
+  fpGo(dy > 0 ? 1 : -1);
+}
+function fpKey(e) {
+  if (!FP.on || e.defaultPrevented || e.altKey || e.ctrlKey || e.metaKey || fpOverlay()) return;
+  const tg = e.target;
+  if (tg && tg.closest && tg.closest("input,textarea,select,[contenteditable='true'],[role='tab'],[role='slider'],[role='listbox'],[role='combobox'],#chat,.miit-map__r")) return;
+  const k = e.key;
+  let dir = 0;
+  if (k === "ArrowDown" || k === "PageDown") dir = 1;
+  else if (k === "ArrowUp" || k === "PageUp") dir = -1;
+  else if (k === " " || k === "Spacebar") { if (tg && tg.closest && tg.closest("button,a,summary,[role='button']")) return; dir = e.shiftKey ? -1 : 1; }
+  else if (k === "Home" || k === "End") { e.preventDefault(); fpTween(k === "Home" ? 0 : fpMax(), 1000); return; }
+  else return;
+  if (e.shiftKey && k !== " ") return;
+  e.preventDefault();
+  if (FP.busy || (e.repeat && performance.now() - FP.lastEnd < 150)) return;
+  fpGo(dir);
+}
+function fpDots() {
+  const nav = $("#fpDots"); if (!nav) return;
+  nav.setAttribute("aria-label", t("fpNav"));
+  nav.innerHTML = fpChapters().map((el, i) => {
+    const ey = $(".eyebrow", el), key = ey && ey.getAttribute("data-i18n"), lb = key && typeof t(key) === "string" ? t(key) : (ey ? ey.textContent.trim() : "");
+    return '<button type="button" class="fp-dot" data-fpi="' + i + '" aria-label="' + esc(lb) + '" data-tip="' + esc(lb) + '"></button>';
+  }).join("");
+  fpSync();
+}
+function fpSync() {
+  if (!FP.on) return;
+  const k = Math.min(fpCur(fpTargets(), window.scrollY), fpChapters().length - 1);
+  $$("#fpDots .fp-dot").forEach((b, i) => { if (i === k) b.setAttribute("aria-current", "true"); else b.removeAttribute("aria-current"); });
+}
+function fpEval() {
+  const want = route === "home" && FP.mq.matches && !RM;
+  if (want === FP.on) return;
+  FP.on = want;
+  document.documentElement.classList.toggle("fp-on", want);
+  const nav = $("#fpDots"); if (nav) nav.hidden = !want;
+  if (want) fpDots(); else { cancelAnimationFrame(FP.raf); FP.busy = false; }
+}
+function fpRoute() { fpMeasure(); fpEval(); }
+function fpRefresh() { fpMeasure(); fpEval(); if (FP.on) fpDots(); }
+window.addEventListener("wheel", fpWheel, { passive: false });
+document.addEventListener("keydown", fpKey);
+window.addEventListener("scroll", () => { if (FP.on && !FP.tick) FP.tick = requestAnimationFrame(() => { FP.tick = 0; fpSync(); }); }, { passive: true });
+window.addEventListener("resize", () => { fpMeasure(); fpEval(); fpSync(); });
+if (FP.mq.addEventListener) FP.mq.addEventListener("change", () => { fpMeasure(); fpEval(); });
+document.addEventListener("click", e => {
+  const el = e.target;
+  if (!el || !el.closest) return;
+  const d = el.closest(".fp-dot");
+  if (d) { fpTween(fpTargets()[+d.getAttribute("data-fpi")], 850); return; }
+  if (el.closest("#fpCue")) fpGo(1);
+});
+if ("ResizeObserver" in window) { const ro = new ResizeObserver(() => fpMeasure()); const f = $(".miit-footer"), hd = $(".miit-header"); if (f) ro.observe(f); if (hd) ro.observe(hd); }
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(fpMeasure);
 
 /* ====================== AVVIO ====================== */
 let io = null;
