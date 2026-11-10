@@ -1431,6 +1431,234 @@ html.fp-on { scroll-behavior: auto; }
   #v-home .display-xl { font-size: 72px; line-height: 70px; }
 }
 @media (prefers-reduced-motion: reduce) { .fp-cue .miit-icon { animation: none; } }
+
+/* =====================================================================
+   v7 — hover evidenti in indaco, più aria, globo hero, tricolore solo su barra utility/footer/DPP
+   (blocco in coda: vince per ordine e specificità sui livelli precedenti)
+   ===================================================================== */
+:root {
+  --a1: #3D35C9; --a1-bg: #EEEDFB;   /* indaco (marchio): unico colore d'accento */
+  --it-g: #008C45; --it-w: #F4F5F0; --it-r: #CD212A;
+  --acc: var(--a1); --acc-bg: var(--a1-bg);
+  --tricolore: linear-gradient(90deg, var(--it-g) 0 33.34%, var(--it-w) 33.34% 66.67%, var(--it-r) 66.67% 100%);
+}
+[data-acc] { --acc: var(--a1); --acc-bg: var(--a1-bg); }
+
+/* ---------- Bandiera italiana ---------- */
+.miit-utility { position: relative; }
+.miit-utility::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 3px; background: var(--tricolore); }
+.miit-footer { position: relative; }
+.miit-footer::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 4px; background: var(--tricolore); }
+
+/* ---------- Menu: colore al passaggio ---------- */
+body .miit-nav__btn { transition: background-color .15s ease, color .15s ease; }
+body .miit-nav__btn:hover, body .miit-nav__btn[aria-expanded="true"] { background: var(--brand-soft); color: var(--brand); }
+body .miit-nav__btn[aria-current="page"] { color: var(--brand); }
+body .miit-nav__btn::after { height: 4px; background: var(--brand); }
+body .miit-mega__link { padding: 14px 14px; margin: 0 -14px; transition: background-color .15s ease; }
+body .miit-mega__link:hover, body .miit-mega__link:focus-visible { background: var(--brand-soft); }
+body .miit-mega__link:hover .miit-mega__name { color: var(--brand); text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 4px; }
+body .miit-mega__link:hover .miit-mega__desc { color: var(--brand-hover); }
+body .miit-utility a:hover, body .miit-lang button:hover:not([aria-pressed="true"]) { color: var(--brand-on-navy); }
+body .miit-crumb a:hover, body .miit-sub a:hover { color: var(--brand); border-bottom-color: var(--brand); }
+body .miit-footer a:hover { color: var(--brand-on-navy); text-decoration: underline; text-underline-offset: 3px; }
+body .miit-footer__bar a:hover { color: var(--brand-on-navy); }
+@media (max-width: 1180px) and (min-width: 961px) {
+  body .miit-nav__btn { padding: 0 9px; font-size: 13.5px; white-space: nowrap; }
+  body .miit-nav__btn::after { left: 9px; right: 9px; }
+  .miit-header__in { gap: var(--space-5); }
+}
+
+/* ---------- Schede «Cosa puoi fare» ---------- */
+body .fn { gap: 14px; padding: 22px 22px 20px; background: var(--surface); border-top: 4px solid var(--acc); transition: background-color .18s ease, outline-color .18s ease; outline: 2px solid transparent; outline-offset: -2px; }
+body .fn .fn__ic { stroke: var(--acc); }
+body .fn:hover, body .fn:focus-visible { background: var(--acc-bg); outline-color: var(--acc); }
+body .fn:hover .fn__t, body .fn:focus-visible .fn__t { color: var(--acc); text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 5px; }
+body .fn:hover .fn__d, body .fn:hover .fn__price, body .fn:hover .fn__go, body .fn:focus-visible .fn__d, body .fn:focus-visible .fn__go { color: var(--acc); }
+body .fn:hover .fn__go { text-decoration: underline; text-underline-offset: 4px; }
+body .miit-grid--4 { gap: 20px; }
+
+/* ---------- Settori (carosello e pagina) ---------- */
+body .miit-sector { padding: 20px 20px 18px; border-top: 4px solid var(--acc); outline: 2px solid transparent; outline-offset: -2px; transition: background-color .18s ease, outline-color .18s ease; }
+body .miit-sector .miit-sector__icon { color: var(--acc); }
+body .miit-sector:hover, body .miit-sector:focus-visible { background: var(--acc-bg); outline-color: var(--acc); }
+body .miit-sector:hover .miit-sector__title, body .miit-sector:hover .miit-sector__desc, body .miit-sector:hover .miit-sector__tags,
+body .miit-sector:focus-visible .miit-sector__title, body .miit-sector:focus-visible .miit-sector__desc { color: var(--acc); }
+body .miit-sector:hover .miit-sector__title { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 5px; }
+body .miit-sector[aria-pressed="true"] { background: var(--acc-bg); }
+.sec-car__track { transition: transform .42s cubic-bezier(.2, .7, .2, 1); }
+
+/* ---------- Indice delle aree ---------- */
+.areas-index { border-top: 0; }
+body .areas-index a { padding: 18px 16px 22px; margin: 0; border-right: 1px solid var(--rule); border-top: 4px solid var(--acc); transition: background-color .18s ease; }
+body .areas-index a:last-child { border-right: 0; }
+body .areas-index a:hover, body .areas-index a:focus-visible { background: var(--acc-bg); }
+body .areas-index a .ai-n { color: var(--acc); }
+body .areas-index a:hover .ai-t, body .areas-index a:focus-visible .ai-t { color: var(--acc); text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 5px; }
+body .areas-index a:hover .ai-d { color: var(--acc); }
+body .areas-index a[data-quiet] .ai-t { color: var(--ink-muted); }
+body .areas-index a[data-quiet]:hover .ai-t { color: var(--acc); }
+
+/* ---------- Norme (home) ---------- */
+body #v-home .norm-strip li a, body .norm-strip li a { padding: 20px 16px 22px; margin-inline: 0; border-top: 4px solid var(--acc); transition: background-color .18s ease; }
+body .norm-strip li a:hover, body .norm-strip li a:focus-visible { background: var(--acc-bg); color: var(--acc); border-color: var(--acc); }
+body .norm-strip li a:hover small, body .norm-strip li a:focus-visible small { color: var(--acc); }
+
+/* ---------- Sezione «Hub AI e Academy» e pagina ---------- */
+body .two { gap: 32px; }
+body .inn, body .hub-col { gap: 16px; padding: 26px 26px 24px; border: 1px solid var(--rule); border-top: 5px solid var(--acc); background: var(--surface); outline: 2px solid transparent; outline-offset: -2px; transition: background-color .18s ease, outline-color .18s ease; }
+body .inn:hover, body .hub-col:hover { background: var(--acc-bg); outline-color: var(--acc); }
+body .inn__t, body .hub-col__t { font-size: 24px; line-height: 30px; transition: color .18s ease; }
+body .inn:hover .inn__t, body .hub-col:hover .hub-col__t { color: var(--acc); text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 5px; }
+body .inn:hover .inn__d, body .hub-col:hover .hub-col__d, body .inn:hover .inn__by { color: var(--acc); }
+body .hub-col__k { color: var(--acc); }
+body .inn__list { margin-top: 6px; }
+body .inn__list li { padding: 13px 0; border-top-color: var(--rule); }
+body .inn__list li:last-child { border-bottom-color: var(--rule); }
+body .inn__list svg { stroke: var(--acc); }
+body .inn .link-arrow { align-self: start; justify-self: start; margin-top: 10px; padding: 12px 20px; background: var(--acc); color: #fff; text-decoration: none; transition: background-color .15s ease; }
+body .inn .link-arrow:hover { background: var(--ink); color: #fff; text-decoration: none; }
+body .inn:hover .link-arrow { color: #fff; }
+body .miit-grid--3 { gap: 28px; }
+body .hub-col .plist li { padding: 14px 10px; margin-inline: -10px; transition: background-color .15s ease; }
+body .hub-col .plist li { border-top: 1px solid var(--rule); }
+body .hub-col .plist li:last-child { border-bottom: 1px solid var(--rule); }
+body .hub-col .plist li:hover { background: #fff; }
+body .hub-col .plist li:hover .tt { color: var(--acc); text-decoration: underline; text-underline-offset: 4px; }
+body .hub-col__d { margin-bottom: 6px; }
+
+/* ---------- Chip, rotte, tab, opzioni, tabelle: più contrasto al passaggio ---------- */
+body .miit-chip:hover, body .miit-route:hover { background: var(--brand-soft); color: var(--brand); border-color: var(--brand); }
+body .miit-chat__sugg .miit-chip:hover { background: var(--brand-soft); color: var(--brand); }
+body .miit-seg button:hover:not([aria-pressed="true"]), body .miit-explain__tab:hover, body .explain-ctl:hover, body .sec-car__btn:hover { background: var(--brand-soft); color: var(--brand); }
+body .sec-car__btn--next:hover { background: var(--brand); color: #fff; }
+body .hist-tabs button:hover, body .filters button:hover { color: var(--brand); border-bottom-color: var(--brand); }
+body .opt:hover { border-color: var(--brand); background: var(--brand-soft); }
+body .opt:hover b { color: var(--brand); }
+body .tbl tbody tr:hover td { background: var(--brand-soft); }
+body .miit-tl__pt:hover { background: var(--brand-soft); border-color: var(--brand); }
+body .plist a:hover, body .miit-area__row a:hover { color: var(--brand); }
+body .miit-map__r:hover, body .miit-map__r:focus-visible { stroke: var(--brand); stroke-width: 2.6; }
+body .miit-btn--secondary:hover { background: var(--brand); border-color: var(--brand); color: #fff; }
+
+/* ---------- Indicatore capitoli: tacche a linea sottile (tutte da 1 px) ---------- */
+html.fp-on .fp-dots { right: 14px; gap: 0; top: 0; bottom: 0; height: fit-content; margin-block: auto; transform: none; }
+html.fp-on .fp-dot { width: 40px; height: 24px; }
+html.fp-on .fp-dot::before { left: auto; right: 0; top: 12px; width: 10px; height: 1px; margin: 0; background: #7C7C7C; border: 0; outline: 0; transform: none; transition: width .22s ease, background-color .22s ease; }
+html.fp-on .fp-dot[aria-current="true"]::before { width: 28px; background: var(--brand); transform: none; outline: 0; }
+html.fp-on .fp-dot:hover::before { width: 20px; background: var(--brand-hover); border: 0; transform: none; }
+html.fp-on .fp-dot[aria-current="true"]:hover::before { width: 28px; }
+html.fp-on .fp-dot:focus-visible { outline: 2px solid var(--brand); outline-offset: -2px; }
+html.fp-on .fp-dot::after { right: 44px; background: var(--ink); color: #fff; }
+html.fp-on .fp-dots.on-dark .fp-dot::before { background: #8A8A8A; }
+html.fp-on .fp-dots.on-dark .fp-dot[aria-current="true"]::before { background: var(--brand-on-navy); }
+html.fp-on .fp-dots.on-dark .fp-dot:hover::before { background: #fff; }
+html.fp-on .fp-dots.on-dark .fp-dot::after { background: var(--brand-on-navy); color: var(--ink); }
+
+/* ---------- CTA «Aggiungi il tuo settore» ---------- */
+.sec-add { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); gap: 20px 48px; align-items: center; margin-top: 32px; padding: 26px 32px; background: var(--brand); color: #fff; position: relative; }
+.sec-add__k { margin: 0 0 8px; font: 500 12px/16px var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: #D9D6FF; }
+.sec-add__t { margin: 0 0 8px; font: 600 34px/38px var(--font-serif); color: #fff; }
+.sec-add__t em { font-style: italic; font-weight: 500; color: #fff; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 6px; }
+.sec-add__d { margin: 0; max-width: 54ch; font: 400 15px/24px var(--font-sans); color: #ECEBFF; }
+.sec-add__act { display: grid; gap: 16px; justify-items: start; }
+.sec-add__chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; list-style: none; }
+.sec-add__chip { appearance: none; cursor: pointer; padding: 6px 12px; border: 1px solid rgba(255, 255, 255, .6); background: transparent; color: #fff; font: 500 13px/20px var(--font-sans); transition: background-color .15s ease, color .15s ease; }
+.sec-add__chip:hover, .sec-add__chip:focus-visible { background: #fff; color: var(--brand); border-color: #fff; }
+.sec-add__btn { appearance: none; cursor: pointer; display: inline-flex; align-items: center; gap: 10px; min-height: 48px; padding: 0 22px; border: 0; background: #fff; color: var(--brand); font: 600 15px/20px var(--font-sans); transition: background-color .15s ease, color .15s ease; }
+.sec-add__btn svg { width: 18px; height: 18px; transition: transform .2s ease; }
+.sec-add__btn:hover, .sec-add__btn:focus-visible { background: var(--ink); color: #fff; }
+.sec-add__btn:hover svg { transform: translateX(4px); }
+@media (max-width: 900px) { .sec-add { grid-template-columns: minmax(0, 1fr); padding: 24px 20px; } .sec-add__t { font-size: 28px; line-height: 32px; } }
+
+/* ---------- Hero: globo, scambio dati, DPP in loop ---------- */
+.hv { overflow: visible; }
+.hv .hx-halo { fill: none; stroke: var(--brand); stroke-opacity: .35; stroke-width: 1; stroke-dasharray: 1.5 6; stroke-linecap: round; }
+.hv .hx-sph { fill: url(#hxSph); stroke: var(--ink); stroke-width: 1.5; }
+.hv .hx-grat { fill: none; stroke: var(--brand); stroke-opacity: .18; stroke-width: .8; }
+.hv .hx-land { fill: none; stroke: var(--brand); stroke-linecap: round; }
+.hv .hx-land--f { stroke-width: 4.6; stroke-opacity: .78; }
+.hv .hx-land--m { stroke-width: 3.6; stroke-opacity: .5; }
+.hv .hx-land--e { stroke-width: 2.4; stroke-opacity: .3; }
+.hv .hx-arc { fill: none; stroke: var(--brand); stroke-width: 1.1; stroke-opacity: .42; stroke-linecap: round; stroke-linejoin: round; }
+.hv .hx-arc.on { stroke-width: 2.2; stroke-opacity: .95; }
+.hv .hx-pk { fill: var(--brand); }
+.hv .hx-pk--h { fill-opacity: .2; }
+.hv .hx-node circle { fill: var(--surface); stroke: var(--brand); stroke-width: 2; }
+.hv .hx-node text { font: 500 8.5px var(--font-mono); letter-spacing: .06em; fill: var(--ink-muted); paint-order: stroke; stroke: #fff; stroke-width: 3px; stroke-linejoin: round; }
+.hv .hx-node.on circle { fill: var(--brand); }
+.hv .hx-node.on text { fill: var(--ink); font-weight: 700; }
+.hv .hx-hub text { fill: var(--ink); font: 700 9px var(--font-mono); letter-spacing: .1em; paint-order: stroke; stroke: #fff; stroke-width: 3px; stroke-linejoin: round; }
+.hv .hx-flagln { fill: none; stroke: var(--ink); stroke-width: .8; }
+.hv .hx-ring { fill: none; stroke: var(--verified); stroke-width: 1.6; }
+.hv .hx-card { fill: var(--surface-raised); stroke: var(--ink); stroke-width: 1.5; }
+.hv .hx-cardh { fill: var(--ink); }
+.hv .hx-tx { font: 500 9px var(--font-mono); letter-spacing: .1em; fill: var(--on-navy); text-transform: uppercase; }
+.hv .hx-ic { fill: none; stroke: var(--brand); stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; overflow: visible; }
+.hv .hx-t { font: 600 18px var(--font-serif); fill: var(--ink); }
+.hv .hx-s { font: 400 8.5px var(--font-sans); fill: var(--ink-muted); }
+.hv .hx-k { font: 500 8px var(--font-mono); letter-spacing: .08em; fill: var(--ink-muted); text-transform: uppercase; }
+.hv .hx-v { font: 600 11px var(--font-sans); fill: var(--ink); text-anchor: end; }
+.hv .hx-l { stroke: var(--rule); stroke-width: 1; }
+.hv .hx-l--ink { stroke: var(--ink); stroke-width: 1.5; }
+.hv .hx-qr rect { fill: var(--ink); }
+.hv .hx-beam { fill: var(--brand); }
+.hv .hx-glow { fill: var(--brand); fill-opacity: .14; }
+.hv .hx-id { font: 500 9px var(--font-mono); letter-spacing: .04em; fill: var(--ink-muted); }
+.hv .hx-stamp { fill: var(--verified-bg); stroke: var(--verified); stroke-width: 1.5; }
+.hv .hx-chk { fill: none; stroke: var(--verified); stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; }
+.hv .hx-st { font: 500 8.5px var(--font-mono); letter-spacing: .08em; fill: var(--verified); text-transform: uppercase; }
+
+/* ---------- Altezze ridotte: i capitoli restano a una schermata ---------- */
+@media (min-width: 961px) and (min-height: 560px) and (max-height: 860px) {
+  #v-home > section { padding-block: var(--space-6); }
+  #v-home .miit-sectionhead, #v-home .head-row { margin-bottom: var(--space-6); }
+  #v-home .sec-add { margin-top: 20px; padding: 18px 28px; }
+  #v-home .sec-add__t { font-size: 28px; line-height: 32px; margin-bottom: 6px; }
+  #v-home .sec-add__d { font-size: 14px; line-height: 22px; }
+  body .inn, body .hub-col { padding: 20px 22px 18px; gap: 12px; }
+  body .inn__list li { padding: 10px 0; }
+  body .inn .link-arrow { padding: 10px 18px; margin-top: 6px; }
+}
+@media (min-width: 961px) and (min-height: 560px) and (max-height: 740px) {
+  #v-home > section { padding-block: var(--space-5); }
+  #v-home .miit-sectionhead, #v-home .head-row { margin-bottom: var(--space-5); }
+  #v-home .sec-add__chips { display: none; }
+  #v-home .sec-add { grid-template-columns: minmax(0, 1fr) auto; margin-top: 14px; padding: 14px 24px; }
+  body .miit-sector { padding: 14px 16px 12px; }
+}
+
+@media (min-width: 961px) and (min-height: 560px) and (max-height: 800px) { #v-home .sec-add__chips { display: none; } #v-home .sec-add { grid-template-columns: minmax(0, 1fr) auto; } }
+@media (min-width: 961px) and (min-height: 560px) and (max-height: 740px) { body .inn__list li { padding: 8px 0; } body .inn__list { margin-top: 2px; } }
+@media (min-width: 961px) and (max-width: 1100px) and (min-height: 560px) {
+  #v-home .sec-add__chips { display: none; } #v-home .sec-add { grid-template-columns: minmax(0, 1fr) auto; }
+  #v-home .sec-add__t { font-size: 26px; line-height: 30px; }
+  body .inn, body .hub-col { padding: 16px 18px 14px; gap: 10px; }
+  body .inn__t { font-size: 20px; line-height: 26px; }
+  body .inn__list li { padding: 7px 0; font-size: 14px; line-height: 20px; }
+  body .inn__d { font-size: 14px; line-height: 22px; }
+  body .miit-sector { padding: 14px 14px 12px; }
+}
+
+/* ---------- Freccia «Scorri»: solo icona, verso il basso ---------- */
+html.fp-on .fp-cue { padding: 8px 12px; gap: 0; color: var(--ink); }
+html.fp-on .fp-cue .miit-icon { transform: none; width: 24px; height: 24px; stroke-width: 1.5; }
+html.fp-on .fp-cue:hover { color: var(--brand); }
+
+/* ---------- «Aggiungi il tuo settore» nel menu Settori e nella pagina Settori ---------- */
+.sec-add--page { margin: var(--space-6) 0; }
+body .miit-mega__item--add .miit-mega__link { width: 100%; text-align: left; appearance: none; border: 0; border-top: 0; background: var(--brand-soft); font: inherit; color: inherit; cursor: pointer; }
+body .miit-mega__item--add .miit-mega__name { color: var(--brand); }
+body .miit-mega__item--add .miit-mega__name svg { width: 16px; height: 16px; vertical-align: -2px; margin-right: 4px; stroke: var(--brand); }
+body .miit-mega__item--add .miit-mega__link:hover, body .miit-mega__item--add .miit-mega__link:focus-visible { background: var(--brand); }
+body .miit-mega__item--add .miit-mega__link:hover .miit-mega__name, body .miit-mega__item--add .miit-mega__link:focus-visible .miit-mega__name,
+body .miit-mega__item--add .miit-mega__link:hover .miit-mega__desc, body .miit-mega__item--add .miit-mega__link:focus-visible .miit-mega__desc { color: #fff; text-decoration: none; }
+body .miit-mega__item--add .miit-mega__link:hover .miit-mega__name svg { stroke: #fff; }
+
+/* ---------- Menu mobile: pannello scorrevole (le voci in fondo restano raggiungibili) ---------- */
+@media (max-width: 960px) {
+  body .miit-nav[data-open="true"] { max-height: calc(100vh - 110px); max-height: calc(100dvh - 110px); overflow-y: auto; overscroll-behavior: contain; }
+}
 </style>
 </head>
 <body class="miit-page">
@@ -1443,6 +1671,8 @@ html.fp-on { scroll-behavior: auto; }
     <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></symbol>
     <symbol id="i-chev" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
     <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-down" viewBox="0 0 24 24"><path d="M12 5v14M6 13l6 6 6-6"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
     <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></symbol>
     <symbol id="i-dash" viewBox="0 0 24 24"><path d="M6 12h12"/></symbol>
     <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></symbol>
@@ -1522,30 +1752,42 @@ html.fp-on { scroll-behavior: auto; }
         </form>
       </div>
 
-      <svg class="hv" viewBox="0 0 400 440" aria-hidden="true" focusable="false">
-        <line class="ground" x1="10" y1="400" x2="390" y2="400"/>
-        <path pathLength="1" class="arc arc1" d="M30 400V230A170 170 0 0 1 370 230V400"/>
-        <path pathLength="1" class="arc arc2" d="M70 400V230A130 130 0 0 1 330 230V400"/>
-        <path pathLength="1" class="arc arc3 arc2" d="M110 400V230A90 90 0 0 1 290 230V400"/>
-        <path pathLength="1" class="arc arc4" d="M150 400V230A50 50 0 0 1 250 230V400"/>
-        <g class="float">
-          <rect class="card" x="100" y="96" width="200" height="262" rx="3"/>
-          <rect class="card-h" x="101" y="97" width="198" height="34"/>
-          <text class="tx" x="114" y="118">Passaporto · DPP</text>
-          <text class="tl" x="114" y="160">Giacca in lana</text>
-          <text class="ts" x="114" y="176">Esempio dimostrativo</text>
-          <line class="ln" x1="116" y1="198" x2="262" y2="198"/><line class="ln" x1="116" y1="214" x2="228" y2="214"/>
-          <g class="qr" id="hvQr" transform="translate(116 236)"></g>
-          <rect class="scanglow" x="108" y="228" width="184" height="26"/>
-          <rect class="scan" x="108" y="236" width="184" height="2.5"/>
-          <g transform="translate(236 304)"><g class="stampg">
-            <circle class="stamp" r="30"/><path class="stamp-c" d="m-11 0 8 8 14-16"/>
-            <text class="stamp-t" y="46" text-anchor="middle" data-i18n="hvStamp">Verificato</text>
-          </g></g>
+      <svg class="hv" id="hx" viewBox="0 0 400 440" aria-hidden="true" focusable="false">
+        <defs>
+          <radialGradient id="hxSph" cx="34%" cy="28%" r="85%"><stop offset="0" style="stop-color:#FFFFFF"/><stop offset=".55" style="stop-color:#F6F5FE"/><stop offset="1" style="stop-color:#E4E2FA"/></radialGradient>
+          <clipPath id="hxClip"><circle cx="200" cy="208" r="208"/></clipPath>
+        </defs>
+        <circle class="hx-halo" cx="200" cy="208" r="217"/>
+        <circle class="hx-sph" cx="200" cy="208" r="208"/>
+        <g clip-path="url(#hxClip)"><path class="hx-grat" id="hxGrat"/></g>
+        <path class="hx-land hx-land--e" id="hxL3"/><path class="hx-land hx-land--m" id="hxL2"/><path class="hx-land hx-land--f" id="hxL1"/>
+        <g id="hxArcs"></g>
+        <g id="hxNodes"></g>
+        <g id="hxPulse"><circle class="hx-ring" r="0"/><circle class="hx-ring" r="0"/></g>
+        <g id="hxCard">
+          <rect class="hx-card" x="100" y="96" width="200" height="262"/>
+          <rect class="hx-cardh" x="101" y="97" width="198" height="34"/>
+          <rect x="101" y="127" width="66" height="4" style="fill:#008C45"/><rect x="167" y="127" width="66" height="4" style="fill:#F4F5F0"/><rect x="233" y="127" width="66" height="4" style="fill:#CD212A"/>
+          <text class="hx-tx" x="114" y="118" data-i18n="hxPass">Passaporto · DPP</text>
+          <g transform="translate(268 107)"><rect width="5" height="11" style="fill:#008C45"/><rect x="5" width="5" height="11" style="fill:#F4F5F0"/><rect x="10" width="5" height="11" style="fill:#CD212A"/></g>
+          <g id="hxBody">
+            <svg class="hx-ic" id="hxIc" x="112" y="142" width="30" height="30" viewBox="0 0 40 40"><use href="#i-hanger"/></svg>
+            <text class="hx-t" id="hxT" x="150" y="160"></text>
+            <text class="hx-s" x="150" y="173" data-i18n="hxDemo">Esempio dimostrativo</text>
+            <line class="hx-l hx-l--ink" x1="114" y1="186" x2="286" y2="186"/>
+            <g class="hx-row"><text class="hx-k" x="114" y="200"></text><text class="hx-v" x="286" y="200"></text><line class="hx-l" x1="114" y1="207" x2="286" y2="207"/></g>
+            <g class="hx-row"><text class="hx-k" x="114" y="222"></text><text class="hx-v" x="286" y="222"></text><line class="hx-l" x1="114" y1="229" x2="286" y2="229"/></g>
+            <g class="hx-row"><text class="hx-k" x="114" y="244"></text><text class="hx-v" x="286" y="244"></text><line class="hx-l" x1="114" y1="251" x2="286" y2="251"/></g>
+            <g class="hx-qr" id="hxQr" transform="translate(116 268)"></g>
+            <rect class="hx-glow" id="hxGlow" x="112" y="268" width="66" height="24"/>
+            <rect class="hx-beam" id="hxBeam" x="112" y="268" width="66" height="2.5"/>
+            <text class="hx-id" id="hxId" x="116" y="342"></text>
+            <g id="hxStamp" transform="translate(244 298)"><circle class="hx-stamp" r="27"/><path class="hx-chk" d="m-10 0 7 7 13-15"/><text class="hx-st" y="42" text-anchor="middle" data-i18n="hvStamp">Verificato</text></g>
+          </g>
         </g>
       </svg>
     </div>
-    <button type="button" class="fp-cue" id="fpCue"><span data-i18n="fpNext">Scorri</span><svg class="miit-icon" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+    <button type="button" class="fp-cue" id="fpCue"><span class="miit-sr" data-i18n="fpNext">Scorri</span><svg class="miit-icon" aria-hidden="true"><use href="#i-down"/></svg></button>
   </section>
 
   <!-- COSA PERMETTE DI FARE -->
@@ -1633,6 +1875,17 @@ html.fp-on { scroll-behavior: auto; }
           </span>
         </div>
       </div>
+      <aside class="sec-add miit-reveal" aria-labelledby="hAdd">
+        <div class="sec-add__txt">
+          <p class="sec-add__k" data-i18n="addKicker">Il tuo settore non c'è?</p>
+          <h3 id="hAdd" class="sec-add__t" data-i18n-html="addTitle">Aggiungi il tuo <em>settore</em></h3>
+          <p class="sec-add__d" data-i18n="addLead"></p>
+        </div>
+        <div class="sec-add__act">
+          <ul class="sec-add__chips" id="addChips"></ul>
+          <button type="button" class="sec-add__btn" id="addBtn" data-lead=""><span data-i18n="addBtn">Proponi il tuo settore</span><svg class="miit-icon" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+        </div>
+      </aside>
     </div>
   </section>
 
@@ -1919,6 +2172,17 @@ html.fp-on { scroll-behavior: auto; }
       <h1 id="h1set" class="display-lg" tabindex="-1" data-i18n-html="secTitle">Settori e <em>territori</em></h1>
       <p class="body-lg lead" data-i18n="secLead"></p>
       <div class="miit-grid miit-grid--5" id="sectorCards" role="group"></div>
+      <aside class="sec-add sec-add--page" aria-labelledby="hAdd2">
+        <div class="sec-add__txt">
+          <p class="sec-add__k" data-i18n="addKicker">Il tuo settore non c'è?</p>
+          <h2 id="hAdd2" class="sec-add__t" data-i18n-html="addTitle">Aggiungi il tuo <em>settore</em></h2>
+          <p class="sec-add__d" data-i18n="addLead"></p>
+        </div>
+        <div class="sec-add__act">
+          <ul class="sec-add__chips"></ul>
+          <button type="button" class="sec-add__btn" data-lead=""><span data-i18n="addBtn">Proponi il tuo settore</span><svg class="miit-icon" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+        </div>
+      </aside>
       <div class="explore">
         <figure class="explore__map">
           <div class="mapnote"><span class="eyebrow miit-caps miit-eyebrow" data-i18n="mapEyebrow">Territori</span><span class="miit-badge miit-badge--demo" data-i18n="demoData">Dati dimostrativi</span></div>
@@ -2104,13 +2368,13 @@ var SITE = { editor: null /* nome del soggetto editore: unico punto di configura
 var AREAS = [
   { id: "imprese", items: [{ id: "business", to: "prezzi", tag: "paid" }, { id: "vetrine", to: "prezzi", tag: "paid" }, { id: "shopping", soon: 1, tag: "soon" }] },
   { id: "storia", items: [{ id: "history", to: "storia", tab: "history", tag: "free" }, { id: "people", to: "storia", tab: "people", tag: "free" }, { id: "lifestyle", to: "storia", tab: "lifestyle", tag: "free" }, { id: "brandspace", to: "storia", tab: "brand", tag: "paid" }] },
-  { id: "informazione", items: [{ id: "ai", to: "innovazione", anchor: "hHub", tag: "module" }, { id: "news", tag: "free" }, { id: "review", tag: "free" }, { id: "economy", tag: "free" }, { id: "finance", tag: "free" }] },
-  { id: "conformita", items: [{ id: "dpp", to: "conformita", tag: "free" }, { id: "verifica", to: "verifica", tag: "free" }, { id: "crea", to: "crea", tag: "paid" }, { id: "academy", to: "innovazione", anchor: "hAcd", tag: "module" }, { id: "origine", to: "conformita", tag: "paid" }, { id: "m231", to: "conformita", tag: "paid" }, { id: "l206", to: "conformita", tag: "free" }] },
-  { id: "eventi", items: [{ id: "evgen", tag: "free" }, { id: "evbiz", tag: "free" }] }
+  { id: "informazione", items: [{ id: "news", tag: "free" }, { id: "review", tag: "free" }, { id: "economy", tag: "free" }, { id: "finance", tag: "free" }, { id: "evgen", tag: "free" }, { id: "evbiz", tag: "free" }] },
+  { id: "conformita", items: [{ id: "dpp", to: "conformita", tag: "free" }, { id: "verifica", to: "verifica", tag: "free" }, { id: "crea", to: "crea", tag: "paid" }, { id: "origine", to: "conformita", tag: "paid" }, { id: "m231", to: "conformita", tag: "paid" }, { id: "l206", to: "conformita", tag: "free" }] },
+  { id: "hubai", items: [{ id: "ai", to: "innovazione", anchor: "hHub", tag: "module" }, { id: "academy", to: "innovazione", anchor: "hAcd", tag: "module" }] }
 ];
 /* Navigazione: ogni pagina appartiene a un'area (voce attiva e briciole di pane). AREA_ROUTES = pagine sorelle mostrate nella barra di contesto. */
-var ROUTE_AREA = { verifica: "conformita", crea: "conformita", conformita: "conformita", prezzi: "imprese", storia: "storia", settori: "settori" };
-var AREA_ROUTES = { conformita: ["conformita", "verifica", "crea"], imprese: ["prezzi"], storia: ["storia"], settori: ["settori"] };
+var ROUTE_AREA = { verifica: "conformita", crea: "conformita", conformita: "conformita", prezzi: "imprese", storia: "storia", settori: "settori", innovazione: "hubai" };
+var AREA_ROUTES = { conformita: ["conformita", "verifica", "crea"], imprese: ["prezzi"], storia: ["storia"], settori: ["settori"], hubai: ["innovazione"] };
 var ROUTES = ["home", "verifica", "crea", "prezzi", "conformita", "settori", "storia", "innovazione"];
 var SECTORS = [{ id: "moda", icon: "i-hanger" }, { id: "elettronica", icon: "i-chip" }, { id: "batterie", icon: "i-battery" }, { id: "automotive", icon: "i-car" }, { id: "cosmesi", icon: "i-bottle" }];
 
@@ -2196,7 +2460,7 @@ it: {
   intList: ["API e SDK per integrare in modo veloce e semplice", "Si collega a ERP e gestionali già in uso", "Interoperabile con gli standard GS1", "SaaS, on-premises o white-label"],
   intS1t: "Parla con un tecnico", intS1d: "Raccontaci il tuo processo: ti indichiamo il modo più semplice per collegarlo.", intS1b: "Parla con un tecnico", intCtx1: "Richiesta: parlare con un tecnico per integrare Snaproof nei processi aziendali.",
   intS2t: "Richiedi accesso API e SDK", intS2d: "Entra nella lista di accesso: ti ricontattiamo con i passi per integrare in autonomia.", intS2b: "Richiedi accesso API", intCtx2: "Richiesta: accesso a API e SDK.",
-  pg_innovazione: "Hub AI e Academy", partnerGen: "un partner formativo", secEyebrowPg: "Imprese e settori", dirEyebrow: "Imprese operative", dirTitle: "Cerca tra le imprese <em>sulla piattaforma</em>", dirLead: "Cerca per nome e filtra per settore e regione. La mappa qui sopra filtra l'elenco allo stesso modo.", dirSearch: "Cerca per nome", dirSearchPh: "Nome dell'impresa", dirSector: "Settore", dirRegion: "Regione", dirAllSec: "Tutti i settori", dirAllReg: "Tutte le regioni", dirCount1: "1 impresa", dirCountN: "{n} imprese", dirColName: "Impresa", dirColSec: "Settore", dirColReg: "Regione", dirDemo: "Impresa dimostrativa", dirNone: "Nessuna impresa corrisponde alla ricerca. Prova a togliere un filtro.", dirNote: "Elenco dimostrativo: i nomi sono inventati e nessuna impresa reale è mostrata. Qui compariranno le imprese che attivano il loro profilo.", dirCta: "Candida la tua impresa", dirLeadCtx: "Richiesta: profilo impresa nell'elenco operativo.", innEyebrow: "Oltre la verifica", innTitle: "Verifichi una volta. <em>Torni per imparare.</em>", innLead: "La verifica dà credibilità; contenuti e formazione danno un motivo per tornare. Due moduli per capire cosa cambia per la tua impresa e da dove cominciare.", innAll: "Hub AI e Academy", innBy: "Erogato da {p}", innByNeutral: "Erogato da un partner", innHubT: "Hub AI per il manifatturiero", innHubD: "Insight, casi d'uso e iniziative sull'intelligenza artificiale applicata alla manifattura, scritti per PMI e brand italiani. Per chi non sa ancora di dover certificare.", innHubL: ["Insight e analisi per PMI e brand", "Casi d'uso concreti, settore per settore", "Iniziative e appuntamenti sull'IA"], innHubC: "Esplora l'Hub AI", innAcdT: "Academy: profilazione e percorsi formativi", innAcdD: "Un assessment guidato dall'IA capisce bisogni e livello tuo o della tua azienda e consiglia il percorso o il workshop più adatto. La formazione è parte del percorso di certificazione, non un servizio a parte.", innAcdL: ["Poche domande, nessuna registrazione", "Percorso o workshop consigliato", "Formazione dentro il percorso di certificazione"], innAcdC: "Fai l'assessment", iEyebrow: "Oltre la verifica", iTitle: "Hub AI e Academy: <em>capire, formarsi, certificare</em>", iLead: "MADEinITALY.it non è solo un registro che si consulta quando serve. Contenuti sull'IA e percorsi formativi portano le imprese sulla piattaforma e le accompagnano fino al passaporto digitale.", iBy: "Moduli erogati da {p} sull'infrastruttura Snaproof. Contenuti e percorsi mostrati sono dimostrativi.", hubEyebrow: "Hub AI per il manifatturiero", hubTitle: "Capire l'IA <em>applicata alla manifattura</em>", hubLead: "Scritto per PMI e brand italiani. Spiega cosa cambia, con esempi dal tuo settore, prima che la certificazione diventi un obbligo.", hub_insight: ["Insight", "Analisi e punti di vista", "Cosa cambia per le imprese, spiegato senza gergo.", ["Cosa cambia per una PMI con il passaporto digitale", "Tracciabilità e sostenibilità: da dove cominciare"]], hub_cases: ["Casi d'uso", "Esempi concreti per settore", "Come l'IA aiuta davvero a preparare e gestire i dati di prodotto.", ["L'IA per preparare i dati del passaporto tessile", "Tracciabilità lungo la filiera delle batterie"]], hub_events: ["Iniziative", "Workshop, webinar, appuntamenti", "Momenti di confronto per capire e per fare.", ["Workshop: il passaporto digitale per il tessile", "Webinar: IA e filiera elettronica"]], hubSoon: "In preparazione: dati dinamici, benchmark di tracciabilità e sostenibilità, community B2B.", acdEyebrow: "Academy", acdTitle: "Il percorso giusto <em>per te</em>", acdLead: "Tre domande per capire da dove partire. L'assessment consiglia un percorso o un workshop; la formazione è parte del percorso di certificazione.", acdQ1: "Il tuo settore", acdQ2: "A che punto sei con il passaporto digitale", acdQ3: "Per chi è la formazione", acdL_a: ["Parto da zero", "Non so ancora se e come mi riguarda."], acdL_b: ["Conosco le norme", "Devo organizzare dati e filiera."], acdL_c: ["Sono pronto a certificare", "Ho i dati, voglio passare alla pratica."], acdW_me: ["Per me", "Percorso individuale."], acdW_team: ["Per il mio team", "Workshop di gruppo."], acdOutEyebrow: "Percorso consigliato", acdEmpty: "Rispondi alle tre domande: qui vedrai il percorso o il workshop più adatto.", acdR_a: ["Fondamenti del passaporto digitale", "Cos'è, a chi serve e quali scadenze valgono per il tuo settore."], acdR_b: ["Preparare i dati del passaporto", "Quali dati raccogliere e come organizzare la filiera."], acdR_c: ["Dalla certificazione al QR", "Come portare il passaporto in produzione e farlo verificare."], acdF_me: ["Percorso individuale", "Da seguire con i tuoi tempi"], acdF_team: ["Workshop per il team", "Sessione di gruppo guidata"], acdFormat: "Formato", acdSim: "Simulazione: in questa anteprima il consiglio segue regole semplici. Nel servizio reale l'assessment è guidato dall'IA.", acdCta: "Richiedi questo percorso", acdLeadCtx: "Richiesta Academy: {n} · {f} · {s}.", acdDiscover: "Scopri il modulo", innCtaEyebrow: "Parla con noi", innCtaTitle: "Porta contenuti e formazione <em>nel tuo percorso</em>", innCtaD: "Dicci a che punto sei: ti ricontattiamo per costruire insieme contenuti e formazione sul tuo settore.", innCtaBtn: "Richiedi un contatto", innCtaPrices: "Moduli e listino", innLeadCtx: "Richiesta: Hub AI e Academy.", w3hint: "Non sai quale livello scegliere?", w3hintLink: "Prova l'assessment dell'Academy",
+  pg_innovazione: "Hub AI e Academy", partnerGen: "un partner formativo", secEyebrowPg: "Imprese e settori", dirEyebrow: "Imprese operative", dirTitle: "Cerca tra le imprese <em>sulla piattaforma</em>", dirLead: "Cerca per nome e filtra per settore e regione. La mappa qui sopra filtra l'elenco allo stesso modo.", dirSearch: "Cerca per nome", dirSearchPh: "Nome dell'impresa", dirSector: "Settore", dirRegion: "Regione", dirAllSec: "Tutti i settori", dirAllReg: "Tutte le regioni", dirCount1: "1 impresa", dirCountN: "{n} imprese", dirColName: "Impresa", dirColSec: "Settore", dirColReg: "Regione", dirDemo: "Impresa dimostrativa", dirNone: "Nessuna impresa corrisponde alla ricerca. Prova a togliere un filtro.", dirNote: "Elenco dimostrativo: i nomi sono inventati e nessuna impresa reale è mostrata. Qui compariranno le imprese che attivano il loro profilo.", dirCta: "Candida la tua impresa", dirLeadCtx: "Richiesta: profilo impresa nell'elenco operativo.", innEyebrow: "Hub AI e Academy", innTitle: "Capisci l'IA, preparati al DPP: <em>due strumenti per cominciare</em>", innLead: "Analisi e casi d'uso sull'IA nella manifattura. Un assessment di pochi minuti ti indica il percorso o il workshop più adatto alla tua impresa.", innAll: "Scopri Hub AI e Academy", innBy: "Erogato da {p}", innByNeutral: "Erogato da un partner", innHubT: "Hub AI per il manifatturiero", innHubD: "Insight, casi d'uso e iniziative sull'intelligenza artificiale applicata alla manifattura, scritti per PMI e brand italiani. Per chi non sa ancora di dover certificare.", innHubL: ["Insight e analisi per PMI e brand", "Casi d'uso concreti, settore per settore", "Iniziative e appuntamenti sull'IA"], innHubC: "Esplora l'Hub AI", innAcdT: "Academy: profilazione e percorsi formativi", innAcdD: "Un assessment guidato dall'IA capisce bisogni e livello tuo o della tua azienda e consiglia il percorso o il workshop più adatto. La formazione è parte del percorso di certificazione, non un servizio a parte.", innAcdL: ["Poche domande, nessuna registrazione", "Percorso o workshop consigliato", "Formazione dentro il percorso di certificazione"], innAcdC: "Fai l'assessment", iEyebrow: "Oltre la verifica", iTitle: "Hub AI e Academy: <em>capire, formarsi, certificare</em>", iLead: "MADEinITALY.it non è solo un registro che si consulta quando serve. Contenuti sull'IA e percorsi formativi portano le imprese sulla piattaforma e le accompagnano fino al passaporto digitale.", iBy: "Moduli erogati da {p} sull'infrastruttura Snaproof. Contenuti e percorsi mostrati sono dimostrativi.", hubEyebrow: "Hub AI per il manifatturiero", hubTitle: "Capire l'IA <em>applicata alla manifattura</em>", hubLead: "Scritto per PMI e brand italiani. Spiega cosa cambia, con esempi dal tuo settore, prima che la certificazione diventi un obbligo.", hub_insight: ["Insight", "Analisi e punti di vista", "Cosa cambia per le imprese, spiegato senza gergo.", ["Cosa cambia per una PMI con il passaporto digitale", "Tracciabilità e sostenibilità: da dove cominciare"]], hub_cases: ["Casi d'uso", "Esempi concreti per settore", "Come l'IA aiuta davvero a preparare e gestire i dati di prodotto.", ["L'IA per preparare i dati del passaporto tessile", "Tracciabilità lungo la filiera delle batterie"]], hub_events: ["Iniziative", "Workshop, webinar, appuntamenti", "Momenti di confronto per capire e per fare.", ["Workshop: il passaporto digitale per il tessile", "Webinar: IA e filiera elettronica"]], hubSoon: "In preparazione: dati dinamici, benchmark di tracciabilità e sostenibilità, community B2B.", acdEyebrow: "Academy", acdTitle: "Il percorso giusto <em>per te</em>", acdLead: "Tre domande per capire da dove partire. L'assessment consiglia un percorso o un workshop; la formazione è parte del percorso di certificazione.", acdQ1: "Il tuo settore", acdQ2: "A che punto sei con il passaporto digitale", acdQ3: "Per chi è la formazione", acdL_a: ["Parto da zero", "Non so ancora se e come mi riguarda."], acdL_b: ["Conosco le norme", "Devo organizzare dati e filiera."], acdL_c: ["Sono pronto a certificare", "Ho i dati, voglio passare alla pratica."], acdW_me: ["Per me", "Percorso individuale."], acdW_team: ["Per il mio team", "Workshop di gruppo."], acdOutEyebrow: "Percorso consigliato", acdEmpty: "Rispondi alle tre domande: qui vedrai il percorso o il workshop più adatto.", acdR_a: ["Fondamenti del passaporto digitale", "Cos'è, a chi serve e quali scadenze valgono per il tuo settore."], acdR_b: ["Preparare i dati del passaporto", "Quali dati raccogliere e come organizzare la filiera."], acdR_c: ["Dalla certificazione al QR", "Come portare il passaporto in produzione e farlo verificare."], acdF_me: ["Percorso individuale", "Da seguire con i tuoi tempi"], acdF_team: ["Workshop per il team", "Sessione di gruppo guidata"], acdFormat: "Formato", acdSim: "Simulazione: in questa anteprima il consiglio segue regole semplici. Nel servizio reale l'assessment è guidato dall'IA.", acdCta: "Richiedi questo percorso", acdLeadCtx: "Richiesta Academy: {n} · {f} · {s}.", acdDiscover: "Scopri il modulo", innCtaEyebrow: "Parla con noi", innCtaTitle: "Porta contenuti e formazione <em>nel tuo percorso</em>", innCtaD: "Dicci a che punto sei: ti ricontattiamo per costruire insieme contenuti e formazione sul tuo settore.", innCtaBtn: "Richiedi un contatto", innCtaPrices: "Moduli e listino", innLeadCtx: "Richiesta: Hub AI e Academy.", w3hint: "Non sai quale livello scegliere?", w3hintLink: "Prova l'assessment dell'Academy",
   skip: "Vai al contenuto", uVerify: "Verifica DPP", forBusiness: "Per le imprese", login: "Accedi", menu: "Menu",
   navSectors: "Settori", sectorsIntro: "I cinque settori da cui parte la piattaforma. Altri si aggiungeranno nel tempo.", goArea: "Vai all'area",
   free: "Gratuito", paid: "A pagamento", paidMod: "Modulo a pagamento", soon: "In preparazione", module: "Modulo", provisional: "Provvisorio", demoVal: "Valore dimostrativo",
@@ -2206,7 +2470,9 @@ it: {
   heroEyebrow: "Il portale del Made in Italy", heroTitle: "Il ponte tra <em>l'Italia</em> e il mondo.",
   heroLead: "Verifica in pochi secondi chi ha certificato un prodotto italiano. Se produci, crea il DPP, il passaporto digitale dei tuoi prodotti, e portalo in tutto il mondo con un QR.",
   ctaVerify: "Verifica DPP", ctaCreate: "Crea il tuo DPP", ctaBiz: "Scopri i piani per le imprese",
-  searchLabel: "Hai una domanda? Chiedila all'assistente IA", searchBtn: "Chiedi", hvStamp: "Verificato",
+  searchLabel: "Hai una domanda? Chiedila all'assistente IA", searchBtn: "Chiedi", addMega: "Aggiungi il tuo settore", addMegaD: "Non trovi il tuo? Raccontaci cosa produci: apriamo prima i più richiesti.", hvStamp: "Verificato", hxPass: "Passaporto · DPP", hxDemo: "Esempio dimostrativo", hxMi: "MILANO",
+  hxP: [["Giacca in lana", [["Fibre", "Lana 92%"], ["Origine", "Prato · IT"], ["Cura", "Lavaggio 30°"]]], ["Smartphone", [["Riparabilità", "8,2 / 10"], ["Ricambi", "7 anni"], ["Batteria", "Sostituibile"]]], ["Batteria EV", [["Capacità", "75 kWh"], ["CO₂e", "61 kg/kWh"], ["Litio riciclato", "6%"]]], ["Disco freno", [["Materiale", "Ghisa"], ["Riciclato", "38%"], ["Lotto", "24-117"]]], ["Crema viso", [["Ingredienti", "18 · INCI"], ["Packaging", "Riciclabile"], ["Lotto", "C-0418"]]]],
+  addKicker: "Il tuo settore non c'è?", addTitle: "Aggiungi il tuo <em>settore</em>", addLead: "Cinque settori sono solo l'inizio. Raccontaci cosa produci: le richieste ci dicono quali settori aprire per primi.", addBtn: "Proponi il tuo settore", addEx: ["Agroalimentare", "Arredo e design", "Meccanica", "Gioielleria", "Chimica e plastica"], addLeadCtx: "Proposta di un nuovo settore", addLeadCtxS: "Proposta di un nuovo settore: {s}",
   ph: ["Cosa richiede il passaporto digitale per le batterie?", "Quanto costa creare un passaporto?", "Cosa è gratuito e cosa a pagamento?", "Cosa cambia per il tessile nel 2027?"],
   chips: ["Cos'è il passaporto digitale?", "Quanto costa?", "Cosa fa Snaproof?", "Norme per le batterie"],
 
@@ -2348,7 +2614,7 @@ en: {
   intList: ["APIs and SDKs for fast, simple integration", "Connects to the ERP and business software you already use", "Interoperable with GS1 standards", "SaaS, on-premises or white-label"],
   intS1t: "Talk to an engineer", intS1d: "Tell us about your process: we show you the simplest way to connect it.", intS1b: "Talk to an engineer", intCtx1: "Request: talk to an engineer about integrating Snaproof into company processes.",
   intS2t: "Request API and SDK access", intS2d: "Join the access list: we get back to you with the steps to integrate on your own.", intS2b: "Request API access", intCtx2: "Request: access to APIs and SDKs.",
-  pg_innovazione: "AI Hub and Academy", partnerGen: "a training partner", secEyebrowPg: "Companies and sectors", dirEyebrow: "Operating companies", dirTitle: "Search the companies <em>on the platform</em>", dirLead: "Search by name and filter by sector and region. The map above filters the list in the same way.", dirSearch: "Search by name", dirSearchPh: "Company name", dirSector: "Sector", dirRegion: "Region", dirAllSec: "All sectors", dirAllReg: "All regions", dirCount1: "1 company", dirCountN: "{n} companies", dirColName: "Company", dirColSec: "Sector", dirColReg: "Region", dirDemo: "Demo company", dirNone: "No company matches your search. Try removing a filter.", dirNote: "Demo list: the names are invented and no real company is shown. Companies that activate their profile will appear here.", dirCta: "Apply with your company", dirLeadCtx: "Request: company profile in the operating list.", innEyebrow: "Beyond verification", innTitle: "Verify once. <em>Come back to learn.</em>", innLead: "Verification builds credibility; content and training give a reason to return. Two modules to understand what changes for your company and where to start.", innAll: "AI Hub and Academy", innBy: "Delivered by {p}", innByNeutral: "Delivered by a partner", innHubT: "AI Hub for manufacturing", innHubD: "Insights, use cases and initiatives on artificial intelligence applied to manufacturing, written for Italian SMEs and brands. For those who do not yet know they will need to certify.", innHubL: ["Insights and analysis for SMEs and brands", "Concrete use cases, sector by sector", "AI initiatives and events"], innHubC: "Explore the AI Hub", innAcdT: "Academy: profiling and training paths", innAcdD: "An AI-guided assessment understands your needs and level, or your company's, and recommends the most suitable path or workshop. Training is part of the certification journey, not a separate service.", innAcdL: ["A few questions, no sign-up", "Recommended path or workshop", "Training inside the certification journey"], innAcdC: "Take the assessment", iEyebrow: "Beyond verification", iTitle: "AI Hub and Academy: <em>understand, train, certify</em>", iLead: "MADEinITALY.it is not just a register you consult when needed. AI content and training paths bring companies to the platform and guide them all the way to the digital passport.", iBy: "Modules delivered by {p} on the Snaproof infrastructure. The content and paths shown are demo content.", hubEyebrow: "AI Hub for manufacturing", hubTitle: "Understand AI <em>applied to manufacturing</em>", hubLead: "Written for Italian SMEs and brands. It explains what changes, with examples from your sector, before certification becomes an obligation.", hub_insight: ["Insights", "Analysis and viewpoints", "What changes for companies, explained without jargon.", ["What the digital passport changes for an SME", "Traceability and sustainability: where to start"]], hub_cases: ["Use cases", "Concrete examples by sector", "How AI really helps prepare and manage product data.", ["AI to prepare textile passport data", "Traceability along the battery supply chain"]], hub_events: ["Initiatives", "Workshops, webinars, events", "Moments to compare notes, understand and act.", ["Workshop: the digital passport for textiles", "Webinar: AI and the electronics supply chain"]], hubSoon: "In preparation: dynamic data, traceability and sustainability benchmarks, B2B community.", acdEyebrow: "Academy", acdTitle: "The right path <em>for you</em>", acdLead: "Three questions to find where to start. The assessment recommends a path or a workshop; training is part of the certification journey.", acdQ1: "Your sector", acdQ2: "Where you stand with the digital passport", acdQ3: "Who the training is for", acdL_a: ["Starting from scratch", "I do not yet know if or how it concerns me."], acdL_b: ["I know the rules", "I need to organise data and supply chain."], acdL_c: ["Ready to certify", "I have the data, I want to move to practice."], acdW_me: ["For me", "Individual path."], acdW_team: ["For my team", "Group workshop."], acdOutEyebrow: "Recommended path", acdEmpty: "Answer the three questions: you will see the most suitable path or workshop here.", acdR_a: ["Digital passport fundamentals", "What it is, who needs it and which deadlines apply to your sector."], acdR_b: ["Preparing the passport data", "Which data to collect and how to organise the supply chain."], acdR_c: ["From certification to QR", "How to bring the passport into production and have it verified."], acdF_me: ["Individual path", "Follow at your own pace"], acdF_team: ["Team workshop", "Guided group session"], acdFormat: "Format", acdSim: "Simulation: in this preview the recommendation follows simple rules. In the real service the assessment is AI-guided.", acdCta: "Request this path", acdLeadCtx: "Academy request: {n} · {f} · {s}.", acdDiscover: "Discover the module", innCtaEyebrow: "Talk to us", innCtaTitle: "Bring content and training <em>into your journey</em>", innCtaD: "Tell us where you are: we will get back to you to build content and training around your sector.", innCtaBtn: "Request a contact", innCtaPrices: "Modules and pricing", innLeadCtx: "Request: AI Hub and Academy.", w3hint: "Not sure which level to pick?", w3hintLink: "Try the Academy assessment",
+  pg_innovazione: "AI Hub and Academy", partnerGen: "a training partner", secEyebrowPg: "Companies and sectors", dirEyebrow: "Operating companies", dirTitle: "Search the companies <em>on the platform</em>", dirLead: "Search by name and filter by sector and region. The map above filters the list in the same way.", dirSearch: "Search by name", dirSearchPh: "Company name", dirSector: "Sector", dirRegion: "Region", dirAllSec: "All sectors", dirAllReg: "All regions", dirCount1: "1 company", dirCountN: "{n} companies", dirColName: "Company", dirColSec: "Sector", dirColReg: "Region", dirDemo: "Demo company", dirNone: "No company matches your search. Try removing a filter.", dirNote: "Demo list: the names are invented and no real company is shown. Companies that activate their profile will appear here.", dirCta: "Apply with your company", dirLeadCtx: "Request: company profile in the operating list.", innEyebrow: "AI Hub and Academy", innTitle: "Understand AI, get ready for the DPP: <em>two tools to start with</em>", innLead: "Analysis and use cases on AI in manufacturing. A few-minute assessment points you to the path or workshop that fits your company.", innAll: "Discover AI Hub and Academy", innBy: "Delivered by {p}", innByNeutral: "Delivered by a partner", innHubT: "AI Hub for manufacturing", innHubD: "Insights, use cases and initiatives on artificial intelligence applied to manufacturing, written for Italian SMEs and brands. For those who do not yet know they will need to certify.", innHubL: ["Insights and analysis for SMEs and brands", "Concrete use cases, sector by sector", "AI initiatives and events"], innHubC: "Explore the AI Hub", innAcdT: "Academy: profiling and training paths", innAcdD: "An AI-guided assessment understands your needs and level, or your company's, and recommends the most suitable path or workshop. Training is part of the certification journey, not a separate service.", innAcdL: ["A few questions, no sign-up", "Recommended path or workshop", "Training inside the certification journey"], innAcdC: "Take the assessment", iEyebrow: "Beyond verification", iTitle: "AI Hub and Academy: <em>understand, train, certify</em>", iLead: "MADEinITALY.it is not just a register you consult when needed. AI content and training paths bring companies to the platform and guide them all the way to the digital passport.", iBy: "Modules delivered by {p} on the Snaproof infrastructure. The content and paths shown are demo content.", hubEyebrow: "AI Hub for manufacturing", hubTitle: "Understand AI <em>applied to manufacturing</em>", hubLead: "Written for Italian SMEs and brands. It explains what changes, with examples from your sector, before certification becomes an obligation.", hub_insight: ["Insights", "Analysis and viewpoints", "What changes for companies, explained without jargon.", ["What the digital passport changes for an SME", "Traceability and sustainability: where to start"]], hub_cases: ["Use cases", "Concrete examples by sector", "How AI really helps prepare and manage product data.", ["AI to prepare textile passport data", "Traceability along the battery supply chain"]], hub_events: ["Initiatives", "Workshops, webinars, events", "Moments to compare notes, understand and act.", ["Workshop: the digital passport for textiles", "Webinar: AI and the electronics supply chain"]], hubSoon: "In preparation: dynamic data, traceability and sustainability benchmarks, B2B community.", acdEyebrow: "Academy", acdTitle: "The right path <em>for you</em>", acdLead: "Three questions to find where to start. The assessment recommends a path or a workshop; training is part of the certification journey.", acdQ1: "Your sector", acdQ2: "Where you stand with the digital passport", acdQ3: "Who the training is for", acdL_a: ["Starting from scratch", "I do not yet know if or how it concerns me."], acdL_b: ["I know the rules", "I need to organise data and supply chain."], acdL_c: ["Ready to certify", "I have the data, I want to move to practice."], acdW_me: ["For me", "Individual path."], acdW_team: ["For my team", "Group workshop."], acdOutEyebrow: "Recommended path", acdEmpty: "Answer the three questions: you will see the most suitable path or workshop here.", acdR_a: ["Digital passport fundamentals", "What it is, who needs it and which deadlines apply to your sector."], acdR_b: ["Preparing the passport data", "Which data to collect and how to organise the supply chain."], acdR_c: ["From certification to QR", "How to bring the passport into production and have it verified."], acdF_me: ["Individual path", "Follow at your own pace"], acdF_team: ["Team workshop", "Guided group session"], acdFormat: "Format", acdSim: "Simulation: in this preview the recommendation follows simple rules. In the real service the assessment is AI-guided.", acdCta: "Request this path", acdLeadCtx: "Academy request: {n} · {f} · {s}.", acdDiscover: "Discover the module", innCtaEyebrow: "Talk to us", innCtaTitle: "Bring content and training <em>into your journey</em>", innCtaD: "Tell us where you are: we will get back to you to build content and training around your sector.", innCtaBtn: "Request a contact", innCtaPrices: "Modules and pricing", innLeadCtx: "Request: AI Hub and Academy.", w3hint: "Not sure which level to pick?", w3hintLink: "Try the Academy assessment",
   skip: "Skip to content", uVerify: "Verify DPP", forBusiness: "For businesses", login: "Sign in", menu: "Menu",
   navSectors: "Sectors", sectorsIntro: "The five sectors the platform starts with. More will follow.", goArea: "Go to area",
   free: "Free", paid: "Paid", paidMod: "Paid module", soon: "In preparation", module: "Module", provisional: "Provisional", demoVal: "Demo value",
@@ -2358,7 +2624,9 @@ en: {
   heroEyebrow: "The Made in Italy portal", heroTitle: "The bridge between <em>Italy</em> and the world.",
   heroLead: "Verify in seconds who certified an Italian product. If you produce, create the DPP, your products' digital passport, and take it around the world with a QR.",
   ctaVerify: "Verify DPP", ctaCreate: "Create your DPP", ctaBiz: "Discover plans for businesses",
-  searchLabel: "Got a question? Ask the AI assistant", searchBtn: "Ask", hvStamp: "Verified",
+  searchLabel: "Got a question? Ask the AI assistant", searchBtn: "Ask", addMega: "Add your sector", addMegaD: "Can't find yours? Tell us what you make: we open the most requested first.", hvStamp: "Verified", hxPass: "Passport · DPP", hxDemo: "Demo example", hxMi: "MILAN",
+  hxP: [["Wool jacket", [["Fibres", "Wool 92%"], ["Origin", "Prato · IT"], ["Care", "Wash 30°"]]], ["Smartphone", [["Repairability", "8.2 / 10"], ["Spare parts", "7 years"], ["Battery", "Replaceable"]]], ["EV battery", [["Capacity", "75 kWh"], ["CO₂e", "61 kg/kWh"], ["Recycled Li", "6%"]]], ["Brake disc", [["Material", "Cast iron"], ["Recycled", "38%"], ["Batch", "24-117"]]], ["Face cream", [["Ingredients", "18 · INCI"], ["Packaging", "Recyclable"], ["Batch", "C-0418"]]]],
+  addKicker: "Not your sector?", addTitle: "Add your <em>sector</em>", addLead: "Five sectors are only the start. Tell us what you make: requests tell us which sectors to open first.", addBtn: "Suggest your sector", addEx: ["Food and beverage", "Furniture and design", "Machinery", "Jewellery", "Chemicals and plastics"], addLeadCtx: "Suggest a new sector", addLeadCtxS: "Suggest a new sector: {s}",
   ph: ["What does the digital passport require for batteries?", "How much does it cost to create a passport?", "What is free and what is paid?", "What changes for textiles in 2027?"],
   chips: ["What is the digital passport?", "How much does it cost?", "What does Snaproof do?", "Battery rules"],
 
@@ -2498,8 +2766,9 @@ var C = {
     areas: {
       imprese: ["Imprese", "Servizi, vetrine e opportunità per imprese italiane e buyer internazionali."],
       storia: ["Storia e cultura", "L'evoluzione del Made in Italy, raccontata da marchi, persone e stili di vita."],
-      informazione: ["Informazione", "Notizie, analisi e approfondimenti, con orizzonti temporali diversi."],
+      informazione: ["Informazione", "Notizie, analisi, approfondimenti ed eventi, con orizzonti temporali diversi."],
       conformita: ["Conformità", "Norme, verifica e passaporto digitale: guide gratuite, strumenti a pagamento."],
+      hubai: ["Hub AI e Academy", "Capire l'IA nella manifattura e prepararsi al DPP: insight, casi d'uso e assessment guidato."],
       eventi: ["Eventi", "Appuntamenti generali e iniziative di business per settore."]
     },
     items: {
@@ -2537,8 +2806,9 @@ var C = {
     areas: {
       imprese: ["Business", "Services, showcases and opportunities for Italian companies and international buyers."],
       storia: ["History & culture", "The evolution of Made in Italy, told through brands, people and lifestyles."],
-      informazione: ["Insight", "News, analysis and in-depth pieces, across different time horizons."],
+      informazione: ["Insight", "News, analysis, in-depth pieces and events, across different time horizons."],
       conformita: ["Compliance", "Rules, verification and the digital passport: free guides, paid tools."],
+      hubai: ["AI Hub and Academy", "Understand AI in manufacturing and get ready for the DPP: insights, use cases and a guided assessment."],
       eventi: ["Events", "General appointments and business initiatives by sector."]
     },
     items: {
@@ -2714,7 +2984,7 @@ function itemLink(it) {
 }
 function megaHTML(key) {
   if (key === "settori") {
-    const items = SECTORS.map(s => { const c = CL().sectors[s.id]; return '<li class="miit-mega__item"><a class="miit-mega__link" href="#settori" data-nav="settori" data-sector="' + s.id + '"><span class="miit-mega__name">' + esc(c[0]) + '</span><span class="miit-mega__desc">' + esc(c[1]) + "</span></a></li>"; }).join("");
+    const items = SECTORS.map(s => { const c = CL().sectors[s.id]; return '<li class="miit-mega__item"><a class="miit-mega__link" href="#settori" data-nav="settori" data-sector="' + s.id + '"><span class="miit-mega__name">' + esc(c[0]) + '</span><span class="miit-mega__desc">' + esc(c[1]) + "</span></a></li>"; }).join("") + '<li class="miit-mega__item miit-mega__item--add"><button type="button" class="miit-mega__link" data-lead="' + esc(t("addLeadCtx")) + '"><span class="miit-mega__name">' + icon("i-plus") + esc(t("addMega")) + '</span><span class="miit-mega__desc">' + esc(t("addMegaD")) + "</span></button></li>";
     return '<div class="miit-mega__intro"><h3 class="h3">' + esc(t("navSectors")) + "</h3><p>" + esc(t("sectorsIntro")) + '</p><a class="miit-link" href="#settori" data-nav="settori" style="font-weight:600;font-size:14px">' + esc(t("secAll")) + "</a></div><ul class=\"miit-mega__list\">" + items + "</ul>";
   }
   const a = AREAS.filter(x => x.id === key)[0], c = CL().areas[key];
@@ -2751,23 +3021,24 @@ function phTick() {
 function startPlaceholder() { clearTimeout(phTimer); phI = 0; phC = 0; phDir = 1; const q = $("#q"); if (RM) { q.placeholder = t("ph")[0]; return; } q.placeholder = ""; phTick(); }
 function renderHome() {
   $("#chips").innerHTML = t("chips").map((c, i) => '<li><button type="button" class="miit-chip' + (i === 0 ? " miit-chip--hint" : "") + '" data-ask="' + i + '">' + esc(c) + "</button></li>").join("");
-  $("#hvQr").innerHTML = qrRects("hero", 13, 4.5) + '<text class="ts" x="0" y="82" style="font:500 9px var(--font-mono)">MIT-DEMO-0001</text>';
   const fns = [
-    { id: "scopri", to: "settori", ic: "i-pin", tag: "free" }, { id: "verifica", to: "verifica", ic: "i-scan", tag: "free" },
-    { id: "crea", to: "crea", ic: "i-doc", tag: "paid" }, { id: "norme", to: "conformita", ic: "i-scale", tag: "mixed" }];
-  $("#fns").innerHTML = fns.map(f => '<a class="fn" href="#' + f.to + '" data-nav="' + f.to + '"><div class="fn__top"><svg class="fn__ic" viewBox="0 0 40 40" aria-hidden="true"><use href="#' + f.ic + '"/></svg><span>' + badge(f.tag) + '</span></div><h3 class="fn__t">' + esc(t("fn_" + f.id + "_t")) + '</h3><p class="fn__d">' + esc(t("fn_" + f.id + "_d")) + "</p>" + (f.id === "crea" ? '<p class="fn__price">' + esc(t("fn_crea_p")) + "</p>" : "") + '<span class="fn__go">' + esc(t("fn_" + f.id + "_c")) + icon("i-arrow") + "</span></a>").join("");
+    { id: "scopri", to: "settori", ic: "i-pin", tag: "free", acc: 3 }, { id: "verifica", to: "verifica", ic: "i-scan", tag: "free", acc: 2 },
+    { id: "crea", to: "crea", ic: "i-doc", tag: "paid", acc: 1 }, { id: "norme", to: "conformita", ic: "i-scale", tag: "mixed", acc: 4 }];
+  $("#fns").innerHTML = fns.map(f => '<a class="fn" href="#' + f.to + '" data-nav="' + f.to + '" data-acc="' + f.acc + '"><div class="fn__top"><svg class="fn__ic" viewBox="0 0 40 40" aria-hidden="true"><use href="#' + f.ic + '"/></svg><span>' + badge(f.tag) + '</span></div><h3 class="fn__t">' + esc(t("fn_" + f.id + "_t")) + '</h3><p class="fn__d">' + esc(t("fn_" + f.id + "_d")) + "</p>" + (f.id === "crea" ? '<p class="fn__price">' + esc(t("fn_crea_p")) + "</p>" : "") + '<span class="fn__go">' + esc(t("fn_" + f.id + "_c")) + icon("i-arrow") + "</span></a>").join("");
   const li = x => '<li>' + icon("i-check") + "<span>" + esc(x) + "</span></li>";
   $("#freeSplit").innerHTML =
     '<article class="miit-price"><div class="miit-price__head"><h3 class="miit-price__name">' + esc(t("freeL")) + "</h3>" + badge("free") + '</div><ul class="miit-price__list" style="border-top:0;padding-top:0">' + t("freeList").map(li).join("") + '</ul><div class="miit-price__cta"><a class="miit-btn miit-btn--secondary" href="#verifica" data-nav="verifica">' + esc(t("fn_verifica_c")) + "</a></div></article>" +
     '<article class="miit-price miit-price--featured"><div class="miit-price__head"><h3 class="miit-price__name">' + esc(t("bizL")) + "</h3>" + badge("paid") + '</div><ul class="plist">' + t("bizRows").map(r => "<li><span>" + esc(r[0]) + '</span><span class="mono" style="font-family:var(--font-mono);font-size:13px;white-space:nowrap">' + esc(r[1]) + "</span></li>").join("") + '</ul><p class="miit-price__note">' + esc(t("bizFoot")) + '</p><div class="miit-price__cta"><div class="row"><a class="miit-btn miit-btn--primary" href="#prezzi" data-nav="prezzi">' + esc(t("bizCta")) + '</a><button type="button" class="miit-btn miit-btn--text" data-lead="' + esc(fill(t("ctxPlan"), { p: t("bizTalk") })) + '">' + esc(t("bizTalk")) + "</button></div></div></article>";
-  $("#homeSectors").innerHTML = SECTORS.map(s => { const c = CL().sectors[s.id]; return '<a class="miit-sector" href="#settori" data-nav="settori" data-sector="' + s.id + '" style="text-decoration:none"><svg class="miit-icon miit-sector__icon" aria-hidden="true"><use href="#' + s.icon + '"/></svg><span class="miit-sector__title">' + esc(c[0]) + '</span><span class="miit-sector__desc">' + esc(c[1]) + '</span><ul class="miit-sector__tags">' + c[2].map(x => "<li>" + esc(x) + "</li>").join("") + "</ul></a>"; }).join("");
-  $("#normStrip").innerHTML = ["espr", "registro", "batterie", "ai", "empco", "l206", "m231"].map(id => { const n = NORM(id); return '<li><a href="#conformita" data-nav="conformita" data-norm-go="' + id + '">' + esc(t("n_" + id)[1]) + "<small>" + esc(statusLabel(n)) + "</small></a></li>"; }).join("");
-  const ai = [["imprese", "prezzi", "paid"], ["storia", "storia", "free"], ["informazione", null, "free"], ["conformita", "conformita", "mixed"], ["eventi", null, "free"]];
-  $("#areasIndex").innerHTML = ai.map((a, i) => '<a href="#' + (a[1] || "") + '" ' + (a[1] ? 'data-nav="' + a[1] + '"' : 'data-stub="1"') + (a[0] === "storia" ? " data-quiet" : "") + '><span class="ai-n">0' + (i + 1) + '</span><span class="ai-t">' + esc(CL().areas[a[0]][0]) + '</span><span class="ai-d">' + esc(CL().areas[a[0]][1]) + '</span><span class="ai-b">' + badge(a[2]) + "</span></a>").join("");
+  $("#homeSectors").innerHTML = SECTORS.map((s, i) => { const c = CL().sectors[s.id]; return '<a class="miit-sector" href="#settori" data-nav="settori" data-sector="' + s.id + '" data-acc="' + (i % 5 + 1) + '" style="text-decoration:none"><svg class="miit-icon miit-sector__icon" aria-hidden="true"><use href="#' + s.icon + '"/></svg><span class="miit-sector__title">' + esc(c[0]) + '</span><span class="miit-sector__desc">' + esc(c[1]) + '</span><ul class="miit-sector__tags">' + c[2].map(x => "<li>" + esc(x) + "</li>").join("") + "</ul></a>"; }).join("");
+  $("#normStrip").innerHTML = ["espr", "registro", "batterie", "ai", "empco", "l206", "m231"].map((id, i) => { const n = NORM(id); return '<li><a href="#conformita" data-nav="conformita" data-acc="' + (i % 5 + 1) + '" data-norm-go="' + id + '">' + esc(t("n_" + id)[1]) + "<small>" + esc(statusLabel(n)) + "</small></a></li>"; }).join("");
+  const ai = [["imprese", "prezzi", "paid"], ["storia", "storia", "free"], ["informazione", null, "free"], ["conformita", "conformita", "mixed"], ["hubai", "innovazione", "module"]];
+  $("#areasIndex").innerHTML = ai.map((a, i) => '<a href="#' + (a[1] || "") + '" ' + (a[1] ? 'data-nav="' + a[1] + '"' : 'data-stub="1"') + (a[0] === "storia" ? " data-quiet" : "") + ' data-acc="' + (i + 1) + '"><span class="ai-n">0' + (i + 1) + '</span><span class="ai-t">' + esc(CL().areas[a[0]][0]) + '</span><span class="ai-d">' + esc(CL().areas[a[0]][1]) + '</span><span class="ai-b">' + badge(a[2]) + "</span></a>").join("");
   renderInnCards();
   renderExplain();
   renderInt();
   initHs();
+  renderAdd();
+  hxInit();
   carRefresh();
   fpRefresh();
 }
@@ -3021,7 +3292,7 @@ function carGo(i, user) {
 }
 function carSync() {
   const run = !RM && !CAR.hover && !CAR.focus && !CAR.user && CAR.inView && !document.hidden;
-  if (run && !CAR.timer) CAR.timer = setInterval(() => carGo(CAR.i + 1, false), 4500);
+  if (run && !CAR.timer) CAR.timer = setInterval(() => carGo(CAR.i + 1, false), 1500);
   if (!run && CAR.timer) { clearInterval(CAR.timer); CAR.timer = null; }
 }
 function carRefresh() {
@@ -3090,7 +3361,7 @@ function renderInt() {
 
 function renderSectors() {
   renderDirControls();
-  $("#sectorCards").innerHTML = SECTORS.map(s => { const c = CL().sectors[s.id]; return '<button type="button" class="miit-sector" data-sector="' + s.id + '" aria-pressed="' + (s.id === sector) + '"><svg class="miit-icon miit-sector__icon" aria-hidden="true"><use href="#' + s.icon + '"/></svg><span class="miit-sector__title">' + esc(c[0]) + '</span><span class="miit-sector__desc">' + esc(c[1]) + '</span><ul class="miit-sector__tags">' + c[2].map(x => "<li>" + esc(x) + "</li>").join("") + "</ul></button>"; }).join("");
+  $("#sectorCards").innerHTML = SECTORS.map((s, i) => { const c = CL().sectors[s.id]; return '<button type="button" class="miit-sector" data-acc="' + (i % 5 + 1) + '" data-sector="' + s.id + '" aria-pressed="' + (s.id === sector) + '"><svg class="miit-icon miit-sector__icon" aria-hidden="true"><use href="#' + s.icon + '"/></svg><span class="miit-sector__title">' + esc(c[0]) + '</span><span class="miit-sector__desc">' + esc(c[1]) + '</span><ul class="miit-sector__tags">' + c[2].map(x => "<li>" + esc(x) + "</li>").join("") + "</ul></button>"; }).join("");
 }
 function renderPanel() {
   const c = CL().sectors[sector];
@@ -3146,15 +3417,15 @@ const providerShort = () => SITE.miat ? fill(t("innBy"), { p: SITE.miat }) : t("
 const providerFull = () => fill(t("iBy"), { p: SITE.miat ? SITE.miat + " (Multiverse Institute for Arts and Technology)" : t("partnerGen") });
 function renderInnCards() {
   const li = x => "<li>" + icon("i-check") + "<span>" + esc(x) + "</span></li>";
-  const card = (k, anchor) => '<article class="inn"><div class="inn__top">' + badge("module") + '<span class="inn__by">' + esc(providerShort()) + '</span></div><h3 class="inn__t">' + esc(t(k + "T")) + '</h3><p class="inn__d">' + esc(t(k + "D")) + '</p><ul class="inn__list">' + t(k + "L").map(li).join("") + '</ul><a class="link-arrow" href="#innovazione" data-nav="innovazione" data-anchor="' + anchor + '"><span>' + esc(t(k + "C")) + "</span>" + icon("i-arrow") + "</a></article>";
+  const card = (k, anchor) => '<article class="inn" data-acc="' + (k === "innHub" ? 1 : 2) + '"><div class="inn__top">' + badge("module") + '<span class="inn__by">' + esc(providerShort()) + '</span></div><h3 class="inn__t">' + esc(t(k + "T")) + '</h3><p class="inn__d">' + esc(t(k + "D")) + '</p><ul class="inn__list">' + t(k + "L").map(li).join("") + '</ul><a class="link-arrow" href="#innovazione" data-nav="innovazione" data-anchor="' + anchor + '"><span>' + esc(t(k + "C")) + "</span>" + icon("i-arrow") + "</a></article>";
   $("#innCards").innerHTML = card("innHub", "hHub") + card("innAcd", "hAcd");
 }
 const AC = { sec: null, lvl: null, who: null };
 function renderInn() {
   $("#iBy").textContent = providerFull();
-  $("#hubGrid").innerHTML = ["insight", "cases", "events"].map(k => {
+  $("#hubGrid").innerHTML = ["insight", "cases", "events"].map((k, i) => {
     const c = t("hub_" + k);
-    return '<article class="hub-col"><p class="hub-col__k">' + esc(c[0]) + '</p><h3 class="hub-col__t">' + esc(c[1]) + '</h3><p class="hub-col__d body-sm">' + esc(c[2]) + '</p><ul class="plist">' + c[3].map(x => '<li><span class="tt">' + esc(x) + '</span><span class="miit-badge miit-badge--demo">' + esc(t("phDemo")) + "</span></li>").join("") + "</ul></article>";
+    return '<article class="hub-col" data-acc="' + (i + 1) + '"><p class="hub-col__k">' + esc(c[0]) + '</p><h3 class="hub-col__t">' + esc(c[1]) + '</h3><p class="hub-col__d body-sm">' + esc(c[2]) + '</p><ul class="plist">' + c[3].map(x => '<li><span class="tt">' + esc(x) + '</span><span class="miit-badge miit-badge--demo">' + esc(t("phDemo")) + "</span></li>").join("") + "</ul></article>";
   }).join("");
   $("#hubSoon").innerHTML = '<li><span class="tt">' + esc(t("hubSoon")) + "</span>" + badge("soon") + "</li>";
   const q = (id, label, opts) => '<fieldset><legend>' + esc(label) + '</legend>' + opts.map(o => '<label class="opt"><input type="radio" name="ac_' + id + '" value="' + o[0] + '"' + (AC[id] === o[0] ? " checked" : "") + '><span><b>' + esc(o[1]) + "</b>" + (o[2] ? "<span>" + esc(o[2]) + "</span>" : "") + "</span></label>").join("") + "</fieldset>";
@@ -3175,9 +3446,9 @@ function renderAcdOut() {
 
 /* ====================== FOOTER ====================== */
 function renderFooter() {
-  const rt = { imprese: "prezzi", storia: "storia", conformita: "conformita" };
+  const rt = { imprese: "prezzi", storia: "storia", conformita: "conformita", hubai: "innovazione" };
   $("#fAreas").innerHTML = AREAS.map(a => '<li><a href="#' + (rt[a.id] || "") + '" ' + (rt[a.id] ? 'data-nav="' + rt[a.id] + '"' : 'data-stub="1"') + ">" + esc(CL().areas[a.id][0]) + "</a></li>").join("");
-  $("#fTools").innerHTML = [["verifica", "uVerify"], ["crea", "ctaCreate"], ["prezzi", "pg_prezzi"], ["conformita", "pg_conformita"], ["settori", "pg_settori"], ["innovazione", "pg_innovazione"]].map(x => '<li><a href="#' + x[0] + '" data-nav="' + x[0] + '">' + esc(t(x[1])) + "</a></li>").join("");
+  $("#fTools").innerHTML = [["verifica", "uVerify"], ["crea", "ctaCreate"], ["prezzi", "pg_prezzi"], ["conformita", "pg_conformita"], ["settori", "pg_settori"]].map(x => '<li><a href="#' + x[0] + '" data-nav="' + x[0] + '">' + esc(t(x[1])) + "</a></li>").join("");
   $("#fPlatform").innerHTML = ["fAboutUs", "fContacts", "fPrivacy", "fTerms", "fCookies"].map(k => '<li><a href="#" data-stub="1">' + esc(t(k)) + "</a></li>").join("");
   $("#fEditor").innerHTML = esc(t("fEditor")) + (SITE.editor ? esc(SITE.editor) : '<span style="color:var(--on-navy)">' + esc(t("fEditorTbd")) + "</span>");
 }
@@ -3322,7 +3593,7 @@ document.addEventListener("click", e => {
   const cl = el.closest("[data-close]"); if (cl) { closeModal(cl.getAttribute("data-close")); return; }
   if (el.classList && el.classList.contains("scrim")) { closeModal(el.id); return; }
   const soon = el.closest("[data-soon]"); if (soon) { e.preventDefault(); closeMega(false); closeMobile(); toast(t("wlSoon")); return; }
-  const ld = el.closest("[data-lead]"); if (ld && ld.tagName === "BUTTON") { openLead(ld.getAttribute("data-lead")); return; }
+  const ld = el.closest("[data-lead]"); if (ld && ld.tagName === "BUTTON") { if (ld.closest("#mega, .miit-mega__inline")) { closeMega(false); closeMobile(); } openLead(ld.getAttribute("data-lead")); return; }
   const tr = el.closest("[data-tier]"); if (tr) { tier = tr.getAttribute("data-tier"); renderPricing(); const b = $('[data-tier="' + tier + '"]'); if (b) b.focus(); return; }
   const bl = el.closest("[data-bill]"); if (bl) { bill = bl.getAttribute("data-bill"); renderPricing(); if (route === "storia") renderHist(); return; }
   const ex = el.closest("[data-ex]"); if (ex) { setExStep(+ex.getAttribute("data-ex"), true); return; }
@@ -3495,6 +3766,7 @@ function fpSync() {
   if (!FP.on) return;
   const k = Math.min(fpCur(fpTargets(), window.scrollY), fpChapters().length - 1);
   $$("#fpDots .fp-dot").forEach((b, i) => { if (i === k) b.setAttribute("aria-current", "true"); else b.removeAttribute("aria-current"); });
+  const dn = $("#fpDots"); if (dn) dn.classList.toggle("on-dark", fpDark());
 }
 function fpEval() {
   const want = route === "home" && FP.mq.matches && !RM;
@@ -3520,6 +3792,176 @@ document.addEventListener("click", e => {
 });
 if ("ResizeObserver" in window) { const ro = new ResizeObserver(() => fpMeasure()); const f = $(".miit-footer"), hd = $(".miit-header"); if (f) ro.observe(f); if (hd) ro.observe(hd); }
 if (document.fonts && document.fonts.ready) document.fonts.ready.then(fpMeasure);
+
+/* ====================== HERO: globo, scambio dati e DPP in loop (v7) ====================== */
+var HX_LAND = "-52:-70|-48:-72,-66|-44:-69,170|-40:-70,-65,175|-36:-71,-66,-61,141,146|-32:-67,-62,-57,-53,23,28,117,122,127,136,141,145,150|-28:-67,-62,-58,-53,19,24,28,114,119,124,128,133,137,142,146,151|-24:-66,-62,-57,-53,-49,17,21,26,30,35,118,122,126,131,135,140,144,148|-20:-69,-65,-61,-57,-52,-48,-44,16,20,24,29,33,46,122,126,131,135,139,144,148|-16:-72,-68,-63,-59,-55,-51,-47,-43,16,20,24,28,32,36,49,128,132,136,145|-12:-74,-70,-65,-61,-57,-53,-49,-45,-41,16,20,24,29,33,37,143|-8:-79,-75,-71,-67,-63,-59,-55,-51,-47,-43,-39,14,18,22,26,30,34,38,111,115,139,143,147,159|-4:-80,-76,-72,-68,-64,-60,-56,-52,-48,-44,-40,12,16,20,24,29,33,37,105,137,141,153|0:-80,-76,-72,-68,-64,-60,-56,-52,12,16,20,24,28,32,36,40,100,112,116,120,128|4:-76,-72,-68,-64,-60,-56,-52,12,16,20,24,29,33,37,41,45,97,117|8:-75,-71,-67,-63,-10,-6,-2,2,6,10,14,18,22,26,30,34,38,42,46,123|12:-86,-12,-8,-4,0,4,8,12,16,20,24,29,33,37,41,78,106|16:-97,-93,-14,-9,-5,-1,3,7,11,16,20,24,28,32,36,45,49,74,78,95,99,103,107|20:-103,-99,-14,-10,-5,-1,3,7,12,16,20,24,29,33,41,46,50,54,75,80,84,97,101,105|24:-110,-106,-101,-14,-9,-5,0,4,8,13,17,21,26,30,35,39,43,48,52,56,70,74,78,83,87,91,96,100,105,109,113,118|28:-108,-103,-98,-12,-8,-3,1,6,10,15,19,24,28,33,37,42,47,56,60,65,69,74,78,83,87,92,96,101,105,110,114,119|32:-114,-109,-105,-100,-95,-90,-86,-81,-5,-1,4,9,13,23,37,42,46,51,56,61,65,70,75,79,84,89,94,98,103,108,112,117,131|36:-121,-116,-111,-106,-101,-96,-91,-86,-81,-76,3,8,38,42,47,52,57,62,67,72,77,82,87,92,97,102,107,112,117,127,136|40:-123,-117,-112,-107,-102,-96,-91,-86,-81,-76,-8,-2,24,29,34,39,45,55,60,65,71,76,81,86,92,97,102,107,112,118,123|44:-119,-113,-108,-102,-97,-91,-85,-80,-74,4,20,26,42,54,59,65,70,76,81,87,92,98,104,109,115,120,126,131,143|48:-120,-114,-108,-102,-96,-90,-84,-78,-72,-66,-54,-1,5,11,17,23,29,35,41,47,53,59,65,71,77,83,89,95,101,107,113,119,125,131,137|52:-122,-115,-109,-102,-96,-89,-83,-76,-70,-63,-57,-5,8,15,21,28,34,41,47,54,60,67,73,80,86,93,99,106,112,119,125,132,138,158|56:-159,-130,-123,-116,-108,-101,-94,-73,-66,13,27,35,42,49,56,63,70,78,85,92,99,106,113,120,128,135,156|60:-164,-156,-140,-132,-124,-116,-108,-100,-76,12,36,44,52,60,68,76,84,92,100,108,116,124,132,140,148,164|64:-153,-144,-134,-125,-116,-107,-98,-71,-43,12,30,39,48,57,66,75,85,94,103,112,121,130,139,148,158,167,176|68:-159,-148,-137,-127,-116,-105,-95,-84,-73,-52,-41,23,34,44,55,66,76,87,98,108,119,130,140,151,162,172|72:-115,-89,-76,-51,-38,-25,53,79,92,105,118,144|76:-116,-100,-52,-36,-20,60,108,140|80:-84,-52,-36,-20";
+var HX_NODES = [
+  { id: "MI", lat: 45.46, lon: 9.19, hub: 1 },
+  { id: "NYC", lat: 40.7, lon: -74 }, { id: "SAO", lat: -23.5, lon: -46.6 },
+  { id: "JNB", lat: -26.2, lon: 28 }, { id: "DXB", lat: 25.2, lon: 55.3 }, { id: "BOM", lat: 19.1, lon: 72.9 },
+  { id: "SHA", lat: 31.2, lon: 121.5 }, { id: "TYO", lat: 35.7, lon: 139.7 }, { id: "SYD", lat: -33.9, lon: 151.2 }
+];
+var HX_LINKS = [[0, 1], [0, 2], [0, 3], [0, 4], [0, 5], [0, 6], [0, 7], [0, 8], [1, 2], [4, 5], [6, 7]];
+var HX_DEST = [[1, 7], [6, 2], [4, 3], [5, 1], [8, 4]];
+var HX_IC = ["i-hanger", "i-chip", "i-battery", "i-car", "i-bottle"];
+var HX_CX = 200, HX_CY = 208, HX_R = 208, HX_TILT = -0.105, HX_CYC = 5200, HX_NS = "http://www.w3.org/2000/svg";
+var HX = { ready: false, raf: 0, last: 0, T0: 0, vis: true, k: -1, qr: [], land: null, grat: [], links: [], nodes: [], e: {} };
+var HXS = { c0: 1, s0: 0, ct: Math.cos(HX_TILT), st: Math.sin(HX_TILT) };
+function hxVec(lat, lon) { const a = lat * Math.PI / 180, o = lon * Math.PI / 180, c = Math.cos(a); return [c * Math.cos(o), c * Math.sin(o), Math.sin(a)]; }
+function hxPrj(v, r) {
+  const xr = v[0] * HXS.c0 + v[1] * HXS.s0, yr = -v[0] * HXS.s0 + v[1] * HXS.c0;
+  const up = v[2] * HXS.ct - xr * HXS.st, dep = xr * HXS.ct + v[2] * HXS.st;
+  return [HX_CX + HX_R * r * yr, HX_CY - HX_R * r * up, dep * r, (yr * yr + up * up) * r * r];
+}
+function hxArcPt(L, t) {
+  const so = Math.sin(L.om), f1 = Math.sin((1 - t) * L.om) / so, f2 = Math.sin(t * L.om) / so;
+  return hxPrj([L.a[0] * f1 + L.b[0] * f2, L.a[1] * f1 + L.b[1] * f2, L.a[2] * f1 + L.b[2] * f2], 1 + L.h * Math.sin(Math.PI * t));
+}
+function hxEl(name, attrs, parent) {
+  const n = document.createElementNS(HX_NS, name);
+  for (const k in attrs) n.setAttribute(k, attrs[k]);
+  if (parent) parent.appendChild(n);
+  return n;
+}
+function hxBuild() {
+  const svg = $("#hx"); if (!svg) return false;
+  HX.land = [];
+  HX_LAND.split("|").forEach(r => { const a = r.split(":"), la = +a[0]; a[1].split(",").forEach(lo => { const v = hxVec(la, +lo); HX.land.push(v[0], v[1], v[2]); }); });
+  HX.land = new Float32Array(HX.land);
+  for (let la = -60; la <= 60; la += 30) { const a = []; for (let i = 0; i < 37; i++) a.push(hxVec(la, -180 + i * 10)); HX.grat.push(a); }
+  for (let lo = -180; lo < 180; lo += 30) { const a = []; for (let i = 0; i < 17; i++) a.push(hxVec(-80 + i * 10, lo)); HX.grat.push(a); }
+  HX.e = { svg: svg, grat: $("#hxGrat"), l1: $("#hxL1"), l2: $("#hxL2"), l3: $("#hxL3"), card: $("#hxCard"), body: $("#hxBody"), stamp: $("#hxStamp"), beam: $("#hxBeam"), glow: $("#hxGlow"), rings: $$(".hx-ring", svg) };
+  const ga = $("#hxArcs"), gn = $("#hxNodes");
+  HX.links = HX_LINKS.map((l, i) => {
+    const A = HX_NODES[l[0]], B = HX_NODES[l[1]], a = hxVec(A.lat, A.lon), b = hxVec(B.lat, B.lon);
+    const om = Math.acos(Math.max(-1, Math.min(1, a[0] * b[0] + a[1] * b[1] + a[2] * b[2])));
+    return { i: i, ia: l[0], ib: l[1], a: a, b: b, om: om, h: 0.1 + 0.22 * om / Math.PI, sp: 0.045 + (i % 4) * 0.012, off: (i * 0.173) % 1, rev: i % 3 === 1,
+      path: hxEl("path", { "class": "hx-arc" }, ga), pk: [hxEl("circle", { "class": "hx-pk", r: 2.3 }, ga), hxEl("circle", { "class": "hx-pk", r: 2.3 }, ga)],
+      hl: [hxEl("circle", { "class": "hx-pk hx-pk--h", r: 5.5 }, ga), hxEl("circle", { "class": "hx-pk hx-pk--h", r: 5.5 }, ga)] };
+  });
+  HX.nodes = HX_NODES.map((n, i) => {
+    const g = hxEl("g", { "class": "hx-node" + (n.hub ? " hx-hub" : "") }, gn);
+    if (n.hub) {
+      hxEl("rect", { x: -9, y: -6, width: 6, height: 12, style: "fill:#008C45" }, g); hxEl("rect", { x: -3, y: -6, width: 6, height: 12, style: "fill:#F4F5F0" }, g); hxEl("rect", { x: 3, y: -6, width: 6, height: 12, style: "fill:#CD212A" }, g);
+      hxEl("rect", { "class": "hx-flagln", x: -9, y: -6, width: 18, height: 12 }, g);
+      const tx = hxEl("text", { x: 0, y: -13, "text-anchor": "middle", id: "hxMi" }, g); void tx;
+    } else { hxEl("circle", { r: 3.4 }, g); hxEl("text", { x: 7, y: 3 }, g).textContent = n.id; }
+    return { g: g, v: hxVec(n.lat, n.lon) };
+  });
+  return true;
+}
+function hxText() {
+  const svg = HX.e.svg; if (!svg) return;
+  const P = t("hxP"), k = Math.max(HX.k, 0) % P.length, p = P[k];
+  $("#hxT").textContent = p[0];
+  $$(".hx-row", svg).forEach((g, i) => { $(".hx-k", g).textContent = p[1][i][0]; $(".hx-v", g).textContent = p[1][i][1]; });
+  $("#hxIc use").setAttribute("href", "#" + HX_IC[k]);
+  HX.qr[k] = HX.qr[k] || qrRects("hero" + k, 13, 4.5);
+  $("#hxQr").innerHTML = HX.qr[k];
+  $("#hxId").textContent = "MIT-DEMO-000" + (k + 1);
+  const mi = $("#hxMi"); if (mi) mi.textContent = t("hxMi");
+}
+function hxAct() {
+  const d = HX_DEST[Math.max(HX.k, 0) % HX_DEST.length];
+  HX.links.forEach(L => { const on = L.ia === 0 && d.indexOf(L.ib) >= 0; L.path.classList.toggle("on", on); L.on = on; });
+  HX.nodes.forEach((n, i) => n.g.classList.toggle("on", d.indexOf(i) >= 0));
+}
+function hxRender(T, still) {
+  const lon0 = (still ? 18 : 18 + 38 * Math.sin(T * 0.1745)) * Math.PI / 180;
+  HXS.c0 = Math.cos(lon0); HXS.s0 = Math.sin(lon0);
+  const cyc = still ? 0.75 : T * 1000 / HX_CYC, k = still ? 0 : Math.floor(cyc) % HX_IC.length, p = still ? 0.75 : cyc - Math.floor(cyc);
+  if (k !== HX.k) { HX.k = k; hxText(); hxAct(); }
+  const L = HX.land, n = L.length / 3, b1 = [], b2 = [], b3 = [];
+  for (let i = 0; i < n; i++) {
+    const x = L[3 * i], y = L[3 * i + 1], z = L[3 * i + 2];
+    const xr = x * HXS.c0 + y * HXS.s0, dep = xr * HXS.ct + z * HXS.st;
+    if (dep <= 0) continue;
+    const yr = -x * HXS.s0 + y * HXS.c0, up = z * HXS.ct - xr * HXS.st;
+    (dep > 0.5 ? b1 : dep > 0.2 ? b2 : b3).push("M" + (HX_CX + HX_R * yr).toFixed(1) + " " + (HX_CY - HX_R * up).toFixed(1) + "h.01");
+  }
+  HX.e.l1.setAttribute("d", b1.join("")); HX.e.l2.setAttribute("d", b2.join("")); HX.e.l3.setAttribute("d", b3.join(""));
+  let g = "";
+  HX.grat.forEach(a => { let pen = false; a.forEach(v => { const q = hxPrj(v, 1); if (q[2] > 0) { g += (pen ? "L" : "M") + q[0].toFixed(1) + " " + q[1].toFixed(1); pen = true; } else pen = false; }); });
+  HX.e.grat.setAttribute("d", g);
+  HX.links.forEach(Lk => {
+    let d = "", pen = false;
+    for (let i = 0; i <= 28; i++) { const q = hxArcPt(Lk, i / 28); if (q[2] > 0 || q[3] > 1) { d += (pen ? "L" : "M") + q[0].toFixed(1) + " " + q[1].toFixed(1); pen = true; } else pen = false; }
+    Lk.path.setAttribute("d", d);
+    for (let j = 0; j < 2; j++) {
+      const pk = Lk.pk[j], hl = Lk.hl[j];
+      if (still) { pk.style.display = "none"; hl.style.display = "none"; continue; }
+      let u = (T * Lk.sp * (Lk.on ? 1.7 : 1) + Lk.off + j * 0.5) % 1; if (Lk.rev) u = 1 - u;
+      const q = hxArcPt(Lk, u), vis = q[2] > 0 || q[3] > 1;
+      pk.style.display = hl.style.display = vis ? "" : "none";
+      if (vis) { pk.setAttribute("cx", q[0].toFixed(1)); pk.setAttribute("cy", q[1].toFixed(1)); hl.setAttribute("cx", q[0].toFixed(1)); hl.setAttribute("cy", q[1].toFixed(1)); }
+    }
+  });
+  let hub = null;
+  HX.nodes.forEach((nd, i) => {
+    const q = hxPrj(nd.v, 1), vis = q[2] > 0.04;
+    nd.g.style.display = vis ? "" : "none";
+    if (vis) { nd.g.setAttribute("transform", "translate(" + q[0].toFixed(1) + " " + q[1].toFixed(1) + ")"); nd.g.style.opacity = Math.min(1, q[2] * 4).toFixed(2); }
+    if (i === 0) hub = vis ? q : null;
+  });
+  const u = (p - 0.5) / 0.45;
+  HX.e.rings.forEach((r, i) => {
+    const w = u - i * 0.28;
+    if (!hub || w < 0 || w > 1) { r.style.display = "none"; return; }
+    r.style.display = ""; r.setAttribute("cx", hub[0].toFixed(1)); r.setAttribute("cy", hub[1].toFixed(1)); r.setAttribute("r", (8 + 46 * w).toFixed(1)); r.style.opacity = (0.7 * (1 - w)).toFixed(2);
+  });
+  /* scheda DPP: ingresso, scansione, timbro, uscita */
+  const fi = Math.min(1, p / 0.08), fo = p > 0.93 ? (1 - p) / 0.07 : 1;
+  HX.e.card.setAttribute("transform", "translate(0 " + (still ? 0 : 3 * Math.sin(T * 1.05)).toFixed(2) + ")");
+  HX.e.body.style.opacity = Math.max(0, Math.min(fi, fo)).toFixed(2);
+  HX.e.body.setAttribute("transform", "translate(0 " + ((1 - Math.min(1, p / 0.1)) * 8).toFixed(1) + ")");
+  const s = (p - 0.14) / 0.3, on = s >= 0 && s <= 1 && !still;
+  HX.e.beam.style.opacity = HX.e.glow.style.opacity = on ? 1 : 0;
+  if (on) { const y = 268 + 58 * s; HX.e.beam.setAttribute("y", y.toFixed(1)); HX.e.glow.setAttribute("y", (y - 24).toFixed(1)); }
+  const q = Math.max(0, Math.min(1, (p - 0.5) / 0.08)), e = 1 - Math.pow(1 - q, 3);
+  HX.e.stamp.style.opacity = q.toFixed(2);
+  HX.e.stamp.setAttribute("transform", "translate(244 298) rotate(" + (-12 + 6 * e).toFixed(1) + ") scale(" + (1.6 - 0.6 * e).toFixed(3) + ")");
+}
+function hxRun() { return HX.ready && HX.vis && !document.hidden && route === "home" && !RM; }
+function hxLoop(now) {
+  HX.raf = 0;
+  if (!hxRun()) return;
+  HX.raf = requestAnimationFrame(hxLoop);
+  if (now - HX.last < 32) return;
+  HX.last = now;
+  hxRender((now - HX.T0) / 1000, false);
+}
+function hxSync() { if (hxRun() && !HX.raf) { HX.last = 0; HX.raf = requestAnimationFrame(hxLoop); } }
+function hxInit() {
+  if (!$("#hx")) return;
+  if (!HX.ready) {
+    if (!hxBuild()) return;
+    HX.ready = true; HX.T0 = performance.now();
+    if ("IntersectionObserver" in window) new IntersectionObserver(en => { HX.vis = en[0].isIntersecting; hxSync(); }).observe(HX.e.svg);
+    document.addEventListener("visibilitychange", hxSync);
+  }
+  HX.k = -1;
+  if (RM) hxRender(0, true); else { hxRender((performance.now() - HX.T0) / 1000, false); hxSync(); }
+  hxText();
+}
+
+/* ---- CTA «Aggiungi il tuo settore» (home) ---- */
+function renderAdd() {
+  $$(".sec-add").forEach(sa => {
+  const box = sa.querySelector(".sec-add__chips"), btn = sa.querySelector(".sec-add__btn"); if (!box || !btn) return;
+  btn.setAttribute("data-lead", t("addLeadCtx"));
+  box.innerHTML = t("addEx").map(x => '<li><button type="button" class="sec-add__chip" data-lead="' + esc(fill(t("addLeadCtxS"), { s: x })) + '">' + esc(x) + "</button></li>").join("");
+  });
+}
+/* ---- pallini capitoli: variante chiara quando il fondo è scuro ---- */
+function fpDark() {
+  const els = document.elementsFromPoint(window.innerWidth - 14, Math.round(window.innerHeight / 2));
+  for (let i = 0; i < els.length; i++) {
+    if (els[i].closest("#fpDots")) continue;
+    const m = getComputedStyle(els[i]).backgroundColor.match(/[\d.]+/g);
+    if (m && (m.length < 4 || +m[3] > 0.6)) return (0.2126 * m[0] + 0.7152 * m[1] + 0.0722 * m[2]) < 110;
+  }
+  return false;
+}
 
 /* ====================== AVVIO ====================== */
 let io = null;
